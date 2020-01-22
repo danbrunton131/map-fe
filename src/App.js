@@ -3,6 +3,9 @@ import logo from './logo.svg';
 import './css/App.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
 class App extends React.Component {
 	constructor (props) {
@@ -48,16 +51,42 @@ class App extends React.Component {
 
         {/*Might need to break this out into it's own component*/}
         <Modal show={this.state.showModal} dialogClassName={"primary-modal"} size="lg" onHide={this.handleCloseModal}>
-          <Modal.Header closeButton>
-            <Modal.Title id="modal-title">Modal heading</Modal.Title>
+          <Modal.Header id="modal-header" closeButton>
+            <Modal.Title id="modal-title">Results</Modal.Title>
           </Modal.Header>
-          <Modal.Body id="modal-body"><p>Woohoo, you're reading this text in a modal!</p></Modal.Body>
+          <Modal.Body id="modal-body">
+            {/* Modal Program Result Component */}
+            <Container>
+              <div class="program-result">
+                <Row>
+                  <Col xs={12} md={8}>
+                    <div class="description">
+                      <h2>Life Sciences - Level 2</h2>
+                      <p>A program about life, and science... don't know anything else. Just that it's for losers who don't want to die to the coronavirus. Like come on, who doesn't want to die coughing up blood!</p>
+                      <p>Add clickability to expand each entry to show unmet requirements.</p>
+                    </div>
+                  </Col>
+                  <Col xs={12} md={4}><div class="pie-chart">A pie chart</div></Col>
+                </Row>
+              </div>
+            </Container>
+            <Container>
+              <div class="program-result">
+                <Row>
+                  <Col xs={12} md={8}>
+                    <div class="description">
+                      <h2>Life Sciences - Level 2</h2>
+                      <p>A program about life, and science... don't know anything else. Just that it's for losers who don't want to die to the coronavirus. Like come on, who doesn't want to die coughing up blood!</p>
+                    </div>
+                  </Col>
+                  <Col xs={12} md={4}><div class="pie-chart">A pie chart</div></Col>
+                </Row>
+              </div>
+            </Container>
+          </Modal.Body>
           <Modal.Footer id="modal-footer">
-            <Button variant="btn btn-info" onClick={this.handleCloseModal}>
-              Close
-            </Button>
             <Button variant="btn btn-primary" onClick={this.handleCloseModal}>
-              Save Changes (float this left)
+              Close
             </Button>
           </Modal.Footer>
         </Modal>

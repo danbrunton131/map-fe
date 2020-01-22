@@ -41,8 +41,12 @@
   
 }
 
+.primary-modal #modal-header {
+  background-color: var(--maroon);
+}
+
 .primary-modal #modal-title {
-  
+  color: white;
 }
 
 .primary-modal #modal-body {
@@ -51,4 +55,21 @@
 
 .primary-modal #modal-footer {
 
+}
+
+.pie-chart {
+  /*width: 200px;*/
+  height: 200px;
+  background-color: blue;
+}
+
+.description {
+  background-color: grey;
+}
+
+.program-result {
+  background-color: pink;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
