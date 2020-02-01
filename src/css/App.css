@@ -1,9 +1,8 @@
-
 .App-header {
   background-color: white;
   border-style: solid;
   border-width: 0px 1px 2px 1px;
-  min-height:7vh;
+  min-height:10vh;
   /* font-size: calc(10px + 2vmin); */
   display: flex;
   align-items: center;
@@ -13,28 +12,14 @@
 /* Design for the body of the app.
 Scales the contents to be centered, also based on the minimum of the user's display height/width.*/ 
 .App-body {
-  min-height: 83vh; /* between header, body, footer, height is 100vh */
+  min-height: 90vh; /* between header, body, footer, height is 100vh */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  padding-bottom: 10vh; /* padding matches height of footer */
+  /* padding-bottom: 10vh; padding matches height of footer */
   background-color: var(--cool-grey);
-
-}
-
-/* Color for Header/NavBar. 
-Also defining a border around left, right, bottom of header */
-.App-footer {
-  position:absolute;
-  left:0;
-  bottom:0;
-  right:0;
-  border-width: 2px 1px 0px 1px;
-  height: 10vh; /* size of the footer */
-  overflow: auto;
-  background-color: var(--dark-grey);
 
 }
 

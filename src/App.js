@@ -12,9 +12,6 @@ function App() {
       <div className="App-body">
         <MainPage/>
       </div>
-      <div className="App-footer">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      </div>
     </div>
   );
 }
