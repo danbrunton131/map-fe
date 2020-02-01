@@ -1,12 +1,20 @@
 import React from 'react';
+import {Col, Row} from 'react-bootstrap';
+import CourseCart from './CourseCart';
+import CourseSelection from './CourseSelection';
 
 export default class MainPage extends React.Component {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
       this.state = {color: "red"};
     }
     render() {
-      return <h2>I am a {this.state.color} Car!</h2>;
+        return(
+            <React.Fragment>
+                <CourseCart> </CourseCart>
+                <CourseSelection> </CourseSelection>
+            </React.Fragment>
+      );
     }
   }
   
