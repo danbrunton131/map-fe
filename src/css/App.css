@@ -13,10 +13,10 @@
 Scales the contents to be centered, also based on the minimum of the user's display height/width.*/ 
 .App-body {
   min-height: 90vh; /* between header, body, footer, height is 100vh */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* display: flex;
+  flex-direction: column; */
+  /* align-items: center; */
+  justify-content: center; 
   font-size: calc(10px + 2vmin);
   /* padding-bottom: 10vh; padding matches height of footer */
   background-color: var(--cool-grey);
@@ -39,7 +39,16 @@ Scales the contents to be centered, also based on the minimum of the user's disp
 }
 
 
-
+.sample-fill{
+  background-color: blue;
+  width: 100%;
+  height: 100%;
+}
+.container{
+  display:block;
+  width: 100%;
+  height: 100%;
+}
 
 
 
