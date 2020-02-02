@@ -3,7 +3,7 @@
   border-style: solid;
   border-width: 0px 1px 2px 1px;
   min-height:10vh;
-  font-size: calc(10px + 2vmin)!important;
+  font-size: calc(10px + 2vmin);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,6 +62,10 @@ Scales the contents to be centered, also based on the minimum of the user's disp
 /* tab content*/
 .tab-content{
   background-color:white;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: var(--maroon)
 }
 
 /*styling of react-bootstrap tabs*/

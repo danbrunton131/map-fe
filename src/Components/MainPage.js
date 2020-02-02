@@ -13,15 +13,12 @@ export default class MainPage extends React.Component {
             <div className="container-fluid">
             <Row>
                 <Col sm={12} md={9}>
-                    {/* <h1>Col2</h1> */}
-                    {/* <div className="sample-fill"/> */}
                     <CourseSelection> </CourseSelection>
                 </Col>
 
                 <Col sm={12} md={3}>
-                    <h1>Col1</h1>
-                    <div className="sample-fill"/>
-                    {/* <CourseCart> </CourseCart> */}
+                    {/* <div className="sample-fill"/> */}
+                    <CourseCart> </CourseCart>
                 </Col>
             </Row> 
             </div>
