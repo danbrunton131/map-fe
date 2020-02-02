@@ -202,7 +202,7 @@ h2,
   font-size: 28px;
   line-height: 36px;
   /*  margin-top: 24px;*/
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
   text-transform: uppercase;
   letter-spacing: 1px
 }

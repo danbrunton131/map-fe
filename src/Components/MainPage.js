@@ -10,9 +10,10 @@ export default class MainPage extends React.Component {
     }
     render() {
         return(
+            <div className="container-fluid">
             <Row>
                 <Col sm={12} md={9}>
-                    <h1>Col2</h1>
+                    {/* <h1>Col2</h1> */}
                     {/* <div className="sample-fill"/> */}
                     <CourseSelection> </CourseSelection>
                 </Col>
@@ -22,7 +23,8 @@ export default class MainPage extends React.Component {
                     <div className="sample-fill"/>
                     {/* <CourseCart> </CourseCart> */}
                 </Col>
-            </Row>
+            </Row> 
+            </div>
       );
     }
   }

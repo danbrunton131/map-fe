@@ -3,7 +3,7 @@
   border-style: solid;
   border-width: 0px 1px 2px 1px;
   min-height:10vh;
-  /* font-size: calc(10px + 2vmin); */
+  font-size: calc(10px + 2vmin)!important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,7 +71,9 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   margin-left:1px;
 }
 
-
+.container-fluid{
+  padding: 12px 12px 12px 12px;
+}
 
 
 

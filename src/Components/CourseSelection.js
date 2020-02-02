@@ -8,15 +8,18 @@ export default class MainPage extends React.Component {
     }
     render() {
         return(
-            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-                <Tab eventKey="fall" title="Fall">
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                </Tab>
-                <Tab eventKey="winter" title="Winter">
-                </Tab>
-                <Tab eventKey="spring-summer" title="Spring/Summer">
-                </Tab>
-            </Tabs>      );
+            <div className="course-selection">
+                <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+                    <Tab eventKey="fall" title="Fall">
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    </Tab>
+                    <Tab eventKey="winter" title="Winter">
+                    </Tab>
+                    <Tab eventKey="spring-summer" title="Spring/Summer">
+                    </Tab>
+                </Tabs> 
+            </div>
+        );
     }
   }
   
