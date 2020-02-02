@@ -1,0 +1,16 @@
+.course-cart-container{
+    height:100%;
+    margin: 0 20px;
+  }
+  
+  .cart{
+    height: 600px;
+    padding: 50px 0;
+    background: #fff;
+  
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: var(--maroon)
+  }
+  

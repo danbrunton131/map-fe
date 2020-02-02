@@ -1,5 +1,7 @@
+import '../css/cart.css';
 import React from 'react';
 import {Col, Row, Tabs, Tab} from 'react-bootstrap';
+
 
 export default class CourseCart extends React.Component {
     constructor(props) {
@@ -8,7 +10,7 @@ export default class CourseCart extends React.Component {
     }
     render() {
         return(
-            <div className="course-cart">
+            <div className="course-cart-container">
                 <h2> Cart </h2>
                 <div className="cart"/>
             </div>
