@@ -9,7 +9,7 @@ export default class CourseSelection extends React.Component {
     render() {
         return(
             <div className="course-selection">
-                <h1> Course Selection </h1>
+                <h2> Course Selection </h2>
                 <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                     <Tab eventKey="fall" title="Fall">
                     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
