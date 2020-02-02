@@ -74,6 +74,10 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   color:white;
   margin-left:1px;
 }
+.nav-tabs .nav-link.active{
+  border-width: 2px 2px 0px 2px;
+  border-color: var(--maroon)
+}
 
 .container-fluid{
   padding: 12px 12px 12px 12px;
