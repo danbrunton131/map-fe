@@ -1,3 +1,4 @@
+
 .App-header {
   background-color: var(--maroon);
   border-style: solid;
@@ -16,6 +17,7 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   /* display: flex;
   flex-direction: column; */
   /* align-items: center; */
+  /* overflow: auto; */
   justify-content: center; 
   font-size: calc(10px + 2vmin);
   /* padding-bottom: 10vh; padding matches height of footer */
@@ -79,9 +81,35 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   border-color: var(--maroon)
 }
 
+/* overriding bootstrap's container-fluid to include Top/Bottom padding */
 .container-fluid{
   padding: 12px 12px 12px 12px;
 }
+
+/* add spacing when columns stack */
+@media (max-width: 768px) {
+  [class*="col-"] {
+      margin-bottom: 15px;
+  }
+}
+
+
+.course-cart{
+  height:100%;
+}
+
+.cart{
+  height: 600px;
+  padding: 50px 0;
+  margin: 0 20px;
+  background: #fff;
+
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: var(--maroon)
+}
+
 
 
 
