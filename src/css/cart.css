@@ -4,13 +4,18 @@
   }
   
   .cart{
+    display: flex;
     height: 600px;
-    padding: 50px 0;
+    padding: 50px 0 10px 0;
     background: #fff;
   
     border-style: solid;
     border-radius: 5px;
     border-width: 2px;
     border-color: var(--maroon)
+  }
+
+  .submit-button{
+    align-self: flex-end;
   }
   

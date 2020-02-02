@@ -1,6 +1,6 @@
 import '../css/cart.css';
 import React from 'react';
-import {Col, Row, Tabs, Tab} from 'react-bootstrap';
+import {Col, Row, Tabs, Tab, Button} from 'react-bootstrap';
 
 
 export default class CourseCart extends React.Component {
@@ -8,11 +8,19 @@ export default class CourseCart extends React.Component {
       super(props);
       this.state = {color: "red"};
     }
+
+
+
     render() {
         return(
             <div className="course-cart-container">
                 <h2> Cart </h2>
-                <div className="cart"/>
+                <div className="cart">
+                  <div></div>
+                  <div className="submit-button w-100 px-2">
+                    <Button className="btn btn-primary float-right" onClick={this.props.showModal}>Submit</Button>
+                  </div>
+                </div>
             </div>
         );
     }
