@@ -49,7 +49,9 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   border-style: solid;
   border-radius: 5px;
   border-width: 2px;
-  border-color: var(--maroon)
+  border-color: var(--maroon);
+  padding: 5px 5px 5px 5px;
+
 }
 
 /*styling of react-bootstrap tabs*/
