@@ -2,8 +2,8 @@ import '../css/cart.css';
 import React from 'react';
 import {Col, Row, Tabs, Tab} from 'react-bootstrap';
 
-const generateCourseList = (allCourses, removeCourseFromCart) => {
-    return allCourses.map((course, index) => {
+const generateCourseList = (selectedCourses, removeCourseFromCart) => {
+    return selectedCourses.map((course, index) => {
       return (
           <React.Fragment>
             <span
@@ -28,11 +28,13 @@ export default class CourseCart extends React.Component {
       this.state = {color: "red"};
     }
     render() {
-        const {removeCourseFromCart} = this.props;
+        const {selectedCourses,removeCourseFromCart} = this.props;
         return(
             <div className="course-cart-container">
                 <h2> Cart </h2>
-                <div className="cart"/>
+                <div className="cart">
+                {selectedCourses && generateCourseList(selectedCourses,removeCourseFromCart)}
+                </div>
             </div>
         );
     }
