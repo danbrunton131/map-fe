@@ -77,6 +77,16 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   }
 }
 
+.fake-link {
+  color: #7d0040;
+  text-decoration: underline;
+  cursor: pointer;
+}
+  
+span.fake-link:hover {
+  color: #222;
+}
+
 
 /* .primary-modal {
   

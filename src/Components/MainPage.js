@@ -16,11 +16,12 @@ export default class MainPage extends React.Component {
       };
     }
     render() {
+        const {allCourses} = this.state;
         return(
             <div className="container-fluid">
             <Row>
                 <Col sm={12} md={9}>
-                    <CourseSelection> </CourseSelection>
+                    <CourseSelection allCourses={allCourses}/> 
                 </Col>
 
                 <Col sm={12} md={3}>
