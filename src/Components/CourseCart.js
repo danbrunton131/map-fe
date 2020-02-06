@@ -18,7 +18,7 @@ export default class CourseCart extends React.Component {
                 <div className="cart">
                   <div></div>
                   <div className="submit-button w-100 px-2">
-                    <Button className="btn btn-primary float-right" onClick={this.props.showModal}>Submit</Button>
+                    <Button className="btn btn-primary" onClick={this.props.showModal}>Submit</Button>
                   </div>
                 </div>
             </div>

@@ -17,5 +17,7 @@
 
   .submit-button{
     align-self: flex-end;
+    display: flex;
+    justify-content: center;
   }
   
