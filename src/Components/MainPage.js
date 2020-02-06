@@ -15,19 +15,28 @@ export default class MainPage extends React.Component {
 
       };
       this.addCourseToCart = this.addCourseToCart.bind(this);
+      this.removeCourseFromCart = this.removeCourseFromCart.bind(this);
     }
     addCourseToCart(courseId){
         const {selectedCourses, allCourses} = this.state;
         const newCourse = allCourses.find(course => course.id === courseId);
 
-        console.log(courseId);
         this.setState(
             {selectedCourses: {...selectedCourses, newCourse}
         });
     }
 
+    removeCourseFromCart(courseId){
+        const {selectedCourses, allCourses} = this.state;
+        const updatedCourseList = selectedCourses.filter(function( course ) {
+            return course.id !== courseId;
+        });
+          
+        this.setState({selectedCourses: updatedCourseList});
+    }
+
     render() {
-        const {allCourses} = this.state;
+        const {allCourses, selectedCourses} = this.state;
         return(
             <div className="container-fluid">
             <Row>
@@ -37,7 +46,7 @@ export default class MainPage extends React.Component {
 
                 <Col sm={12} md={3}>
                     {/* <div className="sample-fill"/> */}
-                    <CourseCart> </CourseCart>
+                    <CourseCart selectedCourses={selectedCourses}/>
                 </Col>
             </Row> 
             </div>
