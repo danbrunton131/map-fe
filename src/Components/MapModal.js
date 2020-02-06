@@ -28,27 +28,27 @@ export default class ExampleApp extends React.Component {
                     <Container>
                     <div className="program-result">
                         <Row>
-                        <Col xs={12} md={8}>
+                        <Col sm={12} md={8}>
                             <div className="description">
                                 <h2>Life Sciences - Level 2</h2>
                                 <p>A program about life, and science... don't know anything else. Just that it's for losers who don't want to die to the coronavirus. Like come on, who doesn't want to die coughing up blood!</p>
                                 <p>Add clickability to expand each entry to show unmet requirements.</p>
                             </div>
                         </Col>
-                        <Col xs={12} md={4}><div className="pie-chart">A pie chart</div></Col>
+                        <Col sm={12} md={4}><div className="pie-chart">A pie chart</div></Col>
                         </Row>
                     </div>
                     </Container>
                     <Container>
                         <div className="program-result">
                             <Row>
-                                <Col xs={12} md={8}>
+                                <Col sm={12} md={8}>
                                     <div className="description">
                                         <h2>Life Sciences - Level 2</h2>
                                         <p>A program about life, and science... don't know anything else. Just that it's for losers who don't want to die to the coronavirus. Like come on, who doesn't want to die coughing up blood!</p>
                                     </div>
                                 </Col>
-                                <Col xs={12} md={4}><div className="pie-chart">A pie chart</div></Col>
+                                <Col sm={12} md={4}><div className="pie-chart">A pie chart</div></Col>
                             </Row>
                         </div>
                     </Container>
