@@ -1,7 +1,6 @@
 .course-cart-container{
     height:100%;
-    margin: 0 20px;
-    padding: 50px 5px 50px 5px;
+    margin: 50px 20px;
   }
   
   .cart{
@@ -12,6 +11,7 @@
     border-style: solid;
     border-radius: 5px;
     border-width: 2px;
-    border-color: var(--maroon)
+    border-color: var(--maroon);
+    padding: 50px 5px 50px 5px;
   }
   
