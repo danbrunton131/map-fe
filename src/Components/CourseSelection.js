@@ -1,3 +1,4 @@
+import '../css/course-selection.css';
 import React from 'react';
 import {Col, Row, Tabs, Tab} from 'react-bootstrap';
 
