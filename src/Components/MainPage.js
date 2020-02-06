@@ -14,14 +14,25 @@ export default class MainPage extends React.Component {
           selectedCourses:[],
 
       };
+      this.addCourseToCart = this.addCourseToCart.bind(this);
     }
+    addCourseToCart(courseId){
+        const {selectedCourses, allCourses} = this.state;
+        const newCourse = allCourses.find(course => course.id === courseId);
+
+        console.log(courseId);
+        this.setState(
+            {selectedCourses: {...selectedCourses, newCourse}
+        });
+    }
+
     render() {
         const {allCourses} = this.state;
         return(
             <div className="container-fluid">
             <Row>
                 <Col sm={12} md={9}>
-                    <CourseSelection allCourses={allCourses}/> 
+                    <CourseSelection allCourses={allCourses} addCourseToCart={this.addCourseToCart} /> 
                 </Col>
 
                 <Col sm={12} md={3}>

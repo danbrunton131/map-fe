@@ -3,7 +3,7 @@ import React from 'react';
 import {Col, Row, Tabs, Tab} from 'react-bootstrap';
 
 
-const generateCourseList = (allCourses) => {
+const generateCourseList = (allCourses, addCourseToCart) => {
     return allCourses.map((course, index) => {
       return (
           <React.Fragment>
@@ -12,7 +12,7 @@ const generateCourseList = (allCourses) => {
                 key={course.id}
                 id={course.id}
                 name={course.name}
-                onClick={null}
+                onClick={() => addCourseToCart(course.id)}
             > 
             {course.code} 
             </span>
@@ -28,14 +28,16 @@ export default class CourseSelection extends React.Component {
       super(props);
       this.state = {color: "red"};
     }
+
+
     render() {
-        const {allCourses} = this.props;
+        const {allCourses, addCourseToCart} = this.props;
         return(
             <div className="course-selection">
                 <h2> Course Selection </h2>
                 <Tabs defaultActiveKey="fall" id="uncontrolled-tab-example">
                     <Tab eventKey="fall" title="Fall">
-                    {generateCourseList(allCourses)}
+                    {generateCourseList(allCourses, addCourseToCart)}
                     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     </Tab>
                     <Tab eventKey="winter" title="Winter">
