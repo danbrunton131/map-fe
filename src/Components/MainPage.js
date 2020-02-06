@@ -19,20 +19,26 @@ export default class MainPage extends React.Component {
     }
     addCourseToCart(courseId){
         const {selectedCourses, allCourses} = this.state;
-        const newCourse = allCourses.find(course => course.id === courseId);
+        const newCourseIndex = allCourses.findIndex(course => course.id === courseId);
        
-        this.setState(
-            {selectedCourses: [...selectedCourses, newCourse]
+        this.setState({
+            selectedCourses: [...selectedCourses, allCourses[newCourseIndex]],
+            allCourses: [...allCourses, allCourses[newCourseIndex].selected=true]
         });
     }
 
     removeCourseFromCart(courseId){
-        const {selectedCourses} = this.state;
+        const {allCourses, selectedCourses} = this.state;
+        const courseIndex = allCourses.findIndex(course => course.id === courseId);
+
         const updatedCourseList = selectedCourses.filter(function( course ) {
             return course.id !== courseId;
         });
           
-        this.setState({selectedCourses: updatedCourseList});
+        this.setState({
+            selectedCourses: updatedCourseList,
+            allCourses:[...allCourses, allCourses[courseIndex].selected=false]
+        });
     }
 
     render() {

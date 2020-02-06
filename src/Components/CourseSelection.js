@@ -12,7 +12,7 @@ const generateCourseList = (allCourses, addCourseToCart) => {
                 key={course.id}
                 id={course.id}
                 name={course.name}
-                onClick={() => addCourseToCart(course.id)}
+                onClick={!course.selected ? () => addCourseToCart(course.id) : null}
             > 
             {course.code} 
             </span>
