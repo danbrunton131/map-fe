@@ -30,7 +30,7 @@ export default class ExampleApp extends React.Component {
                         <Col sm={12} md={8}>
                             <div className="description">
                                 <h2>Life Sciences - Level 2</h2>
-                                <p>A program about life, and science... don't know anything else. Just that it's for losers who don't want to die to the coronavirus. Like come on, who doesn't want to die coughing up blood!</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                 <p>Add clickability to expand each entry to show unmet requirements.</p>
                             </div>
                         </Col>
@@ -44,7 +44,7 @@ export default class ExampleApp extends React.Component {
                                 <Col sm={12} md={8}>
                                     <div className="description">
                                         <h2>Life Sciences - Level 2</h2>
-                                        <p>A program about life, and science... don't know anything else. Just that it's for losers who don't want to die to the coronavirus. Like come on, who doesn't want to die coughing up blood!</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                     </div>
                                 </Col>
                                 <Col sm={12} md={4}><div className="pie-chart">A pie chart</div></Col>
