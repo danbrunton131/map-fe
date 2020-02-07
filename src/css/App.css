@@ -34,35 +34,6 @@ Scales the contents to be centered, also based on the minimum of the user's disp
 }
 
 
-/* ensure tab height always maximized */
-.tab-content>.tab-pane{
-  display:block;
-  visibility:hidden;
-}
-.tab-content>.active{
-  visibility:visible;
-}
-
-/* content box underneath tabs*/
-.tab-content{
-  background-color:white;
-  border-style: solid;
-  border-radius: 5px;
-  border-width: 2px;
-  border-color: var(--maroon)
-}
-
-/*styling of react-bootstrap tabs*/
-.nav-tabs .nav-item{
-  background-color: var(--maroon);
-  color:white;
-  margin-left:1px;
-}
-.nav-tabs .nav-link.active{
-  border-width: 2px 2px 0px 2px;
-  border-color: var(--maroon)
-}
-
 /* overriding bootstrap's container-fluid to include Top/Bottom padding */
 .container-fluid{
   padding: 12px 12px 12px 12px;
