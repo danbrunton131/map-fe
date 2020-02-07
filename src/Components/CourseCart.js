@@ -39,7 +39,7 @@ export default class CourseCart extends React.Component {
                   {selectedCourses && generateCourseList(selectedCourses,removeCourseFromCart)}
 
                   <div className="submit-button w-100 px-2">
-                    <Button className="btn btn-primary" onClick={this.props.showResults}>Submit</Button>
+                    <button className="btn btn-primary" onClick={this.props.showResults}>Submit</button>
                   </div>
                 </div>
             </div>

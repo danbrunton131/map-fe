@@ -20,5 +20,20 @@
     align-self: flex-end;
     display: flex;
     justify-content: center;
+
+
+  }
+
+  /* Resolves classing css between bootstrap and mcmaster css*/
+  .btn-primary:focus {
+    color: #fff;
+    background-color: #7a003c;
+    border-color: #7a003c;
+  }
+
+  .btn-primary:hover {
+    background-color: #5e6a71;
+    border-color: #5e6a71;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
   }
   
