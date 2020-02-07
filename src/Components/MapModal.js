@@ -12,10 +12,9 @@ export default class ExampleApp extends React.Component {
   }
     
     render () {
-        const showModal = this.props.showModalState
         return (
             <Modal
-                show={showModal} 
+                show={true} 
                 dialogClassName={"primary-modal"} 
                 size="lg" 
                 onHide={this.handleCloseModal}

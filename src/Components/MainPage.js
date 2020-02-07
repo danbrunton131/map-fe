@@ -9,13 +9,20 @@ export default class MainPage extends React.Component {
       super(props);
       this.state = {
         color: "red",
-        showModalState: false
+        modalShown: false
         };
+
+        this.showModal = this.showModal.bind(this);
+        this.hideModal = this.hideModal.bind(this);
+    }
+    
+    showModal() {
+        this.setState({ modalShown: true});
     }
 
-    showModal = () => { this.setState({ showModalState: true }); };
-
-    hideModal = () => { this.setState({ showModalState: false }); };
+    hideModal() {
+        this.setState({ modalShown: false});
+    }
 
     render() {
         return(
@@ -26,13 +33,13 @@ export default class MainPage extends React.Component {
                 </Col>
 
                 <Col sm={12} md={3}>
-                    {/* <div className="sample-fill"/> */}
-                    <CourseCart showModal={this.showModal} hideModal={this.hideModal}> </CourseCart>
+                    <CourseCart showResults={this.showModal}> </CourseCart>
                 </Col>
             </Row>
 
-            <MapModal showModalState={this.state.showModalState} showModal={this.showModal} hideModal={this.hideModal}> </MapModal>
-
+            {this.state.modalShown &&
+            <MapModal hideModal={this.hideModal}> </MapModal>
+            }
             </div>
       );
     }
