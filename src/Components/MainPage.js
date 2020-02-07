@@ -2,21 +2,26 @@ import React from 'react';
 import {Col, Row} from 'react-bootstrap';
 import CourseCart from './CourseCart';
 import CourseSelection from './CourseSelection';
+import MapModal from './MapModal';
 
 export default class MainPage extends React.Component {
     constructor(props) {
-      super(props);
-      this.state = {
-          allCourses:[
-            {id:0, code:'LIFESCI 1D03', name:'Medical Imaging Physics'},
-            {id:1, code:'CHEM 1A03', name:'Introductory Chemistry I'},
-        ],
-          selectedCourses:[],
+        super(props);
+        this.state = {
+            allCourses:[
+                {id:0, code:'LIFESCI 1D03', name:'Medical Imaging Physics'},
+                {id:1, code:'CHEM 1A03', name:'Introductory Chemistry I'},
+            ],
+            selectedCourses:[],
+            modalShown: false
+            };
 
-      };
-      this.addCourseToCart = this.addCourseToCart.bind(this);
-      this.removeCourseFromCart = this.removeCourseFromCart.bind(this);
+        this.showModal = this.showModal.bind(this);
+        this.hideModal = this.hideModal.bind(this);
+        this.addCourseToCart = this.addCourseToCart.bind(this);
+        this.removeCourseFromCart = this.removeCourseFromCart.bind(this);
     }
+
     addCourseToCart(courseId){
         const {selectedCourses, allCourses} = this.state;
         const newCourseIndex = allCourses.findIndex(course => course.id === courseId);
@@ -41,6 +46,14 @@ export default class MainPage extends React.Component {
         });
     }
 
+    showModal() {
+        this.setState({ modalShown: true});
+    }
+
+    hideModal() {
+        this.setState({ modalShown: false});
+    }
+
     render() {
         const {allCourses, selectedCourses} = this.state;
         return(
@@ -52,9 +65,14 @@ export default class MainPage extends React.Component {
 
                 <Col sm={12} md={3}>
                     {/* <div className="sample-fill"/> */}
-                    <CourseCart selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
+                    <CourseCart showResults={this.showModal} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
+
                 </Col>
-            </Row> 
+            </Row>
+
+            {this.state.modalShown &&
+            <MapModal hideModal={this.hideModal}> </MapModal>
+            }
             </div>
       );
     }

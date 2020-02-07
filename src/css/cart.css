@@ -5,7 +5,7 @@
   
   .cart{
     height: 600px;
-    padding: 50px 0;
+    padding: 50px 0 10px 0;
     background: #fff;
   
     border-style: solid;
@@ -13,5 +13,26 @@
     border-width: 2px;
     border-color: var(--maroon);
     padding: 50px 5px 50px 5px;
+  }
+
+  .submit-button{
+    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+
+
+  }
+
+  /* Resolves classing css between bootstrap and mcmaster css*/
+  .btn-primary:focus {
+    color: #fff;
+    background-color: #7a003c;
+    border-color: #7a003c;
+  }
+
+  .btn-primary:hover {
+    background-color: #5e6a71;
+    border-color: #5e6a71;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
   }
   
