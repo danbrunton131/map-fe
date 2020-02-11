@@ -5,8 +5,9 @@
   
   .cart{
     height: 600px;
-    /*padding: 50px 0 10px 0;*/
     background: #fff;
+
+    position: relative;
   
     border-style: solid;
     border-radius: 5px;
@@ -16,11 +17,11 @@
   }
 
   .submit-button{
-    align-self: flex-end;
     display: flex;
     justify-content: center;
 
-
+    position: absolute;
+    bottom: 5px;
   }
 
   /* Resolves classing css between bootstrap and mcmaster css*/
