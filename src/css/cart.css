@@ -1,10 +1,10 @@
 .course-cart-container{
     height:100%;
+    margin-top: 42px;
   }
   
   .cart{
     height: 600px;
-    margin-top: 50px;
     /*padding: 50px 0 10px 0;*/
     background: #fff;
   
