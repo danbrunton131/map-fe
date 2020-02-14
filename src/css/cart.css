@@ -1,26 +1,25 @@
 .course-cart-container{
     height:100%;
-    margin:0 20px; /* compress cart width */
+    margin-top: 42px;
   }
   
   .cart{
     height: 600px;
-    padding: 50px 0 10px 0;
     background: #fff;
-  
+    position: relative;
     border-style: solid;
     border-radius: 5px;
     border-width: 2px;
     border-color: var(--maroon);
-    padding: 50px 5px 50px 5px;
+    padding: 5px 5px 5px 5px;
+    box-shadow: 5px 10px 18px #888888;
   }
 
   .submit-button{
-    align-self: flex-end;
     display: flex;
     justify-content: center;
-
-
+    position: absolute;
+    bottom: 5px;
   }
 
   /* Resolves classing css between bootstrap and mcmaster css*/
