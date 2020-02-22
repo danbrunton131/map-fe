@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './css/App.css';
-import './css/mcmaster.css';
+/*import './css/mcmaster.css';*/
+import './css/custom.css';
 import MainPage from './Components/MainPage';
 
 function App() {
