@@ -29,6 +29,20 @@
 	--info :		var(--cool-grey);
 }
 
+
+/* These styles aren't being applied from the web css 
+	sheet for some reason */
+h1,
+.h1 {
+	margin-bottom: 0.5rem;
+}
+
+h2,
+.h2 {
+	margin-bottom: 0.5rem;
+	color: #5E6A71;
+}
+
 /* Custom stylesheet */
 @import url("https://documents.mcmaster.ca/www/cdn/css/1.0/mcm-bw.css");
 
