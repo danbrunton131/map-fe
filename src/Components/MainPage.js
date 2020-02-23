@@ -40,12 +40,13 @@ export default class MainPage extends React.Component {
         this.onSeasonChange = this.onSeasonChange.bind(this);
     }
 
-    //add springSummer when BE accounts for the same group
+    //add springSummer once BE accounts for the same group
     componentDidMount(){
         fetchAllCourses().then(res => {
           const allCourses = {
             fall: getAllSeasonCourses(res.data.courseLists.Fall), 
             winter: getAllSeasonCourses(res.data.courseLists.Winter),
+            // springSummer: getAllSeasonCourses(res.data.courseLists.SpringSummer),
           };
           this.setState({allCourses});
         //   console.log(allCourses);
@@ -82,12 +83,12 @@ export default class MainPage extends React.Component {
         let updatedAllCourses = allCourses;
         updatedAllCourses[selectedSeason][courseIndex].selected = false;
 
-        const updatedCourseList = selectedCourses.filter(function( course ) {
+        const updatedSelectedCourses = selectedCourses.filter(function( course ) {
             return course.courseID !== courseId;
         });
           
         this.setState({
-            selectedCourses: updatedCourseList,
+            selectedCourses: updatedSelectedCourses,
             allCourses: updatedAllCourses
         });
     }
