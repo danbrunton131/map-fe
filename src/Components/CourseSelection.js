@@ -3,7 +3,6 @@ import React from 'react';
 import {Col, Row, Tabs, Tab} from 'react-bootstrap';
 
 const generateCourseList = (allCourses, addCourseToCart) => {
-    console.log(allCourses);
     return allCourses.map((course, index) => {
       return (
           <React.Fragment>
@@ -30,15 +29,17 @@ const generateCourseList = (allCourses, addCourseToCart) => {
       };
     }    
 
+    seasonChange(e){
+      console.log(e);
+      this.props.onSeasonChange(e);
+    }
+
     render() {
       const {allCourses, addCourseToCart} = this.props;
-      // const {allCourses} = this.state;
-      console.log(allCourses);
-      console.log(this.props);
         return(
             <div className="course-selection">
                 <h2> Course Selection </h2>
-                <Tabs defaultActiveKey="fall" id="uncontrolled-tab-example">
+                <Tabs defaultActiveKey="fall" id="uncontrolled-tab-example" onSelect={this.seasonChange}>
                     <Tab eventKey="fall" title="Fall">
                     {generateCourseList(allCourses, addCourseToCart)}
                     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

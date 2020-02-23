@@ -25,18 +25,25 @@ export default class MainPage extends React.Component {
         super(props);
         this.state = {
             allCourses:[
-                {id:0, code:'LIFESCI 1D03', name:'Medical Imaging Physics'},
-                {id:1, code:'CHEM 1A03', name:'Introductory Chemistry I'},
+                {fall:[]},
+                {winter:[]},
+                {springSummer:[]},
             ],
+            // allCourses:[
+            //     {id:0, code:'LIFESCI 1D03', name:'Medical Imaging Physics'},
+            //     {id:1, code:'CHEM 1A03', name:'Introductory Chemistry I'},
+            // ],
             fallCourses:[],
             selectedCourses:[],
             modalShown: false,
+            selectedSeason:"Fall"
             };
 
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
         this.addCourseToCart = this.addCourseToCart.bind(this);
         this.removeCourseFromCart = this.removeCourseFromCart.bind(this);
+        this.onSeasonChange = this.onSeasonChange.bind(this);
     }
 
     componentDidMount(){
@@ -49,6 +56,12 @@ export default class MainPage extends React.Component {
           console.log("AXIOS ERROR: ", err);
       })
     }
+
+    //confirm caps situation of class list object indexing
+    onSeasonChange(season){
+        this.setState({season});
+      }
+  
   
 
     // addCourseToCart(courseId){
@@ -77,7 +90,7 @@ export default class MainPage extends React.Component {
 
 
     addCourseToCart(courseId){
-        const {selectedCourses, fallCourses} = this.state;
+        const {selectedCourses, fallCourses, season} = this.state;
         const newCourseIndex = fallCourses.findIndex(course => course.courseID === courseId);
        
         this.setState({
@@ -87,7 +100,7 @@ export default class MainPage extends React.Component {
     }
 
     removeCourseFromCart(courseId){
-        const {fallCourses, selectedCourses} = this.state;
+        const {fallCourses, selectedCourses, season} = this.state;
         const courseIndex = fallCourses.findIndex(course => course.courseID === courseId);
 
         const updatedCourseList = selectedCourses.filter(function( course ) {
