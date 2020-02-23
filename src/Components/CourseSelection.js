@@ -6,10 +6,9 @@ const generateCourseList = (allCourses, addCourseToCart) => {
   console.log('here', allCourses);
     return allCourses.map((course, index) => {
       return (
-          <React.Fragment>
+          <React.Fragment key={course.courseID}>
             <span
                 className={"fake-link"}
-                key={course.courseID}
                 id={course.courseID}
                 name={course.name}
                 onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}

@@ -12,7 +12,7 @@ import {fetchAllCourses} from '../api/courses-api';
     for (let classType in seasonCourses){ 
       const classTypeList = seasonCourses[classType];
       for (let i=0; i<classTypeList.length;i++){ //i is the course itself
-        allSeasonCourses.push(classTypeList[i]);
+        allSeasonCourses.push({...classTypeList[i], key:classTypeList[i].courseID});
       }
     }
     return allSeasonCourses;
@@ -64,6 +64,7 @@ export default class MainPage extends React.Component {
         const {selectedCourses, allCourses, selectedSeason} = this.state;
         const newCourseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === courseId);
        
+        // mark course as selected so it cannot be added to cart twice
         let updatedAllCourses = allCourses;
         updatedAllCourses[selectedSeason][newCourseIndex].selected = true;
 
@@ -77,6 +78,7 @@ export default class MainPage extends React.Component {
         const {allCourses, selectedCourses, selectedSeason} = this.state;
         const courseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === courseId);
 
+        // deselect course when removing it from cart
         let updatedAllCourses = allCourses;
         updatedAllCourses[selectedSeason][courseIndex].selected = false;
 
@@ -89,9 +91,6 @@ export default class MainPage extends React.Component {
             allCourses: updatedAllCourses
         });
     }
-
-
-
 
     showModal() {
         this.setState({ modalShown: true});
