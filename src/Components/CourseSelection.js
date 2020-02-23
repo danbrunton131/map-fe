@@ -3,7 +3,6 @@ import React from 'react';
 import {Col, Row, Tabs, Tab} from 'react-bootstrap';
 
 const generateCourseList = (allCourses, addCourseToCart) => {
-  console.log('here', allCourses);
     return allCourses.map((course, index) => {
       return (
           <React.Fragment key={course.courseID}>
