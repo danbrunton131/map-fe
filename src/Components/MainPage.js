@@ -5,9 +5,8 @@ import CourseSelection from './CourseSelection';
 import MapModal from './MapModal';
 import {fetchAllCourses} from '../api/courses-api';
 
-
+  // Remove course types from within a season
   // BE input should be provided in a simpler way:  {Fall: [all courses], Winter: [all courses]}
-  // This is a workaround
   const getAllSeasonCourses = (seasonCourses) => {
     let allSeasonCourses = [];
     for (let classType in seasonCourses){ 
@@ -24,11 +23,7 @@ export default class MainPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            allCourses:[
-                {fall:[]},
-                {winter:[]},
-                {springSummer:[]},
-            ],
+            allCourses:[],
             // allCourses:[
             //     {id:0, code:'LIFESCI 1D03', name:'Medical Imaging Physics'},
             //     {id:1, code:'CHEM 1A03', name:'Introductory Chemistry I'},
@@ -36,7 +31,7 @@ export default class MainPage extends React.Component {
             fallCourses:[],
             selectedCourses:[],
             modalShown: false,
-            selectedSeason:"Fall"
+            selectedSeason:"fall"
             };
 
         this.showModal = this.showModal.bind(this);
@@ -46,11 +41,15 @@ export default class MainPage extends React.Component {
         this.onSeasonChange = this.onSeasonChange.bind(this);
     }
 
+    //add springSummer when BE accounts for the same group
     componentDidMount(){
         fetchAllCourses().then(res => {
-          const fallCourses = getAllSeasonCourses(res.data.courseLists.Fall);
-          this.setState({fallCourses: fallCourses});
-          console.log(fallCourses);
+          const allCourses = [
+            {fall: getAllSeasonCourses(res.data.courseLists.Fall)}, 
+            {winter: getAllSeasonCourses(res.data.courseLists.Winter)},
+          ];
+          this.setState({allCourses});
+          console.log(allCourses);
         })
         .catch((err) => {
           console.log("AXIOS ERROR: ", err);
@@ -64,54 +63,32 @@ export default class MainPage extends React.Component {
   
   
 
-    // addCourseToCart(courseId){
-    //     const {selectedCourses, allCourses} = this.state;
-    //     const newCourseIndex = allCourses.findIndex(course => course.id === courseId);
-       
-    //     this.setState({
-    //         selectedCourses: [...selectedCourses, allCourses[newCourseIndex]],
-    //         allCourses: [...allCourses, allCourses[newCourseIndex].selected=true]
-    //     });
-    // }
-
-    // removeCourseFromCart(courseId){
-    //     const {allCourses, selectedCourses} = this.state;
-    //     const courseIndex = allCourses.findIndex(course => course.id === courseId);
-
-    //     const updatedCourseList = selectedCourses.filter(function( course ) {
-    //         return course.id !== courseId;
-    //     });
-          
-    //     this.setState({
-    //         selectedCourses: updatedCourseList,
-    //         allCourses:[...allCourses, allCourses[courseIndex].selected=false]
-    //     });
-    // }
-
-
     addCourseToCart(courseId){
-        const {selectedCourses, fallCourses, season} = this.state;
-        const newCourseIndex = fallCourses.findIndex(course => course.courseID === courseId);
+        const {selectedCourses, allCourses, season} = this.state;
+        console.log('ffff',allCourses[0]);
+        const newCourseIndex = allCourses[0].fall.findIndex(course => course.courseID === courseId);
        
         this.setState({
-            selectedCourses: [...selectedCourses, fallCourses[newCourseIndex]],
-            allCourses: [...fallCourses, fallCourses[newCourseIndex].selected=true]
+            selectedCourses: [...selectedCourses, allCourses[0].fall[newCourseIndex]],
+            allCourses: [...allCourses, allCourses[0].fall[newCourseIndex].selected=true]
         });
     }
 
     removeCourseFromCart(courseId){
-        const {fallCourses, selectedCourses, season} = this.state;
-        const courseIndex = fallCourses.findIndex(course => course.courseID === courseId);
+        const {allCourses, selectedCourses, season} = this.state;
+        const courseIndex = allCourses[0].fall.findIndex(course => course.courseID === courseId);
 
         const updatedCourseList = selectedCourses.filter(function( course ) {
-            return course.id !== courseId;
+            return course.courseID !== courseId;
         });
           
         this.setState({
             selectedCourses: updatedCourseList,
-            allCourses:[...fallCourses, fallCourses[courseIndex].selected=false]
+            allCourses:[...allCourses, allCourses[0].fall[courseIndex].selected=false]
         });
     }
+
+
 
 
     showModal() {
@@ -123,13 +100,12 @@ export default class MainPage extends React.Component {
     }
 
     render() {
-        const {allCourses, fallCourses, selectedCourses, courseListLoaded} = this.state;
-        console.log(fallCourses);
+        const {allCourses, selectedCourses} = this.state;
         return(
             <div className="container-fluid">
             <Row>
                 <Col sm={12} md={9}>
-                    <CourseSelection allCourses={fallCourses} addCourseToCart={this.addCourseToCart} /> 
+                    <CourseSelection allCourses={allCourses} addCourseToCart={this.addCourseToCart} onSeasonChange={this.onSeasonChange}/> 
                 </Col>
 
                 <Col sm={12} md={3}>
