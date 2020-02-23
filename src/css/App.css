@@ -46,25 +46,12 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   }
 }
 
-
-/* .primary-modal {
-  
-} */
-
 .primary-modal #modal-header {
   background-color: var(--maroon);
 }
 
 .primary-modal #modal-title {
   color: white;
-}
-
-.primary-modal #modal-body {
-
-}
-
-.primary-modal #modal-footer {
-
 }
 
 .pie-chart {
