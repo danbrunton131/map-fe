@@ -1,7 +1,7 @@
 import '../css/course-selection.css';
 import React from 'react';
 import {Col, Row, Tabs, Tab} from 'react-bootstrap';
-
+import {fetchAllCourses} from '../../api/courses-api';
 
 const generateCourseList = (allCourses, addCourseToCart) => {
     return allCourses.map((course, index) => {
@@ -26,9 +26,20 @@ const generateCourseList = (allCourses, addCourseToCart) => {
 export default class CourseSelection extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {color: "red"};
+      this.state = {
+        fallCourseList:[]
+      };
     }
 
+    componentDidMount(){
+      fetchAllCourses().then(res => {
+        this.setState({fallCourseList: res.data});
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log("AXIOS ERROR: ", err);
+    })
+  }
 
     render() {
         const {allCourses, addCourseToCart} = this.props;
