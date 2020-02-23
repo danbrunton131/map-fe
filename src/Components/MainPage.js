@@ -23,12 +23,11 @@ export default class MainPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            allCourses:[],
+            allCourses:{},
             // allCourses:[
             //     {id:0, code:'LIFESCI 1D03', name:'Medical Imaging Physics'},
             //     {id:1, code:'CHEM 1A03', name:'Introductory Chemistry I'},
             // ],
-            fallCourses:[],
             selectedCourses:[],
             modalShown: false,
             selectedSeason:"fall"
@@ -44,12 +43,12 @@ export default class MainPage extends React.Component {
     //add springSummer when BE accounts for the same group
     componentDidMount(){
         fetchAllCourses().then(res => {
-          const allCourses = [
-            {fall: getAllSeasonCourses(res.data.courseLists.Fall)}, 
-            {winter: getAllSeasonCourses(res.data.courseLists.Winter)},
-          ];
+          const allCourses = {
+            fall: getAllSeasonCourses(res.data.courseLists.Fall), 
+            winter: getAllSeasonCourses(res.data.courseLists.Winter),
+          };
           this.setState({allCourses});
-          console.log(allCourses);
+        //   console.log(allCourses);
         })
         .catch((err) => {
           console.log("AXIOS ERROR: ", err);
@@ -57,26 +56,29 @@ export default class MainPage extends React.Component {
     }
 
     //confirm caps situation of class list object indexing
-    onSeasonChange(season){
-        this.setState({season});
+    onSeasonChange(selectedSeason){
+        this.setState({selectedSeason});
       }
   
-  
-
     addCourseToCart(courseId){
-        const {selectedCourses, allCourses, season} = this.state;
-        console.log('ffff',allCourses[0]);
-        const newCourseIndex = allCourses[0].fall.findIndex(course => course.courseID === courseId);
+        const {selectedCourses, allCourses, selectedSeason} = this.state;
+        const newCourseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === courseId);
        
+        let updatedAllCourses = allCourses;
+        updatedAllCourses[selectedSeason][newCourseIndex].selected = true;
+
         this.setState({
-            selectedCourses: [...selectedCourses, allCourses[0].fall[newCourseIndex]],
-            allCourses: [...allCourses, allCourses[0].fall[newCourseIndex].selected=true]
+            selectedCourses: [...selectedCourses, allCourses[selectedSeason][newCourseIndex]],
+            allCourses: updatedAllCourses
         });
     }
 
     removeCourseFromCart(courseId){
-        const {allCourses, selectedCourses, season} = this.state;
-        const courseIndex = allCourses[0].fall.findIndex(course => course.courseID === courseId);
+        const {allCourses, selectedCourses, selectedSeason} = this.state;
+        const courseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === courseId);
+
+        let updatedAllCourses = allCourses;
+        updatedAllCourses[selectedSeason][courseIndex].selected = false;
 
         const updatedCourseList = selectedCourses.filter(function( course ) {
             return course.courseID !== courseId;
@@ -84,7 +86,7 @@ export default class MainPage extends React.Component {
           
         this.setState({
             selectedCourses: updatedCourseList,
-            allCourses:[...allCourses, allCourses[0].fall[courseIndex].selected=false]
+            allCourses: updatedAllCourses
         });
     }
 

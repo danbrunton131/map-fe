@@ -26,6 +26,7 @@ const generateCourseList = (allCourses, addCourseToCart) => {
     constructor(props) {
       super(props);
       this.state = {
+        currentSeason: 'fall',
       };
     }    
 
@@ -36,12 +37,13 @@ const generateCourseList = (allCourses, addCourseToCart) => {
 
     render() {
       const {allCourses, addCourseToCart} = this.props;
+      const {currentSeason} = this.state;
         return(
             <div className="course-selection">
                 <h2> Course Selection </h2>
                 <Tabs defaultActiveKey="fall" id="uncontrolled-tab-example" onSelect={this.seasonChange.bind(this)}>
                     <Tab eventKey="fall" title="Fall">
-                    {allCourses.length > 0 && generateCourseList(allCourses['0']['fall'], addCourseToCart)}
+                    {Object.keys(allCourses).length > 0 && generateCourseList(allCourses[currentSeason], addCourseToCart)}
                     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     </Tab>
                     <Tab eventKey="winter" title="Winter">
