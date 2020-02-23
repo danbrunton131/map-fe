@@ -1,61 +1,40 @@
 import '../css/course-selection.css';
 import React from 'react';
 import {Col, Row, Tabs, Tab} from 'react-bootstrap';
-import {fetchAllCourses} from '../api/courses-api';
 
 const generateCourseList = (allCourses, addCourseToCart) => {
+    console.log(allCourses);
     return allCourses.map((course, index) => {
       return (
           <React.Fragment>
             <span
                 className={"fake-link"}
-                key={course.id}
-                id={course.id}
+                key={course.courseID}
+                id={course.courseID}
                 name={course.name}
-                onClick={!course.selected ? () => addCourseToCart(course.id) : null}
+                onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
             > 
-            {course.code} 
+            {course.courseCode} 
             </span>
             <br/>
         </React.Fragment>
       );
     })
   }
-  // BE input should be provided in a simpler way:  {Fall: [all courses], Winter: [all courses]}
-  // This is a workaround
-  const getAllSeasonCourses = (seasonCourses) => {
-    let allCourses = [];
-    for (let classType in seasonCourses){ 
-      const classTypeList = seasonCourses[classType];
-      for (let i=0; i<classTypeList.length;i++){ //i is the course itself
-        allCourses.push(classTypeList[i]);
-      }
-    }
-    return allCourses;
-  }
 
-export default class CourseSelection extends React.Component {
+  export default class CourseSelection extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        fallCourseList:[]
+        allCourses:[],
       };
-    }
-
-    componentDidMount(){
-      fetchAllCourses().then(res => {
-        console.log(res.data.courseLists.Fall);
-        const fallCourses = getAllSeasonCourses(res.data.courseLists.Fall);
-        this.setState({fallCourseList: fallCourses});
-        console.log(fallCourses);
-      })
-      .catch((err) => {
-        console.log("AXIOS ERROR: ", err);
-    })
-  }
+    }    
 
     render() {
-        const {allCourses, addCourseToCart} = this.props;
+      const {allCourses, addCourseToCart} = this.props;
+      // const {allCourses} = this.state;
+      console.log(allCourses);
+      console.log(this.props);
         return(
             <div className="course-selection">
                 <h2> Course Selection </h2>
