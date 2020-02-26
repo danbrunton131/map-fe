@@ -54,11 +54,11 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   color: white;
 }
 
-.pie-chart {
+/*.pie-chart {*/
   /*width: 200px;*/
-  height: 200px;
+/*  height: 200px;
   background-color: blue;
-}
+}*/
 
 .description {
   background-color: grey;
