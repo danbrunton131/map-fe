@@ -8,12 +8,12 @@ const generateCourseList = (selectedCourses, removeCourseFromCart) => {
           <React.Fragment>
             <span
                 className={"fake-link"}
-                key={course.id}
-                id={course.id}
+                key={course.courseID}
+                id={course.courseID}
                 name={course.name}
-                onClick={() => removeCourseFromCart(course.id)}
+                onClick={() => removeCourseFromCart(course.courseID)}
             > 
-            {course.code} 
+            {course.courseCode} 
             </span>
             <br/>
         </React.Fragment>
