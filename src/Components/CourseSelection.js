@@ -29,7 +29,7 @@ const generateCourseList = (allCourses, addCourseToCart) => {
     }    
 
     seasonChange(season){
-      this.setState({currentSeason:season}, this.props.onSeasonChange(season));
+      this.setState({currentSeason:season}, this.props.onSeasonChange(season)); // communicate tab change to MainPage
     }
 
     render() {
