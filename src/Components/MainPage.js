@@ -3,7 +3,7 @@ import {Col, Row} from 'react-bootstrap';
 import CourseCart from './CourseCart';
 import CourseSelection from './CourseSelection';
 import MapModal from './MapModal';
-import {fetchAllCourses} from '../api/courses-api';
+import {fetchAllCourses, submitSelection} from '../api/courses-api';
 
   // Remove course types from within a season
   // BE input should be provided in a simpler way:  {Fall: [all courses], Winter: [all courses]}
@@ -54,7 +54,25 @@ export default class MainPage extends React.Component {
         })
         .catch((err) => {
           console.log("AXIOS ERROR: ", err);
+      });
+    }
+
+    submitCourses(){
+      const {selectedCourses} = this.state;
+      const courseIdList =[];
+      // generate array of courseIds from selectedCourses
+      for (let i=0;i < selectedCourses.length;i++){
+        const courseId = selectedCourses[i].courseID;
+        courseIdList.push(courseId);
+      }
+
+      submitSelection({selection: courseIdList}).then(res => {
+        this.setState({programResults: res.data});
+        this.showModal();
       })
+      .catch((err) => {
+        console.log("AXIOS ERROR: ", err);
+      });
     }
 
     //confirm caps situation of class list object indexing
@@ -113,7 +131,7 @@ export default class MainPage extends React.Component {
 
                 <Col sm={12} md={3}>
                     {/* <div className="sample-fill"/> */}
-                    <CourseCart showResults={this.showModal} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
+                    <CourseCart submitCourses={this.showModal} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
 
                 </Col>
             </Row>
