@@ -71,3 +71,14 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   border-radius: 10px;
   margin-bottom: 20px;
 }
+
+button.close {
+  font-size: 2rem;
+  color: #fff;
+  /* Overwrite default text shadow */
+  text-shadow: 0 0px 0 #fff;
+}
+
+button.close:hover {
+  color: #fff;
+}
