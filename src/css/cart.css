@@ -35,6 +35,8 @@
 
     font-weight: 900;
     font-size: 3rem;
+
+    box-shadow: 0 0 0 0 #888888;
   }
 
 /* Position at bottom right of the screen in mobile*/
@@ -43,6 +45,8 @@
     position: fixed;
     bottom: 5px;
     right: 5px;
+
+    box-shadow: 0 0 5px 3px #888888;
   }
 }
 
