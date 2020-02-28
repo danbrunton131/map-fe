@@ -3,7 +3,7 @@ import {Col, Row} from 'react-bootstrap';
 import CourseCart from './CourseCart';
 import CourseSelection from './CourseSelection';
 import MapModal from './MapModal';
-import {fetchAllCourses} from '../api/courses-api';
+import {fetchAllCourses, submitSelection} from '../api/courses-api';
 
   // Remove course types from within a season
   // BE input should be provided in a simpler way:  {Fall: [all courses], Winter: [all courses]}
@@ -23,14 +23,11 @@ export default class MainPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            allCourses:{},
-            // allCourses:[
-            //     {id:0, code:'LIFESCI 1D03', name:'Medical Imaging Physics'},
-            //     {id:1, code:'CHEM 1A03', name:'Introductory Chemistry I'},
-            // ],
-            selectedCourses:[],
+            allCourses:{}, // courses fetched from BE
+            selectedCourses:[], // courses shown in cart
+            programResults:[], // results once student submits
             modalShown: false,
-            selectedSeason:"fall"
+            selectedSeason:"fall" // current season from CourseSelection
             };
 
         this.showModal = this.showModal.bind(this);
@@ -38,6 +35,7 @@ export default class MainPage extends React.Component {
         this.addCourseToCart = this.addCourseToCart.bind(this);
         this.removeCourseFromCart = this.removeCourseFromCart.bind(this);
         this.onSeasonChange = this.onSeasonChange.bind(this);
+        this.submitCourses = this.submitCourses.bind(this);
     }
 
     //add springSummer once BE accounts for the same group
@@ -46,14 +44,33 @@ export default class MainPage extends React.Component {
           const allCourses = {
             fall: getAllSeasonCourses(res.data.courseLists.Fall), 
             winter: getAllSeasonCourses(res.data.courseLists.Winter),
-            springSummer: getAllSeasonCourses(res.data.courseLists.SpringSummer),
+            spring: getAllSeasonCourses(res.data.courseLists.Spring),
+            summer: getAllSeasonCourses(res.data.courseLists.Summer),
           };
           this.setState({allCourses});
         //   console.log(allCourses);
         })
         .catch((err) => {
           console.log("AXIOS ERROR: ", err);
+      });
+    }
+
+    submitCourses(){
+      const {selectedCourses} = this.state;
+      const courseIdList =[];
+      // generate array of courseIds from selectedCourses
+      for (let i=0;i < selectedCourses.length;i++){
+        const courseId = selectedCourses[i].courseID;
+        courseIdList.push(courseId);
+      }
+
+      submitSelection({selections: courseIdList}).then(res => {
+        this.setState({programResults: res.data.matchedPrograms});
+        this.showModal();
       })
+      .catch((err) => {
+        console.log("AXIOS ERROR: ", err);
+      });
     }
 
     //confirm caps situation of class list object indexing
@@ -102,7 +119,7 @@ export default class MainPage extends React.Component {
     }
 
     render() {
-        const {allCourses, selectedCourses} = this.state;
+        const {allCourses, selectedCourses, programResults} = this.state;
         return(
             <div className="container-fluid">
             <Row>
@@ -112,13 +129,13 @@ export default class MainPage extends React.Component {
 
                 <Col sm={12} md={3}>
                     {/* <div className="sample-fill"/> */}
-                    <CourseCart showResults={this.showModal} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
+                    <CourseCart submitCourses={this.submitCourses} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
 
                 </Col>
             </Row>
 
             {this.state.modalShown &&
-            <MapModal hideModal={this.hideModal}> </MapModal>
+            <MapModal hideModal={this.hideModal}> programResults={programResults} </MapModal>
             }
             </div>
       );

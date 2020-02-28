@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './css/custom.css';
 import './css/App.css';
-/*import './css/mcmaster.css';*/
 import MainPage from './Components/MainPage';
 
 function App() {
