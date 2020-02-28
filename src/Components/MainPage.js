@@ -38,6 +38,7 @@ export default class MainPage extends React.Component {
         this.addCourseToCart = this.addCourseToCart.bind(this);
         this.removeCourseFromCart = this.removeCourseFromCart.bind(this);
         this.onSeasonChange = this.onSeasonChange.bind(this);
+        this.submitCourses = this.submitCourses.bind(this);
     }
 
     //add springSummer once BE accounts for the same group
@@ -131,7 +132,7 @@ export default class MainPage extends React.Component {
 
                 <Col sm={12} md={3}>
                     {/* <div className="sample-fill"/> */}
-                    <CourseCart submitCourses={this.showModal} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
+                    <CourseCart submitCourses={this.submitCourses} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
 
                 </Col>
             </Row>
