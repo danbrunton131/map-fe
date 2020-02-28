@@ -19,6 +19,11 @@
   }
   
   /*styling of react-bootstrap tabs*/
+
+.navbar {
+  box-shadow: 5px 0px 18px #888888;
+}
+
   .nav-tabs .nav-item{
     background-color: var(--maroon);
     color:white;
