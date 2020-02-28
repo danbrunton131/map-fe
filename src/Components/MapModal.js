@@ -57,9 +57,18 @@ export default class ExampleApp extends React.Component {
         this.chartRef2 = React.createRef();
     }
 
+    /* Sort programResults, largest percentage first */
+    sortProgramResults() {
+        this.props.programResults.sort((a, b) => {
+            return a.programPercentage - b.programPercentage;
+        });
+    }
+
     /* Create a react reference to each chart */
     /* Might not need this */
     generateChartRefsArray() {
+        this.sortProgramResults();
+
         this.props.programResults.map((program, index) => {
             this.chartRefs[index] = new React.createRef();
         });
