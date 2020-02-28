@@ -1,18 +1,25 @@
 .course-cart-container{
     height:100%;
-    margin-top: 42px;
   }
+
+/* Lines up cart component with course selection component*/
+.course-cart-container h2{
+  margin-bottom: 0.1em;
+}
   
   .cart{
     height: 600px;
     background: #fff;
     position: relative;
-    border-style: solid;
+/*    border-style: solid;
     border-radius: 5px;
     border-width: 2px;
-    border-color: var(--maroon);
+    border-color: var(--maroon);*/
     padding: 5px 5px 5px 5px;
     box-shadow: 5px 10px 18px #888888;
+
+    /* Top border to match the mcmaster styling */
+    border-top: 6px solid #fdbf57;
   }
 
   .submit-button{
