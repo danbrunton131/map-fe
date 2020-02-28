@@ -67,7 +67,7 @@ export default class MainPage extends React.Component {
         courseIdList.push(courseId);
       }
 
-      submitSelection({selection: courseIdList}).then(res => {
+      submitSelection({selections: courseIdList}).then(res => {
         this.setState({programResults: res.data});
         this.showModal();
       })
