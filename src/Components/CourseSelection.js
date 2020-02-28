@@ -51,9 +51,9 @@ const generateCourseList = (allCourses, addCourseToCart) => {
                     </Tab>
                 </Tabs>*/}
 
-                <Tab.Container id="tab-bar">
+                <Tab.Container id="tab-bar" defaultActiveKey="fall">
                     <div className="navbar navbar-expand-md navigation-menu">
-                      <Nav className="navbar-nav nav nav-pills flex-column flex-lg-row flex-md-row" defaultActiveKey="fall" onSelect={this.seasonChange.bind(this)}>
+                      <Nav className="navbar-nav nav nav-pills flex-column flex-lg-row flex-md-row" onSelect={this.seasonChange.bind(this)}>
                         <Nav.Item>
                           <Nav.Link className="nav-item nav-link" eventKey="fall" title="Fall">Fall</Nav.Link>
                         </Nav.Item>
