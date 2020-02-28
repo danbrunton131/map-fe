@@ -22,6 +22,30 @@
     border-top: 6px solid #fdbf57;
   }
 
+  .cart-content-number {
+    color: white;
+    float: right;
+    background-color: var(--maroon);
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 900;
+    font-size: 3rem;
+  }
+
+/* Position at bottom right of the screen in mobile*/
+@media (max-width: 768px) {
+  .cart-content-number {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+  }
+}
+
   .submit-button{
     display: flex;
     justify-content: center;
