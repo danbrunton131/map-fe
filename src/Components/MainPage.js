@@ -46,7 +46,8 @@ export default class MainPage extends React.Component {
           const allCourses = {
             fall: getAllSeasonCourses(res.data.courseLists.Fall), 
             winter: getAllSeasonCourses(res.data.courseLists.Winter),
-            springSummer: getAllSeasonCourses(res.data.courseLists.SpringSummer),
+            spring: getAllSeasonCourses(res.data.courseLists.Spring),
+            summer: getAllSeasonCourses(res.data.courseLists.Summer),
           };
           this.setState({allCourses});
         //   console.log(allCourses);
