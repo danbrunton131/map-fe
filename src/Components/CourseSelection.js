@@ -13,7 +13,7 @@ const generateCourseList = (allCourses, addCourseToCart) => {
                 onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
             > 
             {course.courseCode} 
-            </span>
+            </span> 
             <br/>
         </React.Fragment>
       );
@@ -45,7 +45,9 @@ const generateCourseList = (allCourses, addCourseToCart) => {
                     </Tab>
                     <Tab eventKey="winter" title="Winter">
                     </Tab>
-                    <Tab eventKey="springSummer" title="Spring/Summer">
+                    <Tab eventKey="spring" title="Spring">
+                    </Tab>
+                    <Tab eventKey="summer" title="Summer">
                     </Tab>
                 </Tabs>*/}
 
