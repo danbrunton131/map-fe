@@ -23,14 +23,11 @@ export default class MainPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            allCourses:{},
-            // allCourses:[
-            //     {id:0, code:'LIFESCI 1D03', name:'Medical Imaging Physics'},
-            //     {id:1, code:'CHEM 1A03', name:'Introductory Chemistry I'},
-            // ],
-            selectedCourses:[],
+            allCourses:{}, // courses fetched from BE
+            selectedCourses:[], // courses shown in cart
+            programResults:[], // results once student submits
             modalShown: false,
-            selectedSeason:"fall"
+            selectedSeason:"fall" // current season from CourseSelection
             };
 
         this.showModal = this.showModal.bind(this);
@@ -68,7 +65,7 @@ export default class MainPage extends React.Component {
       }
 
       submitSelection({selections: courseIdList}).then(res => {
-        this.setState({programResults: res.data});
+        this.setState({programResults: res.data.matchedPrograms});
         this.showModal();
       })
       .catch((err) => {
@@ -122,7 +119,7 @@ export default class MainPage extends React.Component {
     }
 
     render() {
-        const {allCourses, selectedCourses} = this.state;
+        const {allCourses, selectedCourses, programResults} = this.state;
         return(
             <div className="container-fluid">
             <Row>
@@ -138,7 +135,7 @@ export default class MainPage extends React.Component {
             </Row>
 
             {this.state.modalShown &&
-            <MapModal hideModal={this.hideModal}> </MapModal>
+            <MapModal hideModal={this.hideModal}> programResults={programResults} </MapModal>
             }
             </div>
       );
