@@ -4,6 +4,9 @@ import {Pie} from 'react-chartjs-2';
 
 const generateProgramResults = (programResults, chartRefs) => {
     return programResults.map((program, index) => {
+        const greenHex = "#00DD00";
+        const redHex = "#DD0000";
+        const backgroundHex = "#FFCE56";
         const chartData = {
             labels: [
                 'Satisfied',
@@ -12,14 +15,14 @@ const generateProgramResults = (programResults, chartRefs) => {
             datasets: [{
                 data: [program.programPercentage, 1-program.programPercentage],
                 backgroundColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56'
+                greenHex,
+                redHex,
+                backgroundHex
                 ],
                 hoverBackgroundColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56'
+                greenHex,
+                redHex,
+                backgroundHex
                 ]
             }]
         };
@@ -57,9 +60,18 @@ export default class ExampleApp extends React.Component {
         this.chartRef2 = React.createRef();
     }
 
+    /* Sort programResults, largest percentage first */
+    sortProgramResults() {
+        this.props.programResults.sort((a, b) => {
+            return a.programPercentage < b.programPercentage;
+        });
+    }
+
     /* Create a react reference to each chart */
     /* Might not need this */
     generateChartRefsArray() {
+        this.sortProgramResults();
+
         this.props.programResults.map((program, index) => {
             this.chartRefs[index] = new React.createRef();
         });
