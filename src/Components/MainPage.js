@@ -135,7 +135,7 @@ export default class MainPage extends React.Component {
             </Row>
 
             {this.state.modalShown &&
-            <MapModal hideModal={this.hideModal}> programResults={programResults} </MapModal>
+            <MapModal hideModal={this.hideModal} programResults={programResults}></MapModal>
             }
             </div>
       );
