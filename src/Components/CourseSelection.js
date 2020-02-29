@@ -35,21 +35,10 @@ const generateCourseList = (allCourses, addCourseToCart) => {
     render() {
       const {allCourses, addCourseToCart} = this.props;
       const {currentSeason} = this.state;
+      console.log(allCourses);
         return(
             <div className="course-selection">
                 <h2> Course Selection </h2>
-{/*                <Tabs defaultActiveKey="fall" id="uncontrolled-tab-example" onSelect={this.seasonChange.bind(this)}>
-                    <Tab eventKey="fall" title="Fall">
-                    {Object.keys(allCourses).length > 0 && generateCourseList(allCourses[currentSeason], addCourseToCart)}
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    </Tab>
-                    <Tab eventKey="winter" title="Winter">
-                    </Tab>
-                    <Tab eventKey="spring" title="Spring">
-                    </Tab>
-                    <Tab eventKey="summer" title="Summer">
-                    </Tab>
-                </Tabs>*/}
 
                 <Tab.Container id="tab-bar" defaultActiveKey="fall">
                     <div className="navbar navbar-expand-md navigation-menu">
@@ -69,36 +58,13 @@ const generateCourseList = (allCourses, addCourseToCart) => {
                       </Nav>
                     </div>
                     <Tab.Content>
-                      <Tab.Pane className="tab-pane" eventKey="fall">
-                        {Object.keys(allCourses).length > 0 && generateCourseList(allCourses[currentSeason], addCourseToCart)}
-                        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                      </Tab.Pane>
-                      <Tab.Pane className="tab-pane" eventKey="winter">
-                        Winter Content
-                      </Tab.Pane>
-                      <Tab.Pane className="tab-pane" eventKey="spring">
-                        Spring Content
-                      </Tab.Pane>
-                      <Tab.Pane className="tab-pane" eventKey="summer">
-                        Summer Content
+                      <Tab.Pane className="tab-pane" eventKey={currentSeason}>
+                        {allCourses[currentSeason] && allCourses[currentSeason].length > 0 ?
+                            generateCourseList(allCourses[currentSeason], addCourseToCart) 
+                        : <div> There are no courses available for this Term.</div>}
                       </Tab.Pane>
                     </Tab.Content>
                 </Tab.Container>
-
-{/*                <nav id="tab-bar" className="navbar navbar-expand-md navigation-menu">
-                  <div className="container">
-                    <button className="navbar-toggler tab-toggler collapsed" type="button" data-toggle="collapse" data-target="#tabMenu" aria-controls="tabMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    Active Text
-                    </button>
-                    <div className="collapse navbar-collapse tab-collapse" id="tabMenu">
-                      <nav className="navbar-nav nav nav-pills flex-column flex-lg-row flex-md-row" id="myTab" role="tablist">
-                        <a className="nav-item nav-link active" id="tab-one-label" data-toggle="tab" href="#tab-one" role="tab" aria-controls="nav-one" aria-selected="true">Section One</a>
-                        <a className="nav-item nav-link" id="tab-two-label" data-toggle="tab" href="#tab-two" role="tab" aria-controls="nav-two" aria-selected="false">Section Two</a>
-                        <a className="nav-item nav-link" id="tab-three-label" data-toggle="tab" href="#tab-three" role="tab" aria-controls="nav-three" aria-selected="false">Section Three</a>
-                      </nav>
-                    </div>
-                  </div>
-                </nav>*/}
             </div>
         );
     }
