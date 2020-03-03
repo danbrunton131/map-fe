@@ -11,8 +11,8 @@ const seasonCourses = {
 };
 const expectedSeasonCourses = [{id: 0, name: "course 0"}, {id: 1, name: "course 1"}, {id: 3, name: "course 3"}];
 
-describe('getAllSeasonCourses', () => {
-  it('should return a list of courses given a list of course types', () => {
+describe('getTermCourseList', () => {
+  it('should return a list of all courses given a list of course types', () => {
       console.log(getTermCourseList(seasonCourses));
   
     expect(getTermCourseList(seasonCourses)).toEqual(expectedSeasonCourses);
