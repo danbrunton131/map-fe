@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import {getAllSeasonCourses} from '../Components/MainPage.js';
+import {getTermCourseList} from '../Components/MainPage.js';
 
 
 const seasonCourses = {
@@ -13,8 +13,8 @@ const expectedSeasonCourses = [{id: 0, name: "course 0"}, {id: 1, name: "course 
 
 describe('getAllSeasonCourses', () => {
   it('should return a list of courses given a list of course types', () => {
-      console.log(getAllSeasonCourses(seasonCourses));
+      console.log(getTermCourseList(seasonCourses));
   
-    expect(getAllSeasonCourses(seasonCourses)).toEqual(expectedSeasonCourses);
+    expect(getTermCourseList(seasonCourses)).toEqual(expectedSeasonCourses);
   });
 });
