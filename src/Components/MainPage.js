@@ -3,46 +3,107 @@ import {Col, Row} from 'react-bootstrap';
 import CourseCart from './CourseCart';
 import CourseSelection from './CourseSelection';
 import MapModal from './MapModal';
+import {fetchAllCourses, submitSelection} from '../api/courses-api';
+
+export const getTermCourseList = (termCoursesByProgram) => {
+  let allTermCourses = [];
+  for (let classType in termCoursesByProgram){ 
+    const classTypeList = termCoursesByProgram[classType];
+    for (let i=0; i<classTypeList.length;i++){ //i is the course itself
+      allTermCourses.push({...classTypeList[i], key:classTypeList[i].courseID});
+    }
+  }
+  return allTermCourses;
+}
 
 export default class MainPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            allCourses:[
-                {id:0, code:'LIFESCI 1D03', name:'Medical Imaging Physics'},
-                {id:1, code:'CHEM 1A03', name:'Introductory Chemistry I'},
-            ],
-            selectedCourses:[],
-            modalShown: false
+            allCourses:{}, // courses fetched from BE
+            selectedCourses:[], // courses shown in cart
+            programResults:[], // results once student submits
+            modalShown: false,
+            selectedSeason:"fall" // current season from CourseSelection
             };
 
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
         this.addCourseToCart = this.addCourseToCart.bind(this);
         this.removeCourseFromCart = this.removeCourseFromCart.bind(this);
+        this.onSeasonChange = this.onSeasonChange.bind(this);
+        this.submitCourses = this.submitCourses.bind(this);
     }
 
+    //add springSummer once BE accounts for the same group
+    componentDidMount(){
+        fetchAllCourses().then(res => {
+          const allCourses = {
+            fall: getTermCourseList(res.data.courseLists.Fall), 
+            winter: getTermCourseList(res.data.courseLists.Winter),
+            spring: getTermCourseList(res.data.courseLists.Spring),
+            summer: getTermCourseList(res.data.courseLists.Summer),
+          };
+          this.setState({allCourses});
+        //   console.log(allCourses);
+        })
+        .catch((err) => {
+          console.log("AXIOS ERROR: ", err);
+      });
+    }
+
+    submitCourses(){
+      const {selectedCourses} = this.state;
+      const courseIdList =[];
+      // generate array of courseIds from selectedCourses
+      for (let i=0;i < selectedCourses.length;i++){
+        const courseId = selectedCourses[i].courseID;
+        courseIdList.push(courseId);
+      }
+
+      submitSelection({selections: courseIdList}).then(res => {
+        this.setState({programResults: res.data.matchedPrograms});
+        this.showModal();
+      })
+      .catch((err) => {
+        console.log("AXIOS ERROR: ", err);
+      });
+    }
+
+    //confirm caps situation of class list object indexing
+    onSeasonChange(selectedSeason){
+        this.setState({selectedSeason});
+      }
+  
     addCourseToCart(courseId){
-        const {selectedCourses, allCourses} = this.state;
-        const newCourseIndex = allCourses.findIndex(course => course.id === courseId);
+        const {selectedCourses, allCourses, selectedSeason} = this.state;
+        const newCourseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === courseId);
        
+        // mark course as selected so it cannot be added to cart twice
+        let updatedAllCourses = allCourses;
+        updatedAllCourses[selectedSeason][newCourseIndex].selected = true;
+
         this.setState({
-            selectedCourses: [...selectedCourses, allCourses[newCourseIndex]],
-            allCourses: [...allCourses, allCourses[newCourseIndex].selected=true]
+            selectedCourses: [...selectedCourses, allCourses[selectedSeason][newCourseIndex]],
+            allCourses: updatedAllCourses
         });
     }
 
     removeCourseFromCart(courseId){
-        const {allCourses, selectedCourses} = this.state;
-        const courseIndex = allCourses.findIndex(course => course.id === courseId);
+        const {allCourses, selectedCourses, selectedSeason} = this.state;
+        const courseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === courseId);
 
-        const updatedCourseList = selectedCourses.filter(function( course ) {
-            return course.id !== courseId;
+        // deselect course when removing it from cart
+        let updatedAllCourses = allCourses;
+        updatedAllCourses[selectedSeason][courseIndex].selected = false;
+
+        const updatedSelectedCourses = selectedCourses.filter(function( course ) {
+            return course.courseID !== courseId;
         });
           
         this.setState({
-            selectedCourses: updatedCourseList,
-            allCourses:[...allCourses, allCourses[courseIndex].selected=false]
+            selectedCourses: updatedSelectedCourses,
+            allCourses: updatedAllCourses
         });
     }
 
@@ -55,23 +116,23 @@ export default class MainPage extends React.Component {
     }
 
     render() {
-        const {allCourses, selectedCourses} = this.state;
+        const {allCourses, selectedCourses, programResults} = this.state;
         return(
             <div className="container-fluid">
             <Row>
                 <Col sm={12} md={9}>
-                    <CourseSelection allCourses={allCourses} addCourseToCart={this.addCourseToCart} /> 
+                    <CourseSelection allCourses={allCourses} addCourseToCart={this.addCourseToCart} onSeasonChange={this.onSeasonChange}/> 
                 </Col>
 
                 <Col sm={12} md={3}>
                     {/* <div className="sample-fill"/> */}
-                    <CourseCart showResults={this.showModal} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
+                    <CourseCart submitCourses={this.submitCourses} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
 
                 </Col>
             </Row>
 
             {this.state.modalShown &&
-            <MapModal hideModal={this.hideModal}> </MapModal>
+            <MapModal hideModal={this.hideModal} programResults={programResults}></MapModal>
             }
             </div>
       );
