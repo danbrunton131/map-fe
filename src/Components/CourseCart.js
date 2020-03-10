@@ -6,16 +6,23 @@ const generateCourseList = (selectedCourses, removeCourseFromCart) => {
     return selectedCourses.map((course, index) => {
       return (
           <React.Fragment>
-            <span
-                className={"fake-link"}
+            {/*change onClick to display information about the course*/}
+            {/*onClick={() => removeCourseFromCart(course.courseID)}*/}
+            <div
+                className={"course-link fake-link"}
                 key={course.courseID}
                 id={course.courseID}
                 name={course.name}
+            >
+              <div className="course-text align-middle">
+                {course.courseCode} 
+              </div>
+              {/*TODO make this button accessible*/}
+              <div 
+                className="cart-minus align-middle align-center"
                 onClick={() => removeCourseFromCart(course.courseID)}
-            > 
-            {course.courseCode} 
-            </span>
-            <br/>
+              ><span>&#8722;</span></div>
+            </div>
         </React.Fragment>
       );
     })
