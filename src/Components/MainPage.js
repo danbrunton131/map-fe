@@ -76,7 +76,6 @@ export default class MainPage extends React.Component {
       }
   
     addCourseToCart(courseId){
-      console.log(34234324234);
         const {selectedCourses, allCourses, selectedSeason} = this.state;
         const newCourseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === courseId);
        
