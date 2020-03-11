@@ -5,19 +5,16 @@ import CourseSelection from './CourseSelection';
 import MapModal from './MapModal';
 import {fetchAllCourses, submitSelection} from '../api/courses-api';
 
-  // Remove course types from within a season
-  // BE input should be provided in a simpler way:  {Fall: [all courses], Winter: [all courses]}
-  const getAllSeasonCourses = (seasonCourses) => {
-    let allSeasonCourses = [];
-    for (let classType in seasonCourses){ 
-      const classTypeList = seasonCourses[classType];
-      for (let i=0; i<classTypeList.length;i++){ //i is the course itself
-        allSeasonCourses.push({...classTypeList[i], key:classTypeList[i].courseID});
-      }
+export const getTermCourseList = (termCoursesByProgram) => {
+  let allTermCourses = [];
+  for (let classType in termCoursesByProgram){ 
+    const classTypeList = termCoursesByProgram[classType];
+    for (let i=0; i<classTypeList.length;i++){ //i is the course itself
+      allTermCourses.push({...classTypeList[i], key:classTypeList[i].courseID});
     }
-    return allSeasonCourses;
   }
-
+  return allTermCourses;
+}
 
 export default class MainPage extends React.Component {
     constructor(props) {
@@ -42,10 +39,10 @@ export default class MainPage extends React.Component {
     componentDidMount(){
         fetchAllCourses().then(res => {
           const allCourses = {
-            fall: getAllSeasonCourses(res.data.courseLists.Fall), 
-            winter: getAllSeasonCourses(res.data.courseLists.Winter),
-            spring: getAllSeasonCourses(res.data.courseLists.Spring),
-            summer: getAllSeasonCourses(res.data.courseLists.Summer),
+            fall: getTermCourseList(res.data.courseLists.Fall), 
+            winter: getTermCourseList(res.data.courseLists.Winter),
+            spring: getTermCourseList(res.data.courseLists.Spring),
+            summer: getTermCourseList(res.data.courseLists.Summer),
           };
           this.setState({allCourses});
         //   console.log(allCourses);
