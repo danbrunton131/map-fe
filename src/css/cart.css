@@ -1,60 +1,26 @@
 .course-cart-container{
     height:100%;
+    margin:0 20px; /* compress cart width */
   }
-
-/* Lines up cart component with course selection component*/
-.course-cart-container h2{
-  margin-bottom: 2px;
-}
   
   .cart{
     height: 600px;
+    padding: 50px 0 10px 0;
     background: #fff;
-    position: relative;
-/*    border-style: solid;
+  
+    border-style: solid;
     border-radius: 5px;
     border-width: 2px;
-    border-color: var(--maroon);*/
-    padding: 5px 5px 5px 5px;
-    box-shadow: 5px 0px 18px #888888;
-
-    /* Top border to match the mcmaster styling */
-    border-top: 6px solid #fdbf57;
+    border-color: var(--maroon);
+    padding: 50px 5px 50px 5px;
   }
-
-  .cart-content-number {
-    color: white;
-    float: right;
-    background-color: var(--maroon);
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-weight: 900;
-    font-size: 3rem;
-
-    box-shadow: 0 0 0 0 #888888;
-  }
-
-/* Position at bottom right of the screen in mobile*/
-@media (max-width: 768px) {
-  .cart-content-number {
-    position: fixed;
-    bottom: 5px;
-    right: 5px;
-
-    box-shadow: 0 0 5px 3px #888888;
-  }
-}
 
   .submit-button{
+    align-self: flex-end;
     display: flex;
     justify-content: center;
-    position: absolute;
-    bottom: 5px;
+
+
   }
 
   /* Resolves classing css between bootstrap and mcmaster css*/
