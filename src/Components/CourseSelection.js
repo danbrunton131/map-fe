@@ -28,7 +28,6 @@ const generateCourseList = (allCourses, addCourseToCart) => {
       this.state = {
         currentSeason: 'fall',
       };
-      this.seasonChange = this.seasonChange.bind(this);
     }    
 
     seasonChange(season){
@@ -45,17 +44,17 @@ const generateCourseList = (allCourses, addCourseToCart) => {
               <h2> Course Selection </h2>
               <Tab.Container id="tab-bar" defaultActiveKey="fall">
                   <div className="navbar navbar-expand-md navigation-menu">
-                    <Nav className="navbar-nav nav nav-pills flex-column flex-lg-row flex-md-row" onSelect={this.seasonChange}>
-                      <Nav.Item tabIndex={0} onKeyPress={(e) => e.key === "Enter" && this.seasonChange('fall')}>
+                    <Nav className="navbar-nav nav nav-pills flex-column flex-lg-row flex-md-row" onSelect={this.seasonChange.bind(this)} role="navigation">
+                      <Nav.Item>
                         <Nav.Link className="nav-item nav-link" eventKey="fall" title="Fall">Fall</Nav.Link>
                       </Nav.Item>
-                      <Nav.Item tabIndex={0} onKeyPress={(e) => e.key === "Enter" && this.seasonChange('winter')}>
+                      <Nav.Item>
                         <Nav.Link className="nav-item nav-link" eventKey="winter" title="Winter">Winter</Nav.Link>
                       </Nav.Item>   
-                      <Nav.Item tabIndex={0} onKeyPress={(e) => e.key === "Enter" && this.seasonChange('spring')}>
+                      <Nav.Item>
                         <Nav.Link className="nav-item nav-link" eventKey="spring" title="Spring">Spring</Nav.Link>
                       </Nav.Item>
-                      <Nav.Item tabIndex={0} onKeyPress={(e) => e.key === "Enter" && this.seasonChange('summer')}>
+                      <Nav.Item>
                         <Nav.Link className="nav-item nav-link" eventKey="summer" title="Summer">Summer</Nav.Link>
                       </Nav.Item>
                     </Nav>
