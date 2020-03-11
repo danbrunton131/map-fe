@@ -10,15 +10,20 @@
   /* content box underneath tabs*/
   .tab-content{
     background-color:white;
-    border-style: solid;
+/*    border-style: none solid solid solid;
     border-radius: 5px;
     border-width: 2px;
-    border-color: var(--maroon);
-    padding: 5px 5px 5px 5px;
-  
+    border-color: var(--maroon);*/
+    padding: 15px 15px 15px 15px;
+    box-shadow: 5px 10px 18px #888888;
   }
   
   /*styling of react-bootstrap tabs*/
+
+.navbar {
+  box-shadow: 5px 0px 18px #888888;
+}
+
   .nav-tabs .nav-item{
     background-color: var(--maroon);
     color:white;
