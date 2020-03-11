@@ -7,6 +7,7 @@ const generateCourseList = (allCourses, addCourseToCart) => {
       return (
           <React.Fragment key={course.courseID}>
             <span
+                tabIndex={0}
                 className={"fake-link"}
                 id={course.courseID}
                 name={course.name}
@@ -42,16 +43,16 @@ const generateCourseList = (allCourses, addCourseToCart) => {
               <Tab.Container id="tab-bar" defaultActiveKey="fall">
                   <div className="navbar navbar-expand-md navigation-menu">
                     <Nav className="navbar-nav nav nav-pills flex-column flex-lg-row flex-md-row" onSelect={this.seasonChange.bind(this)}>
-                      <Nav.Item>
+                      <Nav.Item tabIndex={0}>
                         <Nav.Link className="nav-item nav-link" eventKey="fall" title="Fall">Fall</Nav.Link>
                       </Nav.Item>
-                      <Nav.Item>
+                      <Nav.Item tabIndex={0}>
                         <Nav.Link className="nav-item nav-link" eventKey="winter" title="Winter">Winter</Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
+                      </Nav.Item>   
+                      <Nav.Item tabIndex={0}>
                         <Nav.Link className="nav-item nav-link" eventKey="spring" title="Spring">Spring</Nav.Link>
                       </Nav.Item>
-                      <Nav.Item>
+                      <Nav.Item tabIndex={0}>
                         <Nav.Link className="nav-item nav-link" eventKey="summer" title="Summer">Summer</Nav.Link>
                       </Nav.Item>
                     </Nav>

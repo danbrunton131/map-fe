@@ -7,6 +7,7 @@ const generateCourseList = (selectedCourses, removeCourseFromCart) => {
       return (
           <React.Fragment>
             <span
+                tabIndex={0}
                 className={"fake-link"}
                 key={course.courseID}
                 id={course.courseID}
