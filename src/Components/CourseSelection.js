@@ -12,6 +12,7 @@ const generateCourseList = (allCourses, addCourseToCart) => {
                 id={course.courseID}
                 name={course.name}
                 onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
+                onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
             > 
             {course.courseCode} 
             </span> 

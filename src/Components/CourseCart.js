@@ -13,6 +13,7 @@ const generateCourseList = (selectedCourses, removeCourseFromCart) => {
                 id={course.courseID}
                 name={course.name}
                 onClick={() => removeCourseFromCart(course.courseID)}
+                onKeyPress={(e) => e.key === "Enter" && removeCourseFromCart(course.courseID)}
             > 
             {course.courseCode} 
             </span>
