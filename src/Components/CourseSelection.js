@@ -31,7 +31,6 @@ const generateCourseList = (allCourses, addCourseToCart) => {
     }    
 
     seasonChange(season){
-      console.log(season);
       this.setState({currentSeason:season}, this.props.onSeasonChange(season));
     }
 
