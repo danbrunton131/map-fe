@@ -37,7 +37,7 @@
   /* fake link css for courses to match mcmaster styling for <a>*/
   .fake-link {
     color: #7d0040;
-    text-decoration: underline;
+/*    text-decoration: underline;*/
     cursor: pointer;
   }
     

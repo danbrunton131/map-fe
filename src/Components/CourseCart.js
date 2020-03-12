@@ -1,23 +1,42 @@
 import '../css/cart.css';
 import React from 'react';
 import {Col, Row, Tabs, Tab, Button} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMinus } from '@fortawesome/free-solid-svg-icons'
+
+const generateCourse = (course, index) => {
+  return (
+    <React.Fragment>
+      {/*add onClick to display information about the course*/}
+      <span
+          className={"course-text align-middle"}
+          key={course.courseID}
+          id={course.courseID}
+          name={course.name}
+      > 
+      {course.courseCode} 
+      </span>
+      <br/>
+    </React.Fragment>
+  );
+}
 
 const generateCourseList = (selectedCourses, removeCourseFromCart) => {
     return selectedCourses.map((course, index) => {
       return (
           <React.Fragment>
-            <span
+            <div className={"course-link fake-link"}>
+              {generateCourse(course, index)}
+              {/*TODO make this button accessible*/}
+              <div 
                 tabIndex={0}
-                className={"fake-link"}
-                key={course.courseID}
-                id={course.courseID}
-                name={course.name}
-                onClick={() => removeCourseFromCart(course.courseID)}
+                className="cart-minus align-middle align-center"
                 onKeyPress={(e) => e.key === "Enter" && removeCourseFromCart(course.courseID)}
-            > 
-            {course.courseCode} 
-            </span>
-            <br/>
+                onClick={() => removeCourseFromCart(course.courseID)}
+              >
+                <FontAwesomeIcon icon={faMinus} size="xs" />
+              </div>
+            </div>
         </React.Fragment>
       );
     })
