@@ -2,21 +2,29 @@ import '../css/cart.css';
 import React from 'react';
 import {Col, Row, Tabs, Tab, Button} from 'react-bootstrap';
 
+const generateCourse = (course, index) => {
+  return (
+    <React.Fragment>
+      {/*add onClick to display information about the course*/}
+      <span
+          className={"course-text align-middle"}
+          key={course.courseID}
+          id={course.courseID}
+          name={course.name}
+      > 
+      {course.courseCode} 
+      </span>
+      <br/>
+    </React.Fragment>
+  );
+}
+
 const generateCourseList = (selectedCourses, removeCourseFromCart) => {
     return selectedCourses.map((course, index) => {
       return (
           <React.Fragment>
-            {/*change onClick to display information about the course*/}
-            {/*onClick={() => removeCourseFromCart(course.courseID)}*/}
-            <div
-                className={"course-link fake-link"}
-                key={course.courseID}
-                id={course.courseID}
-                name={course.name}
-            >
-              <div className="course-text align-middle">
-                {course.courseCode} 
-              </div>
+            <div className={"course-link fake-link"}>
+              {generateCourse(course, index)}
               {/*TODO make this button accessible*/}
               <div 
                 className="cart-minus align-middle align-center"
