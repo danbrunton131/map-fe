@@ -10,7 +10,6 @@ const generateCourse = (course, index) => {
       {/*add onClick to display information about the course*/}
       <span
           className={"course-text align-middle"}
-          key={course.courseID}
           id={course.courseID}
           name={course.name}
       > 
@@ -24,7 +23,7 @@ const generateCourse = (course, index) => {
 const generateCourseList = (selectedCourses, removeCourseFromCart) => {
     return selectedCourses.map((course, index) => {
       return (
-          <React.Fragment>
+          <React.Fragment key={course.courseID}>
             <div className={"course-link fake-link"}>
               {generateCourse(course, index)}
               {/*TODO make this button accessible*/}
