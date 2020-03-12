@@ -1,6 +1,8 @@
 import '../css/cart.css';
 import React from 'react';
 import {Col, Row, Tabs, Tab, Button} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMinus } from '@fortawesome/free-solid-svg-icons'
 
 const generateCourse = (course, index) => {
   return (
@@ -29,7 +31,9 @@ const generateCourseList = (selectedCourses, removeCourseFromCart) => {
               <div 
                 className="cart-minus align-middle align-center"
                 onClick={() => removeCourseFromCart(course.courseID)}
-              ><span>&#8722;</span></div>
+              >
+                <FontAwesomeIcon icon={faMinus} size="xs" />
+              </div>
             </div>
         </React.Fragment>
       );
