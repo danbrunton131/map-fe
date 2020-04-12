@@ -31,7 +31,7 @@ const generateCourseList = (selectedCourses, removeCourseFromCart) => {
                 tabIndex={0}
                 className="cart-minus align-middle align-center"
                 onKeyPress={(e) => e.key === "Enter" && removeCourseFromCart(course.courseID)}
-                onClick={() => removeCourseFromCart(course.courseID)}
+                onClick={() => removeCourseFromCart(course.courseID, course.season)}
               >
                 <FontAwesomeIcon icon={faMinus} size="xs" />
               </div>
@@ -40,7 +40,6 @@ const generateCourseList = (selectedCourses, removeCourseFromCart) => {
       );
     })
   }
-
 
 export default class CourseCart extends React.Component {
     constructor(props) {

@@ -79,9 +79,11 @@ export default class MainPage extends React.Component {
         const {selectedCourses, allCourses, selectedSeason} = this.state;
         const newCourseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === courseId);
        
-        // mark course as selected so it cannot be added to cart twice
         let updatedAllCourses = allCourses;
+        // mark course as selected so it cannot be added to cart twice
         updatedAllCourses[selectedSeason][newCourseIndex].selected = true;
+        // track the semester of the course for deletion of courses. (allCourses is organzed by season)
+        updatedAllCourses[selectedSeason][newCourseIndex].season = selectedSeason; 
 
         this.setState({
             selectedCourses: [...selectedCourses, allCourses[selectedSeason][newCourseIndex]],
@@ -89,13 +91,13 @@ export default class MainPage extends React.Component {
         });
     }
 
-    removeCourseFromCart(courseId){
+    removeCourseFromCart(courseId, season){
         const {allCourses, selectedCourses, selectedSeason} = this.state;
-        const courseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === courseId);
+        const courseIndex = allCourses[season].findIndex(course => course.courseID === courseId);
 
         // deselect course when removing it from cart
         let updatedAllCourses = allCourses;
-        updatedAllCourses[selectedSeason][courseIndex].selected = false;
+        updatedAllCourses[season][courseIndex].selected = false;
 
         const updatedSelectedCourses = selectedCourses.filter(function( course ) {
             return course.courseID !== courseId;
