@@ -4,9 +4,12 @@ import { Tab, Nav, Col, Row} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import Course from './Course';
 
 const generateCourseList = (allCourses, addCourseToCart) => {
     return allCourses.map((course, index) => {
+
+      return ( <Course key={course.courseID} course={course} addCourseToCart={addCourseToCart} /> );
 
       return (
         <React.Fragment key={course.courseID}>
@@ -27,10 +30,10 @@ const generateCourseList = (allCourses, addCourseToCart) => {
             <div
                 tabIndex={0}
                 className="float-right"
+                //onClick={() => toggleOpen(!isOpen)}
             >
               <FontAwesomeIcon icon={faAngleDown} size="xs" />
             </div>
-            
           </Col>
         </React.Fragment>
       )
