@@ -15,7 +15,7 @@
     border-radius: 5px;
     border-width: 2px;
     border-color: var(--maroon);*/
-    padding: 5px 5px 5px 5px;
+/*    padding: 5px 5px 5px 5px;*/
     box-shadow: 5px 0px 18px #888888;
 
     /* Top border to match the mcmaster styling */
@@ -28,6 +28,8 @@
     background-color: var(--maroon);
     height: 70px;
     width: 70px;
+    margin-top: 5px;
+    margin-right: 5px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -45,6 +47,7 @@
     position: fixed;
     bottom: 5px;
     right: 5px;
+    margin: 0;
 
     box-shadow: 0 0 5px 3px #888888;
   }
@@ -69,4 +72,49 @@
     border-color: #5e6a71;
     box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
   }
-  
+
+/* fake link css for courses to match mcmaster styling for <a>*/
+.fake-link {
+  color: #7d0040;
+/*  text-decoration: underline;*/
+  cursor: pointer;
+  }
+    
+div.fake-link:hover {
+  color: #222;
+  }
+
+/* Could add a large right margin to the first course-link element
+   so the bottom border doesn't touch the cart number bubble overflow-x: */
+.course-link {
+  width: %100;
+  font-size: 20px;
+  padding: 5px 5px 10px 5px;
+  margin: 5px 5px 15px 5px;
+  border-bottom: 1px solid #d4d4d4;
+  display: flex;
+ }
+
+.course-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+.cart-minus {
+  color: red;
+  margin-left: auto;
+  height: 30px;
+  width: 30px;
+
+  border: 1px solid #d4d4d4;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-minus:hover {
+  background-color: #d4d4d4;
+}

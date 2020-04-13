@@ -7,10 +7,10 @@ import MainPage from './Components/MainPage';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header" role="banner">
         <h1 className="maroon"> MAP Calculator </h1>
       </header>
-      <div className="App-body">
+      <div className="App-body" role="main"> 
         <MainPage/>
       </div>
     </div>
