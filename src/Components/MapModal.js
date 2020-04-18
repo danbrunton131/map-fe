@@ -70,9 +70,7 @@ export default class ExampleApp extends React.Component {
     /* Create a react reference to each chart */
     /* Might not need this */
     generateChartRefsArray() {
-        console.log(this.props.programResults);
         this.sortProgramResults();
-        console.log(this.props.programResults);
 
         this.props.programResults.map((program, index) => {
             this.chartRefs[index] = new React.createRef();
