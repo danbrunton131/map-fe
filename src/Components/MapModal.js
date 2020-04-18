@@ -63,7 +63,7 @@ export default class ExampleApp extends React.Component {
     /* Sort programResults, largest percentage first */
     sortProgramResults() {
         this.props.programResults.sort((a, b) => {
-            return a.programPercentage < b.programPercentage;
+            return b.programPercentage - a.programPercentage;
         });
     }
 

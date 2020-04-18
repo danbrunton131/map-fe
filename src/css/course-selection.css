@@ -44,5 +44,15 @@
   span.fake-link:hover {
     color: #222;
   }
+
+  .course-item {
+    border-bottom: 1px solid #d4d4d4;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+  }
+
+  .course-container {
+    padding: 5px;
+  }
   
   
