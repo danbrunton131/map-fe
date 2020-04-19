@@ -3,6 +3,7 @@ import {Col, Row} from 'react-bootstrap';
 import CourseCart from './CourseCart';
 import CourseSelection from './CourseSelection';
 import MapModal from './MapModal';
+import SearchBar from './SearchBar';
 import {fetchAllCourses, submitSelection} from '../api/courses-api';
 
 export const getTermCourseList = (termCoursesByProgram) => {
@@ -121,6 +122,7 @@ export default class MainPage extends React.Component {
         const {allCourses, selectedCourses, programResults} = this.state;
         return(
             <div className="container-fluid">
+            <SearchBar/>
             <Row>
                 <Col sm={12} md={9}>
                     <CourseSelection allCourses={allCourses} addCourseToCart={this.addCourseToCart} onSeasonChange={this.onSeasonChange}/> 

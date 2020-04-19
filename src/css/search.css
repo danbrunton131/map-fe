@@ -1,0 +1,4 @@
+/* ensure tab height always maximized */
+.search-input {
+    height: auto;
+}
