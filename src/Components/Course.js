@@ -27,17 +27,17 @@ export default class Course extends React.Component {
               className={"fake-link"}
               id={course.courseID}
               name={course.name}
-              onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
-              onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
+              // onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
+              // onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
               aria-label="Add course to cart"
           >
           {course.courseCode} 
           </span>
           {/* Course Action Icons for Description and AddToCart*/}
-          <span className="course-actions float-right"> {/* ensures DOM ordering  of icons is preserved for tabbability */}
+          <div className="course-actions float-right"> {/* ensures DOM ordering  of icons is preserved for tabbability */}
             <div
                 tabIndex={0}
-                className="float-left mr-3"
+                className="course-action float-left mr-3"
                 id={course.courseID}
                 name={course.name}
                 onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
@@ -51,14 +51,14 @@ export default class Course extends React.Component {
             onClick={() => showCourseInfo(course.courseID)}*/}
             <div
                 tabIndex={0}
-                className="float-left mr-3"
+                className="course-action float-left mr-3"
                 onKeyPress={(e) => e.key === "Enter" && this.toggleOpen(isOpen)}
                 onClick={() => this.toggleOpen(isOpen)}
                 aria-label="Expand Course Information"
             >
               <FontAwesomeIcon icon={faAngleDown} size="xs" />
             </div>
-          </span>
+          </div>
 
           {
             isOpen === true && <div>Course Description stuff</div>

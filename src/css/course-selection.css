@@ -55,4 +55,6 @@
     padding: 5px;
   }
   
-  
+  .course-action{
+    cursor:pointer;
+  }
