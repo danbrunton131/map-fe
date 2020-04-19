@@ -26,7 +26,7 @@ export default class Course extends React.Component {
         <Col sm={12} md={6} className={"course-item"}>
           <span
               tabIndex={0}
-              className={"fake-link"}
+              // className={"fake-link"}
               id={course.courseID}
               name={course.name}
               // onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
@@ -58,12 +58,18 @@ export default class Course extends React.Component {
                 onClick={() => this.toggleOpen()}
                 aria-label={isOpen ? "Minimize Course Information" : "Maximize Course Information"}
             >
-              <FontAwesomeIcon icon={isOpen ? faAngleDown : faAngleUp } size="xs" />
+              <FontAwesomeIcon icon={isOpen ? faAngleUp: faAngleDown } size="xs" />
             </div>
           </div>
 
           {
-            isOpen && <div>Course Description stuff</div>
+            isOpen && 
+            <React.Fragment>
+            <p className="course-description">
+            <strong>Course Title </strong>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+            </React.Fragment>
           }    
         </Col>
       );

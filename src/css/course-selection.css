@@ -60,3 +60,6 @@
     color: var(--maroon);
   }  
 
+.course-description {
+  font-size:16px;
+}
