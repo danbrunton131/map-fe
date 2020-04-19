@@ -2,7 +2,7 @@ import '../css/course-selection.css';
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faInfoCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp, faInfoCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default class Course extends React.Component {
     constructor(props) {
@@ -54,9 +54,9 @@ export default class Course extends React.Component {
                 className="course-action float-left mr-3"
                 onKeyPress={(e) => e.key === "Enter" && this.toggleOpen(isOpen)}
                 onClick={() => this.toggleOpen(isOpen)}
-                aria-label="Expand Course Information"
+                aria-label={isOpen ? "Minimize Course Information" : "Maximize Course Information"}
             >
-              <FontAwesomeIcon icon={faAngleDown} size="xs" />
+              <FontAwesomeIcon icon={isOpen ? faAngleDown : faAngleUp } size="xs" />
             </div>
           </div>
 
