@@ -8,11 +8,13 @@ export default class Course extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        isOpen: 'false',
+        isOpen: false,
       };
+      this.toggleOpen = this.toggleOpen.bind(this);
     }
 
-    toggleOpen(isOpen) {
+    toggleOpen() {
+      const {isOpen} = this.state;
       this.setState({isOpen:!isOpen});
     }
 
@@ -52,8 +54,8 @@ export default class Course extends React.Component {
             <div
                 tabIndex={0}
                 className="course-action float-left mr-3"
-                onKeyPress={(e) => e.key === "Enter" && this.toggleOpen(isOpen)}
-                onClick={() => this.toggleOpen(isOpen)}
+                onKeyPress={(e) => e.key === "Enter" && this.toggleOpen()}
+                onClick={() => this.toggleOpen()}
                 aria-label={isOpen ? "Minimize Course Information" : "Maximize Course Information"}
             >
               <FontAwesomeIcon icon={isOpen ? faAngleDown : faAngleUp } size="xs" />
@@ -61,7 +63,7 @@ export default class Course extends React.Component {
           </div>
 
           {
-            isOpen === true && <div>Course Description stuff</div>
+            isOpen && <div>Course Description stuff</div>
           }    
         </Col>
       );
