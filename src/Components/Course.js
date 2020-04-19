@@ -23,7 +23,9 @@ export default class Course extends React.Component {
       const {isOpen} = this.state;
 
       return(
-        <Col sm={12} md={6} className={"course-item"}>
+        <Col sm={12} md={6} className={"course-item"} aria-label="Course">
+
+          {/* Course Code */}
           <span
               tabIndex={0}
               // className={"fake-link"}
@@ -31,10 +33,11 @@ export default class Course extends React.Component {
               name={course.name}
               // onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
               // onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
-              aria-label="Add course to cart"
+              aria-label={course.name}
           >
           {course.courseCode} 
           </span>
+
           {/* Course Action Icons for Description and AddToCart*/}
           <div className="course-actions float-right"> {/* ensures DOM ordering  of icons is preserved for tabbability */}
             <div
@@ -48,9 +51,8 @@ export default class Course extends React.Component {
             >
               <FontAwesomeIcon icon={faPlusCircle} size="xs" />
             </div>
-            {/*Add clickability to expand course to show info about course*/}
-            {/*onKeyPress={(e) => e.key === "Enter" && showCourseInfo(course.courseID)}
-            onClick={() => showCourseInfo(course.courseID)}*/}
+
+            {/* Course Description Toggle */}
             <div
                 tabIndex={0}
                 className="course-action float-left mr-3"
@@ -62,6 +64,7 @@ export default class Course extends React.Component {
             </div>
           </div>
 
+          {/* Course Description */}
           {
             isOpen && 
             <React.Fragment>

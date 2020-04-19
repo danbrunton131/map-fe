@@ -53,6 +53,12 @@
 
   .course-container {
     padding: 5px;
+    display: flex;
+    align-items: start;
+    /* justify-content: center; */
+    flex-flow: row wrap;
+    align-content: center;
+
   }
   
   .course-action{
