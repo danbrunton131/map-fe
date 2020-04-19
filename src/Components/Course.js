@@ -46,7 +46,7 @@ export default class Course extends React.Component {
             <FontAwesomeIcon icon={faAngleDown} size="xs" />
           </div>
           {
-            isOpen ? null : <div>Course Description stuff</div>
+            isOpen === true && <div>Course Description stuff</div>
           }    
         </Col>
       );

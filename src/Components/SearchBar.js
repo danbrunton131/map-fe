@@ -19,7 +19,7 @@ export default class SearchBar extends React.Component {
         <React.Fragment>
             <h2> Search </h2>
             <InputGroup size="md" className="mb-3">
-                <FormControl type="text" className="search-input" placeholder="SEARCH FOR A COURSE..." aria-label="Search for a course"/>
+                <FormControl type="text" className="search-input" placeholder="SEARCH FOR A COURSE..." aria-labelledby="Search for a course"/>
                 <InputGroup.Append>
                     <button className="btn btn-secondary btn-search"></button>
                 </InputGroup.Append>

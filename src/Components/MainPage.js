@@ -124,16 +124,18 @@ export default class MainPage extends React.Component {
             <div className="container-fluid">
             <Row>
               <Col sm={12} md={9}>
+                <section aria-label="Search Bar"/>
                 <SearchBar/>
               </Col>
             </Row>
             <Row>
                 <Col sm={12} md={9}>
+                    <section aria-label="Course Selection"/>
                     <CourseSelection allCourses={allCourses} addCourseToCart={this.addCourseToCart} onSeasonChange={this.onSeasonChange}/> 
                 </Col>
 
                 <Col sm={12} md={3}>
-                    {/* <div className="sample-fill"/> */}
+                    <section aria-label="Cart"/>
                     <CourseCart submitCourses={this.submitCourses} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
 
                 </Col>
