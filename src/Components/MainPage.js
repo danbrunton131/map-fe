@@ -122,7 +122,11 @@ export default class MainPage extends React.Component {
         const {allCourses, selectedCourses, programResults} = this.state;
         return(
             <div className="container-fluid">
-            <SearchBar/>
+            <Row>
+              <Col sm={12} md={9}>
+                <SearchBar/>
+              </Col>
+            </Row>
             <Row>
                 <Col sm={12} md={9}>
                     <CourseSelection allCourses={allCourses} addCourseToCart={this.addCourseToCart} onSeasonChange={this.onSeasonChange}/> 

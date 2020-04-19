@@ -1,8 +1,6 @@
 import '../css/search.css';
 import React from 'react';
-import { Col, InputGroup, FormControl } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { InputGroup, FormControl } from 'react-bootstrap';
 
 export default class SearchBar extends React.Component {
     constructor(props) {
@@ -17,16 +15,16 @@ export default class SearchBar extends React.Component {
     }
 
     render() {
-      const {course, addCourseToCart} = this.props;
-      const {isOpen} = this.state;
-
       return(
-        <InputGroup size="md" className="mb-3">
-            <FormControl type="text" className="search-input" placeholder="SEARCH FOR A COURSE..." aria-label="Search for a course"/>
-            <InputGroup.Append>
-                <button className="btn btn-secondary btn-search"></button>
-            </InputGroup.Append>
-    </InputGroup>
+        <React.Fragment>
+            <h2> Search </h2>
+            <InputGroup size="md" className="mb-3">
+                <FormControl type="text" className="search-input" placeholder="SEARCH FOR A COURSE..." aria-label="Search for a course"/>
+                <InputGroup.Append>
+                    <button className="btn btn-secondary btn-search"></button>
+                </InputGroup.Append>
+            </InputGroup>
+    </React.Fragment>
 );
     }
   }

@@ -8,51 +8,7 @@ import Course from './Course';
 
 const generateCourseList = (allCourses, addCourseToCart) => {
     return allCourses.map((course, index) => {
-
       return ( <Course key={course.courseID} course={course} addCourseToCart={addCourseToCart} /> );
-
-      return (
-        <React.Fragment key={course.courseID}>
-          <Col sm={12} md={4} className={"course-item"}>
-            <span
-                tabIndex={0}
-                className={"fake-link"}
-                id={course.courseID}
-                name={course.name}
-                onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
-                onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
-            >
-            {course.courseCode} 
-            </span>
-            {/*Add clickability to expand course to show info about course*/}
-            {/*onKeyPress={(e) => e.key === "Enter" && showCourseInfo(course.courseID)}
-            onClick={() => showCourseInfo(course.courseID)}*/}
-            <div
-                tabIndex={0}
-                className="float-right"
-                //onClick={() => toggleOpen(!isOpen)}
-            >
-              <FontAwesomeIcon icon={faAngleDown} size="xs" />
-            </div>
-          </Col>
-        </React.Fragment>
-      )
-
-      return (
-          <React.Fragment key={course.courseID}>
-            <span
-                tabIndex={0}
-                className={"fake-link"}
-                id={course.courseID}
-                name={course.name}
-                onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
-                onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
-            > 
-            {course.courseCode} 
-            </span> 
-            <br/>
-        </React.Fragment>
-      );
     })
   }
 
