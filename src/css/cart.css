@@ -23,6 +23,7 @@
   }
 
   .cart-symbol {
+    cursor:pointer; /* clicking cart symbol scrolls to cart*/
     color: white;
     float: right;
     background-color: var(--maroon);
