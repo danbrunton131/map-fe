@@ -1,9 +1,6 @@
 import '../css/course-selection.css';
 import React from 'react';
 import { Tab, Nav, Col, Row} from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import Course from './Course';
 
 const generateCourseList = (allCourses, addCourseToCart) => {
