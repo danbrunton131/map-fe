@@ -47,7 +47,7 @@ export default class Course extends React.Component {
                 name={course.name}
                 onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
                 onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
-                aria-label="Add course to cart"
+                aria-label={`Add ${course.name} to cart`}
             >
               <FontAwesomeIcon icon={faPlusCircle} size="xs" />
             </div>
@@ -58,7 +58,7 @@ export default class Course extends React.Component {
                 className="course-action float-left mr-3"
                 onKeyPress={(e) => e.key === "Enter" && this.toggleOpen()}
                 onClick={() => this.toggleOpen()}
-                aria-label={isOpen ? "Minimize Course Information" : "Maximize Course Information"}
+                aria-label={isOpen ? `Minimize ${course.name} Information` : `Maximize ${course.name} Information`}
             >
               <FontAwesomeIcon icon={isOpen ? faAngleUp: faAngleDown } size="xs" />
             </div>
