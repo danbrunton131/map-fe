@@ -1,5 +1,5 @@
 import '../css/cart.css';
-import React from 'react';
+import React, {createRef} from 'react';
 import {Col, Row, Tabs, Tab, Button} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faMinus } from '@fortawesome/free-solid-svg-icons'
@@ -44,7 +44,7 @@ const generateCourseList = (selectedCourses, removeCourseFromCart) => {
 export default class CourseCart extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {color: "red"};
+      this.scrollToCart = createRef();
     }
 
 
@@ -53,16 +53,13 @@ export default class CourseCart extends React.Component {
         const {selectedCourses,removeCourseFromCart} = this.props;
         return(
             <div className="course-cart-container">
-
-                <h2> Cart </h2>
-                
+                <h2 ref={this.scrollToCart}> Cart </h2>
+              
                 <div className="cart">
-                  <span className="cart-symbol">
+                  <span className="cart-symbol" onClick={() => {this.scrollToCart.current.scrollIntoView({ behavior: 'smooth' });}}>
                     <FontAwesomeIcon icon={faShoppingCart} size="xs" /><div id="lblCartCount">{selectedCourses.length}</div>
                   </span>
-
                   {selectedCourses && generateCourseList(selectedCourses,removeCourseFromCart)}
-
                   <div className="submit-button w-100 px-2">
                     <button className="btn btn-primary" onClick={this.props.submitCourses}>Submit</button>
                   </div>
