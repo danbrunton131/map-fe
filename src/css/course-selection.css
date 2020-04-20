@@ -47,11 +47,17 @@
 
   .course-item {
     border-bottom: 1px solid #d4d4d4;
-    /* margin-bottom: 10px; */
     padding: 5px 5px 5px 5px;
     width: 50%;
     align-self: flex-start;  
     }
+
+  /* mobile view should have 1 item per row */
+  @media (max-width: 768px) {
+    .course-item {
+      width:100%;
+    }
+  }
 
   .course-container {
     padding: 5px;
