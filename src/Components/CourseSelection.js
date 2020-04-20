@@ -50,14 +50,14 @@ const generateCourseList = (allCourses, addCourseToCart) => {
                   </div>
                   <Tab.Content>
                     <Tab.Pane className="tab-pane" eventKey={currentSeason}>
-                      <Row className="course-container">
+                      <div className="course-container">
                         {/* show loading text until course list loads. */}
                         { !allCourses[currentSeason] ? <div> Loading... </div> :
                           allCourses[currentSeason].length > 0 ?
                             generateCourseList(allCourses[currentSeason], addCourseToCart) 
                           : <div> There are no courses available for this Term.</div>
                         }
-                      </Row>
+                      </div>
                     </Tab.Pane>
                   </Tab.Content>
               </Tab.Container>
