@@ -2,7 +2,7 @@ import '../css/cart.css';
 import React from 'react';
 import {Col, Row, Tabs, Tab, Button} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMinus } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 const generateCourse = (course, index) => {
   return (
@@ -57,7 +57,10 @@ export default class CourseCart extends React.Component {
                 <h2> Cart </h2>
                 
                 <div className="cart">
-                  <span className="cart-content-number text-center"><span className="align-middle">{selectedCourses.length}</span></span>
+                  <span className="cart-symbol">
+                    <FontAwesomeIcon icon={faShoppingCart} size="xs" /><div id="lblCartCount">{selectedCourses.length}</div>
+                  </span>
+
                   {selectedCourses && generateCourseList(selectedCourses,removeCourseFromCart)}
 
                   <div className="submit-button w-100 px-2">
