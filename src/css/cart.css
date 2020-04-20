@@ -41,19 +41,26 @@
     font-weight: 900;
     font-size: 3rem;
 
-    box-shadow: 0 0 0 0 #888888;
+    box-shadow: 0 0 5px 3px #888888;
   }
 
   
-/* Position at bottom right of the screen in mobile*/
+  /* On larger screens, display cart icon on top right of cart */
+  @media (min-width: 768px) {
+  .cart-symbol {
+    position: absolute;
+    right: -3px;
+    top: -26px;
+  }
+}
+
+/* Position Cart at bottom right of the screen in mobile*/
 @media (max-width: 768px) {
   .cart-symbol {
     position: fixed;
     bottom: 5px;
     right: 5px;
     margin: 0;
-
-    box-shadow: 0 0 5px 3px #888888;
   }
 }
 

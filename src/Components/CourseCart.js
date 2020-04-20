@@ -53,12 +53,14 @@ export default class CourseCart extends React.Component {
         const {selectedCourses,removeCourseFromCart} = this.props;
         return(
             <div className="course-cart-container">
-                <h2 ref={this.scrollToCart}> Cart </h2>
-              
+                <div className="cart-header">
+                  <h2 ref={this.scrollToCart}> Cart </h2>
+                    <span className="cart-symbol" onClick={() => {this.scrollToCart.current.scrollIntoView({ behavior: 'smooth' });}}>
+                        <FontAwesomeIcon icon={faShoppingCart} size="xs" /><div className="disable-select" id="lblCartCount">{selectedCourses.length}</div>
+                    </span>
+                </div>
+
                 <div className="cart">
-                  <span className="cart-symbol" onClick={() => {this.scrollToCart.current.scrollIntoView({ behavior: 'smooth' });}}>
-                    <FontAwesomeIcon icon={faShoppingCart} size="xs" /><div className="disable-select" id="lblCartCount">{selectedCourses.length}</div>
-                  </span>
                   {selectedCourses && generateCourseList(selectedCourses,removeCourseFromCart)}
                   <div className="submit-button w-100 px-2">
                     <button className="btn btn-primary" onClick={this.props.submitCourses}>Submit</button>
