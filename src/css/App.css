@@ -82,3 +82,11 @@ button.close {
 button.close:hover {
   color: #fff;
 }
+
+/* prevent user highlighting of text */
+.disable-select {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+}

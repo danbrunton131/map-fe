@@ -57,7 +57,7 @@ export default class CourseCart extends React.Component {
               
                 <div className="cart">
                   <span className="cart-symbol" onClick={() => {this.scrollToCart.current.scrollIntoView({ behavior: 'smooth' });}}>
-                    <FontAwesomeIcon icon={faShoppingCart} size="xs" /><div id="lblCartCount">{selectedCourses.length}</div>
+                    <FontAwesomeIcon icon={faShoppingCart} size="xs" /><div className="disable-select" id="lblCartCount">{selectedCourses.length}</div>
                   </span>
                   {selectedCourses && generateCourseList(selectedCourses,removeCourseFromCart)}
                   <div className="submit-button w-100 px-2">
