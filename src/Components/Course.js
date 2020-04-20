@@ -49,7 +49,7 @@ export default class Course extends React.Component {
                 onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
                 aria-label={`Add ${course.name} to cart`}
             >
-              <FontAwesomeIcon icon={faPlusCircle} size="xs" />
+              <FontAwesomeIcon icon={faPlusCircle} size="m" />
             </div>
 
             {/* Course Description Toggle */}
@@ -60,7 +60,7 @@ export default class Course extends React.Component {
                 onClick={() => this.toggleOpen()}
                 aria-label={isOpen ? `Minimize ${course.name} Information` : `Maximize ${course.name} Information`}
             >
-              <FontAwesomeIcon icon={isOpen ? faAngleUp: faAngleDown } size="xs" />
+              <FontAwesomeIcon icon={isOpen ? faAngleUp: faAngleDown } size="m"/>
             </div>
           </div>
 
