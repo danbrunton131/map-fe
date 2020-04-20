@@ -142,3 +142,7 @@ div.fake-link:hover {
   background-color: #d4d4d4;
 }
 
+.course-actions .in-cart {
+  color: var(--bw-blue);
+  cursor: initial;
+}

@@ -2,7 +2,7 @@ import '../css/course-selection.css';
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleUp, faInfoCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp, faInfoCircle, faPlusCircle, faShoppingCart} from '@fortawesome/free-solid-svg-icons';
 import SmoothCollapse from 'react-smooth-collapse';
 
 export default class Course extends React.Component {
@@ -28,11 +28,8 @@ export default class Course extends React.Component {
           {/* Course Code */}
           <span
               tabIndex={0}
-              // className={"fake-link"}
               id={course.courseID}
               name={course.name}
-              // onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
-              // onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
               aria-label={course.name}
           >
           {course.courseCode} 
@@ -40,7 +37,18 @@ export default class Course extends React.Component {
 
           {/* Course Action Icons for Description and AddToCart*/}
           <div className="course-actions float-right"> {/* ensures DOM ordering  of icons is preserved for tabbability */}
+          {course.selected &&
             <div
+                tabIndex={0}
+                className="course-action in-cart float-left mr-3"
+                id={course.courseID}
+                name={course.name}
+                aria-label={`${course.name} is in your cart`}
+              >
+                <FontAwesomeIcon icon={faShoppingCart} size="m" />
+              </div>
+          }
+              <div
                 tabIndex={0}
                 className="course-action float-left mr-3"
                 id={course.courseID}
@@ -48,9 +56,9 @@ export default class Course extends React.Component {
                 onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
                 onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
                 aria-label={`Add ${course.name} to cart`}
-            >
-              <FontAwesomeIcon icon={faPlusCircle} size="m" />
-            </div>
+              >
+                <FontAwesomeIcon icon={faPlusCircle} size="m" />
+              </div>
 
             {/* Course Description Toggle */}
             <div
