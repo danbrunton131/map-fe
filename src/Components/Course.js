@@ -36,10 +36,10 @@ export default class Course extends React.Component {
           {course.courseCode} 
           </span>
 
-          {/* Course Action Icons, separated by CourseSelection and CourseCart Views by the addCourseToCart/removeCourseFromCart functions */}
+          {/* Course Action Icons, determined by CourseSelection View (addCourseToCart) or CourseCart View (removeCourseFromCart) */}
           <div className="course-actions float-right"> {/* ensures DOM ordering  of icons is preserved for tabbability */}
 
-          {/* Course in Selection Actions */}
+          {/* Course Selection View Actions */}
           {addCourseToCart && 
             <React.Fragment>
               {course.selected &&
@@ -88,7 +88,7 @@ export default class Course extends React.Component {
             </React.Fragment>
           }
 
-          {/* Course in Cart Actions */}
+          {/* CourseCart View Actions */}
           {removeCourseFromCart &&
             <div
               tabIndex={0}
