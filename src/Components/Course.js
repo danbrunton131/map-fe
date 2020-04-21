@@ -2,7 +2,7 @@ import '../css/course-selection.css';
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleUp, faInfoCircle, faPlusCircle, faShoppingCart, faMinus} from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp, faPlusCircle, faShoppingCart, faMinusCircle} from '@fortawesome/free-solid-svg-icons';
 import SmoothCollapse from 'react-smooth-collapse';
 
 export default class Course extends React.Component {
@@ -91,7 +91,7 @@ export default class Course extends React.Component {
               onKeyPress={(e) => e.key === "Enter" && removeCourseFromCart(course.courseID, course.season)}
               aria-label={`Remove ${course.courseCode} from cart`}
             >
-              <FontAwesomeIcon icon={faMinus} size="1x" />
+              <FontAwesomeIcon icon={faMinusCircle} size="1x" />
             </div>
           }
           </div>

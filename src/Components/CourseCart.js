@@ -3,7 +3,7 @@ import React, {createRef} from 'react';
 import Course from './Course';
 import {Col, Row, Tabs, Tab, Button} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart, faMinus } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 const generateCourseList = (selectedCourses, removeCourseFromCart) => {
   return selectedCourses.map((course, index) => {
