@@ -20,7 +20,7 @@ export default class CourseCart extends React.Component {
     render() {
         const {selectedCourses,removeCourseFromCart} = this.props;
         return(
-            <div className="course-cart-container">
+            <div className="course-cart">
                 <div className="cart-header">
                   <h2 ref={this.scrollToCart}> Cart </h2>
                     <span className="cart-symbol" onClick={() => {this.scrollToCart.current.scrollIntoView({ behavior: 'smooth' });}}>
@@ -35,10 +35,10 @@ export default class CourseCart extends React.Component {
                               generateCourseList(selectedCourses, removeCourseFromCart) 
                             : <div> Add Courses from Course Selection to see them here.</div>
                         }
-                  </div>                    
-                  <div className="submit-button px-2 w-100">
+                  </div>        
+                  <div className="cart-footer px-2">
                       <button className="btn btn-primary" onClick={this.props.submitCourses} aria-label="Submit your courses">Submit</button>
-                  </div>
+                  </div>  
 
                 </div>
 

@@ -1,16 +1,17 @@
-.course-cart-container{
+.course-cart{
     height:100%;
   }
 
 /* Lines up cart component with course selection component*/
-.course-cart-container h2{
+.course-cart h2{
   margin-bottom: 2px;
 }
   
   .cart{
-    min-height: 30vh;
+    min-height: 35.7vh;
     background: #fff;
     position: relative;
+    overflow: auto; /* keeps cart-footer at bottom */
     box-shadow: 5px 0px 18px #888888;
 
     /* Top border to match the mcmaster styling */
@@ -70,12 +71,13 @@
   /* top:10px; */
 }
 
-
-  .submit-button{
-    position: relative;
-    justify-content: center;
+  /* center footer/button at bottom-center of container*/
+  .cart-footer {
+    position: absolute;
     bottom: 2px;
-    text-align: center;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
   }
 
   /* Resolves classing css between bootstrap and mcmaster css*/
@@ -135,7 +137,8 @@
   width: 100%;
 }
 
-
-.cart-container > * {
-  align-items: flex-start;
+.cart .course-container {
+  flex-flow: column;
+  margin-bottom: 48px; /* spacing for footer */
 }
+
