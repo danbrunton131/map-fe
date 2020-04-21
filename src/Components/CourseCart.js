@@ -29,12 +29,13 @@ export default class CourseCart extends React.Component {
                 </div>
 
                 <div className="cart">
-                  {/* {selectedCourses && generateCourseList(selectedCourses,removeCourseFromCart)} */}
-                  { selectedCourses && 
-                        selectedCourses.length > 0 ?
-                            generateCourseList(selectedCourses, removeCourseFromCart) 
-                          : <div> Add Courses from Course Selection to see them here.</div>
+                  <div className="course-container">
+                    { selectedCourses && 
+                          selectedCourses.length > 0 ?
+                              generateCourseList(selectedCourses, removeCourseFromCart) 
+                            : <div> Add Courses from Course Selection to see them here.</div>
                         }
+                  </div>
 
                   <div className="submit-button w-100 px-2">
                     <button className="btn btn-primary" onClick={this.props.submitCourses}>Submit</button>

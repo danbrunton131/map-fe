@@ -11,15 +11,10 @@
     height: 600px;
     background: #fff;
     position: relative;
-/*    border-style: solid;
-    border-radius: 5px;
-    border-width: 2px;
-    border-color: var(--maroon);*/
-/*    padding: 5px 5px 5px 5px;*/
     box-shadow: 5px 0px 18px #888888;
 
     /* Top border to match the mcmaster styling */
-    border-top: 6px solid #fdbf57;
+    border-top: 6px solid var(--gold);
   }
 
   .cart-symbol {
@@ -134,4 +129,8 @@
 .course-actions .in-cart {
   color: var(--bw-blue);
   cursor: initial;
+}
+
+.cart .course-item {
+  width: 100%;
 }
