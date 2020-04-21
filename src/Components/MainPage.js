@@ -93,6 +93,7 @@ export default class MainPage extends React.Component {
     }
 
     removeCourseFromCart(courseId, season){
+      console.log(courseId);
         const {allCourses, selectedCourses, selectedSeason} = this.state;
         const courseIndex = allCourses[season].findIndex(course => course.courseID === courseId);
 

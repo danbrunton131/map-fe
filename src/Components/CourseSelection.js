@@ -5,7 +5,7 @@ import Course from './Course';
 
 const generateCourseList = (allCourses, addCourseToCart) => {
     return allCourses.map((course, index) => {
-      return ( <Course key={course.courseID} course={course} addCourseToCart={addCourseToCart} /> );
+      return ( <Course style={{display: "inline-block"}} key={course.courseID} course={course} addCourseToCart={addCourseToCart} /> );
     })
   }
 
