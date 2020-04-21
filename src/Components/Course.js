@@ -22,6 +22,7 @@ export default class Course extends React.Component {
     render() {
       const {course, addCourseToCart, removeCourseFromCart} = this.props;
       const {isOpen} = this.state;
+      console.log(removeCourseFromCart);
 
       return(
         <div className="course-item" aria-label="Course">
@@ -94,8 +95,8 @@ export default class Course extends React.Component {
               className="course-action float-left mr-3"
               id={course.courseID}
               name={course.name}
-              onClick={!course.selected ? () => removeCourseFromCart(course.courseID) : null}
-              onKeyPress={!course.selected ? (e) => e.key === "Enter" && removeCourseFromCart(course.courseID) : null}
+              onClick={() => removeCourseFromCart(course.courseID, course.season)}
+              onKeyPress={(e) => e.key === "Enter" && removeCourseFromCart(course.courseID, course.season)}
               aria-label={`Remove ${course.name} from cart`}
             >
               <FontAwesomeIcon icon={faMinus} size="1x" />
