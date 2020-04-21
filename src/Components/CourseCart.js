@@ -35,12 +35,13 @@ export default class CourseCart extends React.Component {
                               generateCourseList(selectedCourses, removeCourseFromCart) 
                             : <div> Add Courses from Course Selection to see them here.</div>
                         }
+                  </div>                    
+                  <div className="submit-button px-2 w-100">
+                      <button className="btn btn-primary" onClick={this.props.submitCourses} aria-label="Submit your courses">Submit</button>
                   </div>
 
-                  <div className="submit-button w-100 px-2">
-                    <button className="btn btn-primary" onClick={this.props.submitCourses}>Submit</button>
-                  </div>
                 </div>
+
             </div>
         );
         

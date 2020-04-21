@@ -8,7 +8,7 @@
 }
   
   .cart{
-    height: 600px;
+    min-height: 30vh;
     background: #fff;
     position: relative;
     box-shadow: 5px 0px 18px #888888;
@@ -72,10 +72,10 @@
 
 
   .submit-button{
-    display: flex;
+    position: relative;
     justify-content: center;
-    position: absolute;
-    bottom: 5px;
+    bottom: 2px;
+    text-align: center;
   }
 
   /* Resolves classing css between bootstrap and mcmaster css*/
@@ -133,4 +133,9 @@
 
 .cart .course-item {
   width: 100%;
+}
+
+
+.cart-container > * {
+  align-items: flex-start;
 }
