@@ -25,13 +25,13 @@ export default class Course extends React.Component {
       console.log(removeCourseFromCart);
 
       return(
-        <div className="course-item" aria-label="Course">
+        <div className="course-item" aria-label={`${course.courseCode}`}>
           {/* Course Code */}
           <span
               tabIndex={0}
               id={course.courseID}
-              name={course.name}
-              aria-label={course.name}
+              name={course.courseCode}
+              aria-label={course.courseCode}
           >
           {course.courseCode} 
           </span>
@@ -47,8 +47,8 @@ export default class Course extends React.Component {
                     tabIndex={0}
                     className="course-action in-cart float-left mr-3"
                     id={course.courseID}
-                    name={course.name}
-                    aria-label={`${course.name} is in your cart`}
+                    name={course.courseCode}
+                    aria-label={`${course.courseCode} is in your cart`}
                   >
                     <FontAwesomeIcon icon={faShoppingCart} size="1x" />
                   </div>
@@ -59,10 +59,10 @@ export default class Course extends React.Component {
                 tabIndex={0}
                 className="course-action float-left mr-3"
                 id={course.courseID}
-                name={course.name}
+                name={course.courseCode}
                 onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
                 onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
-                aria-label={`Add ${course.name} to cart`}
+                aria-label={`Add ${course.courseCode} to cart`}
               >
                 <FontAwesomeIcon icon={faPlusCircle} size="1x" />
               </div>
@@ -73,7 +73,7 @@ export default class Course extends React.Component {
                   className="course-action float-left mr-3"
                   onKeyPress={(e) => e.key === "Enter" && this.toggleOpen()}
                   onClick={() => this.toggleOpen()}
-                  aria-label={isOpen ? `Minimize ${course.name} Information` : `Maximize ${course.name} Information`}
+                  aria-label={isOpen ? `Minimize ${course.courseCode} Information` : `Maximize ${course.courseCode} Information`}
               >
                 <FontAwesomeIcon icon={isOpen ? faAngleUp: faAngleDown } size="1x"/>
               </div>
@@ -86,10 +86,10 @@ export default class Course extends React.Component {
               tabIndex={0}
               className="course-action float-left mr-3"
               id={course.courseID}
-              name={course.name}
+              name={course.courseCode}
               onClick={() => removeCourseFromCart(course.courseID, course.season)}
               onKeyPress={(e) => e.key === "Enter" && removeCourseFromCart(course.courseID, course.season)}
-              aria-label={`Remove ${course.name} from cart`}
+              aria-label={`Remove ${course.courseCode} from cart`}
             >
               <FontAwesomeIcon icon={faMinus} size="1x" />
             </div>
