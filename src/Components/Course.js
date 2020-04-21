@@ -20,7 +20,7 @@ export default class Course extends React.Component {
     }
 
     render() {
-      const {course, addCourseToCart} = this.props;
+      const {course, addCourseToCart, removeCourseFromCart} = this.props;
       const {isOpen} = this.state;
 
       return(

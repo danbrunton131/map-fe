@@ -96,21 +96,10 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
   }
 
-/* fake link css for courses to match mcmaster styling for <a>*/
-.fake-link {
-  color: #7d0040;
-/*  text-decoration: underline;*/
-  cursor: pointer;
-  }
-    
-div.fake-link:hover {
-  color: #222;
-  }
 
 /* Could add a large right margin to the first course-link element
    so the bottom border doesn't touch the cart number bubble overflow-x: */
 .course-link {
-  width: %100;
   font-size: 20px;
   padding: 5px 5px 10px 5px;
   margin: 5px 5px 15px 5px;
