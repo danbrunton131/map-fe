@@ -13,7 +13,7 @@ const generateProgramResults = (programResults, chartRefs) => {
                 'Satisfied',
                 'Unsatisfied'
             ],
-            datasets: [{
+            datasets: [{ 
                 data: [program.programPercentage, 1-program.programPercentage],
                 backgroundColor: [
                 greenHex,
@@ -27,10 +27,32 @@ const generateProgramResults = (programResults, chartRefs) => {
                 ]
             }]
         };
+        // Converting pie values to percentages: https://bit.ly/3eFMKfn
+        const option = {
+            tooltips: {
+              callbacks: {
+                label: function(tooltipItem, data) {
+                  var dataset = data.datasets[tooltipItem.datasetIndex];
+                  var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                  var total = meta.total;
+                  var currentValue = dataset.data[tooltipItem.index];
+                  var percentage = parseFloat((currentValue/total*100).toFixed(1));
+                  return percentage + '%';
+                },
+                title: function(tooltipItem, data) {
+                  return data.labels[tooltipItem[0].index];
+                }
+            }
+        }
+    }
+        const completePercentage = chartData.datasets[0].data[0];
+        console.log((completePercentage*100).toFixed(2))
+        const incompletePercentage = chartData.datasets[0].data[1];
+        console.log(completePercentage, incompletePercentage);
         return (
             <React.Fragment key={index}>
                 <Container>
-                    <div className="program-result">
+                    <div className="program-result" aria-label={`Results for ${program.programName}`} tabIndex={0}>  
                         <Row>
                         <Col sm={12} md={8}>
                             <div className="description">
@@ -40,7 +62,7 @@ const generateProgramResults = (programResults, chartRefs) => {
                             </div>
                         </Col>
                         <Col sm={12} md={4}>
-                            <Pie ref={chartRefs[index]} data={chartData} width={100} height={100} />
+                            <Pie ref={chartRefs[index]} data={chartData} options={option}width={100} height={100} />
                         </Col>
                         </Row>
                     </div>
