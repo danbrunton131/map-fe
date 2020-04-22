@@ -31,6 +31,8 @@ export default class Course extends React.Component {
               id={course.courseID}
               name={course.courseCode}
               aria-label={course.courseCode}
+              onKeyPress={(e) => e.key === "Enter" && this.toggleOpen()}
+              onClick={() => this.toggleOpen()}
           >
           {course.courseCode} 
           </span>
