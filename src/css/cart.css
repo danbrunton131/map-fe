@@ -61,7 +61,7 @@
 }
 
 #lblCartCount {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   border-radius: 50%;
   color: black;
   /* background-color: var(--dark-grey); */
@@ -74,7 +74,7 @@
   /* center footer/button at bottom-center of container*/
   .cart-footer {
     position: absolute;
-    bottom: 2px;
+    bottom: 5px;
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
@@ -139,6 +139,6 @@
 
 .cart .course-container {
   flex-flow: column;
-  margin-bottom: 48px; /* spacing for footer */
+  margin-bottom: 53px; /* spacing for footer */
 }
 
