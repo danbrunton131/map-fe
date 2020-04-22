@@ -1,3 +1,4 @@
+import '../css/results.css';
 import React from 'react';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';

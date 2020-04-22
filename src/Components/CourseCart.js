@@ -37,7 +37,7 @@ export default class CourseCart extends React.Component {
                         }
                   </div>        
                   <div className="cart-footer px-2">
-                      <button className="btn btn-primary" onClick={this.props.submitCourses} aria-label="Submit your courses">Submit</button>
+                      <button className="btn btn-primary" onClick={this.props.submitCourses} aria-label="View program results based on courses added to your cart">Submit</button>
                   </div>  
 
                 </div>

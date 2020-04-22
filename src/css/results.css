@@ -1,0 +1,8 @@
+.modal-body {
+    height: 100vmin;
+    overflow-y: scroll;
+}
+
+.modal-content {
+    max-height: calc(100vh - 3.5rem); /*fitting modal on display: margin of modal is 1.75 on top and bottom, so we multiply that by 2*/
+}
