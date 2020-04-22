@@ -9,6 +9,7 @@
 /* Modal in mobile view should fit display */
 @media (max-width: 768px) {
     .modal-content {
-        min-height: -webkit-fill-available; /* 100vh doesn't cover full page on mobile, so we set a min height to for modal to fit screen */
+        max-height: calc(100vh - 1.75rem); /* fitting modal on display: margin of modal is 1.75 on top and bottom, so we multiply that by 2*/
+
     }
   }
