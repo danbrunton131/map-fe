@@ -45,14 +45,13 @@ const generateProgramResults = (programResults, chartRefs) => {
             }
         }
     }
-        const completePercentage = chartData.datasets[0].data[0];
-        console.log((completePercentage*100).toFixed(2))
-        const incompletePercentage = chartData.datasets[0].data[1];
-        console.log(completePercentage, incompletePercentage);
+        const completePercentage = parseFloat((chartData.datasets[0].data[0]*100).toFixed(1));
+        // const incompletePercentage = parseFloat((chartData.datasets[0].data[1]*100).toFixed(1));
+
         return (
             <React.Fragment key={index}>
                 <Container>
-                    <div className="program-result" aria-label={`Results for ${program.programName}`} tabIndex={0}>  
+                    <div className="program-result" aria-label={`${program.programName} is ${completePercentage}% complete`} tabIndex={0}>  
                         <Row>
                         <Col sm={12} md={8}>
                             <div className="description">
