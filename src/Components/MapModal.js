@@ -71,18 +71,22 @@ const generateProgramResults = (programResults) => {
     });
 }
 
+
+/* Sort programResults, largest percentage first */
+export const sortProgramResults = (programResults) => {
+    return programResults.sort((a, b) => {
+        return b.programPercentage - a.programPercentage;
+    });
+}
+
 export default class ExampleApp extends React.Component {
     constructor (props) {
         super(props);
+        this.state = {
+            sortedProgramResults: sortProgramResults(this.props.programResults),
+        }
+
         this.handleCloseModal = this.handleCloseModal.bind(this);
-
-    }
-
-    /* Sort programResults, largest percentage first */
-    sortProgramResults() {
-        this.props.programResults.sort((a, b) => {
-            return b.programPercentage - a.programPercentage;
-        });
     }
   
     handleCloseModal () {
@@ -90,7 +94,7 @@ export default class ExampleApp extends React.Component {
     }
     
     render () {
-        const {programResults} = this.props;
+        const {sortedProgramResults} = this.state;
         return (
             <Modal
                 show={true} 
@@ -103,8 +107,8 @@ export default class ExampleApp extends React.Component {
                 </Modal.Header>
                 <Modal.Body id="modal-body">
                     {/* Program Result Component */}
-                    {Object.keys(programResults).length > 0 &&
-                        generateProgramResults(programResults)}
+                    {Object.keys(sortedProgramResults).length > 0 &&
+                        generateProgramResults(sortedProgramResults)}
                 </Modal.Body>
                 <Modal.Footer id="modal-footer">
                     <Button variant="btn btn-primary" onClick={this.handleCloseModal}>
