@@ -22,7 +22,7 @@ export default class Course extends React.Component {
     render() {
       const {course, addCourseToCart, removeCourseFromCart} = this.props;
       const {isOpen} = this.state;
-      console.log(course);
+      
       return(
         <div className="course-item" aria-label={`${course.courseCode}`}>
           {/* Course Code */}

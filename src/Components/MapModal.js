@@ -3,7 +3,7 @@ import React from 'react';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 
-const generateProgramResults = (programResults, chartRefs) => {
+const generateProgramResults = (programResults) => {
     return programResults.map((program, index) => {
         const greenHex = "#4dac26"; //colorblind safe "green/good"
         const redHex = "#d01c8b"; //colorblind safe "red/bad"
@@ -61,7 +61,7 @@ const generateProgramResults = (programResults, chartRefs) => {
                             </div>
                         </Col>
                         <Col sm={12} md={4}>
-                            <Pie ref={chartRefs[index]} data={chartData} options={option}width={100} height={100}/>
+                            <Pie data={chartData} options={option}width={100} height={100}/>
                         </Col>
                         </Row>
                     </div>
@@ -104,7 +104,7 @@ export default class ExampleApp extends React.Component {
                 <Modal.Body id="modal-body">
                     {/* Program Result Component */}
                     {Object.keys(programResults).length > 0 &&
-                        generateProgramResults(programResults, this.chartRefs)}
+                        generateProgramResults(programResults)}
                 </Modal.Body>
                 <Modal.Footer id="modal-footer">
                     <Button variant="btn btn-primary" onClick={this.handleCloseModal}>
