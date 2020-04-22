@@ -93,7 +93,7 @@ export default class ExampleApp extends React.Component {
                 onHide={this.handleCloseModal}
             >
                 <Modal.Header id="modal-header" closeButton>
-                    <Modal.Title id="modal-title">Results</Modal.Title>
+                    <Modal.Title id="modal-title">Program Results</Modal.Title>
                 </Modal.Header>
                 <Modal.Body id="modal-body">
                     {/* Program Result Component */}
