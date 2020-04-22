@@ -46,12 +46,12 @@ const generateProgramResults = (programResults, chartRefs) => {
         }
     }
         const completePercentage = parseFloat((chartData.datasets[0].data[0]*100).toFixed(1));
-        // const incompletePercentage = parseFloat((chartData.datasets[0].data[1]*100).toFixed(1));
+        const incompletePercentage = parseFloat((chartData.datasets[0].data[1]*100).toFixed(1));
 
         return (
             <React.Fragment key={index}>
                 <Container>
-                    <div className="program-result" aria-label={`${program.programName} is ${completePercentage}% complete`} tabIndex={0}>  
+                    <div className="program-result" aria-label={`${program.programName} is ${completePercentage}% complete and ${incompletePercentage}% incomplete`} tabIndex={0}>  
                         <Row>
                         <Col sm={12} md={8}>
                             <div className="description">
@@ -61,7 +61,7 @@ const generateProgramResults = (programResults, chartRefs) => {
                             </div>
                         </Col>
                         <Col sm={12} md={4}>
-                            <Pie ref={chartRefs[index]} data={chartData} options={option}width={100} height={100} />
+                            <Pie ref={chartRefs[index]} data={chartData} options={option}width={100} height={100}/>
                         </Col>
                         </Row>
                     </div>
