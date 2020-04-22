@@ -4,8 +4,8 @@ import {Pie} from 'react-chartjs-2';
 
 const generateProgramResults = (programResults, chartRefs) => {
     return programResults.map((program, index) => {
-        const greenHex = "#00DD00";
-        const redHex = "#DD0000";
+        const greenHex = "#4dac26"; //colorblind safe "green/good"
+        const redHex = "#d01c8b"; //colorblind safe "red/bad"
         const backgroundHex = "#FFCE56";
         const chartData = {
             labels: [
