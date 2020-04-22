@@ -76,10 +76,6 @@ export default class ExampleApp extends React.Component {
         super(props);
         this.handleCloseModal = this.handleCloseModal.bind(this);
 
-        this.chartRefs = [];
-
-        this.chartRef1 = React.createRef();
-        this.chartRef2 = React.createRef();
     }
 
     /* Sort programResults, largest percentage first */
@@ -87,17 +83,6 @@ export default class ExampleApp extends React.Component {
         this.props.programResults.sort((a, b) => {
             return b.programPercentage - a.programPercentage;
         });
-    }
-
-    /* Create a react reference to each chart */
-    /* Might not need this */
-    generateChartRefsArray() {
-        this.sortProgramResults();
-
-        this.props.programResults.map((program, index) => {
-            this.chartRefs[index] = new React.createRef();
-        });
-        return true;
     }
   
     handleCloseModal () {
@@ -118,7 +103,7 @@ export default class ExampleApp extends React.Component {
                 </Modal.Header>
                 <Modal.Body id="modal-body">
                     {/* Program Result Component */}
-                    {Object.keys(programResults).length > 0 && this.generateChartRefsArray() &&
+                    {Object.keys(programResults).length > 0 &&
                         generateProgramResults(programResults, this.chartRefs)}
                 </Modal.Body>
                 <Modal.Footer id="modal-footer">
