@@ -63,8 +63,10 @@ export default class SearchBar extends React.Component {
     // Allow user to submit search via the enter button
     enterToSubmit(e){
       if(e.key === "Enter"){
-          this.submitSearch();
-      }
+        this.setState(
+          { searching: true }, // if user exited searchbar and wants to reenter without updating the existing test, we enable searching here
+          this.submitSearch()); 
+        }
       return false;
     }
 
