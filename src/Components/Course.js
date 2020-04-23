@@ -27,6 +27,7 @@ export default class Course extends React.Component {
         <div className="course-item" aria-label={`${course.courseCode}`}>
           {/* Course Code */}
           <span
+              className="course-code"
               tabIndex={0}
               id={course.courseID}
               name={course.courseCode}

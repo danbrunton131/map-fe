@@ -39,8 +39,12 @@
     padding: 5px 5px 5px 5px;
     width: 50%;
     align-self: flex-start;  
-    cursor: pointer;
     }
+
+  /* show clickability for course text only*/ 
+  .course-code {
+    cursor: pointer;
+  }
 
   /* mobile view should have 1 item per row */
   @media (max-width: 768px) {
