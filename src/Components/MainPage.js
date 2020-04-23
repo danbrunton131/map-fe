@@ -79,17 +79,20 @@ export default class MainPage extends React.Component {
     addCourseToCart(courseId){
         const {selectedCourses, allCourses, selectedSeason} = this.state;
         const newCourseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === courseId);
-       
-        let updatedAllCourses = allCourses;
-        // mark course as selected so it cannot be added to cart twice
-        updatedAllCourses[selectedSeason][newCourseIndex].selected = true;
-        // track the semester of the course for deletion of courses. (allCourses is organzed by season)
-        updatedAllCourses[selectedSeason][newCourseIndex].season = selectedSeason; 
 
-        this.setState({
-            selectedCourses: [...selectedCourses, allCourses[selectedSeason][newCourseIndex]],
-            allCourses: updatedAllCourses
-        });
+        // verify the course isn't already selected. This is needed for "searchbar" to not add courses multiple times. 
+        if (!allCourses[selectedSeason][newCourseIndex].selected){
+          let updatedAllCourses = allCourses;
+          // mark course as selected so it cannot be added to cart twice
+          updatedAllCourses[selectedSeason][newCourseIndex].selected = true;
+          // track the semester of the course for deletion of courses. (allCourses is organzed by season)
+          updatedAllCourses[selectedSeason][newCourseIndex].season = selectedSeason; 
+
+          this.setState({
+              selectedCourses: [...selectedCourses, allCourses[selectedSeason][newCourseIndex]],
+              allCourses: updatedAllCourses
+          });
+        }
     }
 
     removeCourseFromCart(courseId, season){

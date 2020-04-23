@@ -6,7 +6,7 @@ import Course from './Course';
 
 const generateSearchResults = (selectedCourses, addCourseToCart) => {
   return selectedCourses.map((course, index) => {
-    return ( <Course key={`${course.courseID}`} course={course} addCourseToCart={addCourseToCart}/> );
+    return ( <Course key={`search-${course.courseID}`} course={course} addCourseToCart={addCourseToCart}/> );
   })
 }
 
