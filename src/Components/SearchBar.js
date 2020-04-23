@@ -6,7 +6,7 @@ import Course from './Course';
 
 const generateSearchResults = (selectedCourses, addCourseToCart) => {
   return selectedCourses.map((course, index) => {
-    return ( <Course key={course.courseID} course={course} addCourseToCart={addCourseToCart}/> );
+    return ( <Course key={`search-${course.courseID}`} course={course} addCourseToCart={addCourseToCart}/> );
   })
 }
 
@@ -29,7 +29,6 @@ export default class SearchBar extends React.Component {
     submitSearch() {
       const {searchTerm} = this.state;
       searchForCourse({searchTerm}).then(res => {
-      console.log(res)
       this.setState({results: res.data.results});
       })
       .catch((err) => {
@@ -38,7 +37,6 @@ export default class SearchBar extends React.Component {
   }
 
     updateSearchForm(e) {
-      console.log(e.target.value);
       this.setState({searchTerm: e.target.value});
     }
 

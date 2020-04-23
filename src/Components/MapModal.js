@@ -28,7 +28,8 @@ const generateProgramResults = (programResults) => {
             }]
         };
         // Converting pie values to percentages: https://bit.ly/3eFMKfn
-        const option = {
+        const options = {
+            legend: {position: 'left'},
             tooltips: {
               callbacks: {
                 label: function(tooltipItem, data) {
@@ -61,7 +62,7 @@ const generateProgramResults = (programResults) => {
                             </div>
                         </Col>
                         <Col sm={12} md={4}>
-                            <Pie data={chartData} options={option}width={100} height={100}/>
+                            <Pie data={chartData} options={options}width={100} height={100}/>
                         </Col>
                         </Row>
                     </div>
