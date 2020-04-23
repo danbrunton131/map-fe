@@ -30,27 +30,28 @@ export default class SearchBar extends React.Component {
     
     submitSearch() {
       const {searchTerm} = this.state;
-      searchForCourse({searchTerm}).then(res => {
-        // console.log(res);
-        if (res.data.error && res.data.error === "long query"){
-          this.setState({message: "Your request was too long", results: []});
-        } else if (res.data.results && res.data.results.length === 0){
-          this.setState({message: "No results found", results: []});
-        } else {
-          this.setState({results: res.data.results , message:""});
-        }
-      }).catch((err) => {
-        console.log("AXIOS ERROR: ", err);
-    });
+
+      this.setState({searching: true}, 
+        () => searchForCourse({searchTerm}).then(res => {
+          console.log(res);
+          if (res.data.error && res.data.error === "long query"){
+            this.setState({message: "Your request was too long", results: []});
+          } else if (res.data.results && res.data.results.length === 0){
+            this.setState({message: "No results found", results: []});
+          } else {
+            this.setState({results: res.data.results , message:""});
+          }
+        }).catch((err) => {
+          console.log("AXIOS ERROR: ", err);
+        })
+      );
   }
 
     updateSearchForm(e) {
       this.setState(
-        {
-          searchTerm: e.target.value,
-          searching: true,
-        }, 
-        this.submitSearch()); // Live Searching - submit after updating search term
+        { searchTerm: e.target.value}, 
+        this.submitSearch() // Live Searching - submit after updating search term
+      ); 
     }
 
     handleClickOutside(e){
@@ -63,10 +64,8 @@ export default class SearchBar extends React.Component {
     // Allow user to submit search via the enter button
     enterToSubmit(e){
       if(e.key === "Enter"){
-        this.setState(
-          { searching: true }, // if user exited searchbar and wants to reenter without updating the existing test, we enable searching here
-          this.submitSearch()); 
-        }
+          this.submitSearch(); 
+      }
       return false;
     }
 
