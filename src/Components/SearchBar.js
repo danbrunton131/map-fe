@@ -48,7 +48,7 @@ export default class SearchBar extends React.Component {
     }
 
     handleClickOutside(e){
-      if (this.node.contains(e.target)) {
+      if (this.searchBox.contains(e.target)) {
         return;
       }
       this.setState({results: []});
@@ -65,9 +65,9 @@ export default class SearchBar extends React.Component {
     render() {
       const {searchTerm, results, message} = this.state;
       return(
-        <div className="search-bar" ref={node => { this.node = node; }}>
+        <div className="search-bar">
             <h2> Search </h2>
-            <InputGroup size="md" className="mb-3">
+            <InputGroup size="md" className="mb-3" ref={searchBox => { this.searchBox = searchBox; }}>
                 <FormControl
                  type="text"
                  className="search-input"
