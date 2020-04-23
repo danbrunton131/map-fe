@@ -18,6 +18,7 @@ export default class SearchBar extends React.Component {
         searchTerm: '',
         results: [],
         message: '',
+        searching: false,
       };
       this.submitSearch = this.submitSearch.bind(this);
       this.updateSearchForm = this.updateSearchForm.bind(this);
@@ -32,11 +33,11 @@ export default class SearchBar extends React.Component {
       searchForCourse({searchTerm}).then(res => {
         // console.log(res);
         if (res.data.error && res.data.error === "long query"){
-          this.setState({message: "Your request was too long"});
+          this.setState({message: "Your request was too long", results: []});
         } else if (res.data.results && res.data.results.length === 0){
-          this.setState({message: "No results found"});
+          this.setState({message: "No results found", results: []});
         } else {
-          this.setState({results: res.data.results});
+          this.setState({results: res.data.results , message:""});
         }
       }).catch((err) => {
         console.log("AXIOS ERROR: ", err);
@@ -44,14 +45,19 @@ export default class SearchBar extends React.Component {
   }
 
     updateSearchForm(e) {
-      this.setState({searchTerm: e.target.value});
+      this.setState(
+        {
+          searchTerm: e.target.value,
+          searching: true,
+        }, 
+        this.submitSearch()); // Live Searching - submit after updating search term
     }
 
     handleClickOutside(e){
       if (this.searchBox.contains(e.target)) {
         return;
       }
-      this.setState({results: []});
+      this.setState({results: [], message: "", searching: false});
     }
 
     // Allow user to submit search via the enter button
@@ -63,7 +69,7 @@ export default class SearchBar extends React.Component {
     }
 
     render() {
-      const {searchTerm, results, message} = this.state;
+      const {searchTerm, results, message, searching} = this.state;
       return(
         <div className="search-bar">
             <h2> Search </h2>
@@ -80,11 +86,10 @@ export default class SearchBar extends React.Component {
                 <InputGroup.Append>
                     <button className="btn btn-secondary btn-search" onClick={this.submitSearch}></button>
                 </InputGroup.Append>
-                { (results.length > 0 || message !== "") && 
+                { searching && 
                   <div className="search-results-container">
                     <div className="search-results">
-                    {results.length > 0 && generateSearchResults(results, this.props.addCourseToCart)}
-                    {message && message}
+                    {results.length > 0 ? generateSearchResults(results, this.props.addCourseToCart) : message}
                     </div>
                   </div>
                 } 
