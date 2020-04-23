@@ -6,7 +6,7 @@
 .search-results-container {
     position: relative;
     width: 100%;
-    margin: 0px 15px 0px 15px;
+    margin: 0px 20px 0px 20px;
 }
 
 .search-results {
@@ -14,7 +14,7 @@
     height: fit-content;
     background-color: white;
     position: absolute;
-    z-index: 2;
+    z-index: 2; /* search results appear over content underneath */
 
     padding: 5px;
     display: flex;
@@ -32,3 +32,8 @@
     width:100%;
 }
 
+/* when search button isn't the last element in an input group, it's border disappears unless we force it here */
+.btn .btn-secondary .btn-search {
+    border-top-right-radius: 24px !important;
+    border-bottom-right-radius: 24px !important;
+}

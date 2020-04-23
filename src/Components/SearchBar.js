@@ -20,14 +20,17 @@ export default class SearchBar extends React.Component {
       };
       this.submitSearch = this.submitSearch.bind(this);
       this.updateSearchForm = this.updateSearchForm.bind(this);
+      this.handleClickOutside = this.handleClickOutside.bind(this);
     }
 
+    componentDidMount() { document.addEventListener("click", this.handleClickOutside, false); }
+    componentDidUnmount() { document.removeEventListener("click", this.handleClickOutside, false); }
+    
     submitSearch() {
       const {searchTerm} = this.state;
       searchForCourse({searchTerm}).then(res => {
-        console.log(res)
+      console.log(res)
       this.setState({results: res.data.results});
-      // console.log(allCourses);
       })
       .catch((err) => {
         console.log("AXIOS ERROR: ", err);
@@ -39,11 +42,22 @@ export default class SearchBar extends React.Component {
       this.setState({searchTerm: e.target.value});
     }
 
+    handleClickOutside(){
+      this.setState({results: []});
+    }
+
+    // Allow user to submit search via the enter button
+    enterToSubmit(e){
+      if(e.key === "Enter"){
+          this.submitSearch();
+      }
+      return false;
+    }
 
     render() {
       const {searchTerm, results} = this.state;
       return(
-        <React.Fragment>
+        <div className="search-bar">
             <h2> Search </h2>
             <InputGroup size="md" className="mb-3">
                 <FormControl
@@ -53,20 +67,21 @@ export default class SearchBar extends React.Component {
                  defaultValue={searchTerm} 
                  onChange={this.updateSearchForm}
                  aria-labelledby="Search for a course"
+                 onKeyPress={this.enterToSubmit.bind(this)}
                 />
                 <InputGroup.Append>
                     <button className="btn btn-secondary btn-search" onClick={this.submitSearch}></button>
                 </InputGroup.Append>
-                {
-                  results.length > 0 && 
-                    <div className="search-results-container">
+                { results.length > 0 && 
+                  <div className="search-results-container">
                     <div className="search-results">
                       {generateSearchResults(results, this.props.addCourseToCart)}
-                  </div> </div>
+                    </div> 
+                  </div>
                 }
 
             </InputGroup>
-    </React.Fragment>
+      </div>
 );
     }
   }
