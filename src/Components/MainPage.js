@@ -80,7 +80,7 @@ export default class MainPage extends React.Component {
         const {selectedCourses, allCourses, selectedSeason} = this.state;
         const newCourseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === courseId);
 
-        // verify the course isn't already selected. This is needed for "searchbar" to not add courses multiple times. 
+        // verify the course isn't already selected. This is needed for "searchbar" to not add courses multiple times, because the search results doesn't know about current selected courses. 
         if (!allCourses[selectedSeason][newCourseIndex].selected){
           let updatedAllCourses = allCourses;
           // mark course as selected so it cannot be added to cart twice
