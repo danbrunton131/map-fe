@@ -37,3 +37,6 @@
     border-top-right-radius: 24px !important;
     border-bottom-right-radius: 24px !important;
 }
+btn-search.disabled{
+    color:yellow;
+}
