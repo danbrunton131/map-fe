@@ -6,7 +6,7 @@ import Course from './Course';
 
 const generateSearchResults = (selectedCourses, addCourseToCart) => {
   return selectedCourses.map((course, index) => {
-    return ( <Course key={`search-${course.courseID}`} course={course} addCourseToCart={addCourseToCart}/> );
+    return ( <Course key={`${course.courseID}`} course={course} addCourseToCart={addCourseToCart}/> );
   })
 }
 
@@ -17,6 +17,7 @@ export default class SearchBar extends React.Component {
       this.state = {
         searchTerm: '',
         results: [],
+        message: '',
       };
       this.submitSearch = this.submitSearch.bind(this);
       this.updateSearchForm = this.updateSearchForm.bind(this);
@@ -29,9 +30,15 @@ export default class SearchBar extends React.Component {
     submitSearch() {
       const {searchTerm} = this.state;
       searchForCourse({searchTerm}).then(res => {
-      this.setState({results: res.data.results});
-      })
-      .catch((err) => {
+        // console.log(res);
+        if (res.data.error && res.data.error === "long query"){
+          this.setState({message: "Your request was too long"});
+        } else if (res.data.results && res.data.results.length === 0){
+          this.setState({message: "No results found"});
+        } else {
+          this.setState({results: res.data.results});
+        }
+      }).catch((err) => {
         console.log("AXIOS ERROR: ", err);
     });
   }
@@ -56,7 +63,7 @@ export default class SearchBar extends React.Component {
     }
 
     render() {
-      const {searchTerm, results} = this.state;
+      const {searchTerm, results, message} = this.state;
       return(
         <div className="search-bar" ref={node => { this.node = node; }}>
             <h2> Search </h2>
@@ -73,13 +80,14 @@ export default class SearchBar extends React.Component {
                 <InputGroup.Append>
                     <button className="btn btn-secondary btn-search" onClick={this.submitSearch}></button>
                 </InputGroup.Append>
-                { results.length > 0 && 
+                { (results.length > 0 || message !== "") && 
                   <div className="search-results-container">
                     <div className="search-results">
-                      {generateSearchResults(results, this.props.addCourseToCart)}
-                    </div> 
+                    {results.length > 0 && generateSearchResults(results, this.props.addCourseToCart)}
+                    {message && message}
+                    </div>
                   </div>
-                }
+                } 
 
             </InputGroup>
       </div>
