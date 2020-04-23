@@ -42,7 +42,10 @@ export default class SearchBar extends React.Component {
       this.setState({searchTerm: e.target.value});
     }
 
-    handleClickOutside(){
+    handleClickOutside(e){
+      if (this.node.contains(e.target)) {
+        return;
+      }
       this.setState({results: []});
     }
 
@@ -57,7 +60,7 @@ export default class SearchBar extends React.Component {
     render() {
       const {searchTerm, results} = this.state;
       return(
-        <div className="search-bar">
+        <div className="search-bar" ref={node => { this.node = node; }}>
             <h2> Search </h2>
             <InputGroup size="md" className="mb-3">
                 <FormControl

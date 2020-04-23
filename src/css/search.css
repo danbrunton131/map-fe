@@ -33,7 +33,7 @@
 }
 
 /* when search button isn't the last element in an input group, it's border disappears unless we force it here */
-.btn .btn-secondary .btn-search {
+.btn.btn-secondary.btn-search {
     border-top-right-radius: 24px !important;
     border-bottom-right-radius: 24px !important;
 }
