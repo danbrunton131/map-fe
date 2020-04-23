@@ -24,7 +24,7 @@ export default class SearchBar extends React.Component {
     }
 
     componentDidMount() { document.addEventListener("click", this.handleClickOutside, false); }
-    componentDidUnmount() { document.removeEventListener("click", this.handleClickOutside, false); }
+    componentWillUnmount() { document.removeEventListener("click", this.handleClickOutside, false); }
     
     submitSearch() {
       const {searchTerm} = this.state;
