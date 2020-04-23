@@ -4,9 +4,9 @@ import { InputGroup, FormControl } from 'react-bootstrap';
 import {searchForCourse} from '../api/courses-api';
 import Course from './Course';
 
-const generateSearchResults = (selectedCourses) => {
+const generateSearchResults = (selectedCourses, addCourseToCart) => {
   return selectedCourses.map((course, index) => {
-    return ( <Course key={course.courseID} course={course} /> );
+    return ( <Course key={course.courseID} course={course} addCourseToCart={addCourseToCart}/> );
   })
 }
 
@@ -42,7 +42,6 @@ export default class SearchBar extends React.Component {
 
     render() {
       const {searchTerm, results} = this.state;
-
       return(
         <React.Fragment>
             <h2> Search </h2>
@@ -58,9 +57,13 @@ export default class SearchBar extends React.Component {
                 <InputGroup.Append>
                     <button className="btn btn-secondary btn-search" onClick={this.submitSearch}></button>
                 </InputGroup.Append>
-                <div className="search-results-container">
-                  {results.length > 0 && generateSearchResults(results)}
-                </div>
+                {
+                  results.length > 0 && 
+                    <div className="search-results-container">
+                    <div className="search-results">
+                      {generateSearchResults(results, this.props.addCourseToCart)}
+                  </div> </div>
+                }
 
             </InputGroup>
     </React.Fragment>

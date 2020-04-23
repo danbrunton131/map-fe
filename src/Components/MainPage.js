@@ -125,7 +125,7 @@ export default class MainPage extends React.Component {
             <Row>
               <Col sm={12} md={9}>
                 <section aria-label="Search Bar"/>
-                <SearchBar/>
+                <SearchBar addCourseToCart={this.addCourseToCart}/>
               </Col>
             </Row>
             <Row>
