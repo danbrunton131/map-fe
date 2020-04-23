@@ -29,7 +29,10 @@ const generateProgramResults = (programResults) => {
         };
         // Converting pie values to percentages: https://bit.ly/3eFMKfn
         const options = {
-            legend: {position: 'left'},
+            legend: {
+                position: 'left', 
+                onClick: (e) => e.stopPropagation(),
+            },
             tooltips: {
               callbacks: {
                 label: function(tooltipItem, data) {
