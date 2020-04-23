@@ -29,27 +29,31 @@ export default class SearchBar extends React.Component {
     componentWillUnmount() { document.removeEventListener("click", this.handleClickOutside, false); }
     
     submitSearch() {
-      const {searchTerm} = this.state;
-
+      const {searchTerm, isValid} = this.state;
       this.setState({searching: true}, 
-        () => searchForCourse({searchTerm}).then(res => {
-          console.log(res);
-          if (res.data.error && res.data.error === "long query"){
-            this.setState({message: "Your request was too long", results: []});
-          } else if (res.data.results && res.data.results.length === 0){
-            this.setState({message: "No results found", results: []});
-          } else {
-            this.setState({results: res.data.results , message:""});
-          }
-        }).catch((err) => {
-          console.log("AXIOS ERROR: ", err);
-        })
-      );
+        () => {
+            if (isValid) {
+              searchForCourse({searchTerm}).then(res => {
+                console.log(res);
+                if (res.data.error && res.data.error === "long query"){
+                  this.setState({message: "Your request was too long", results: []});
+                } else if (res.data.results && res.data.results.length === 0){
+                  this.setState({message: "No results found", results: []});
+                } else {
+                  this.setState({results: res.data.results , message:""});
+                }
+              }).catch((err) => {
+                console.log("AXIOS ERROR: ", err);
+              })
+          }});
   }
 
     updateSearchForm(e) {
       this.setState(
-        { searchTerm: e.target.value}, 
+        { 
+          searchTerm: e.target.value,
+          isValid: e.target.value.length > 0 && e.target.value.length <= 30,
+        }, 
         this.submitSearch() // Live Searching - submit after updating search term
       ); 
     }
@@ -70,7 +74,8 @@ export default class SearchBar extends React.Component {
     }
 
     render() {
-      const {searchTerm, results, message, searching} = this.state;
+      const {searchTerm, results, message, searching, isValid} = this.state;
+      console.log(isValid);
       return(
         <div className="search-bar">
             <h2> Search </h2>
@@ -83,11 +88,15 @@ export default class SearchBar extends React.Component {
                  onChange={this.updateSearchForm}
                  aria-labelledby="Search for a course"
                  onKeyPress={this.enterToSubmit.bind(this)}
-                />
+                //  isInvalid={searching && !isValid}
+                >
+                </FormControl>
                 <InputGroup.Append>
                     <button className="btn btn-secondary btn-search" onClick={this.submitSearch}></button>
                 </InputGroup.Append>
-                { searching && 
+                { !isValid && searching && <FormControl.Feedback type="invalid">Your search must be between 0 and 31 characters</FormControl.Feedback>}
+
+                { isValid && searching && 
                   <div className="search-results-container">
                     <div className="search-results">
                     {results.length > 0 ? generateSearchResults(results, this.props.addCourseToCart) : message}
