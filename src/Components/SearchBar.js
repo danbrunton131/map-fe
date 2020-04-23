@@ -2,6 +2,13 @@ import '../css/search.css';
 import React from 'react';
 import { InputGroup, FormControl } from 'react-bootstrap';
 import {searchForCourse} from '../api/courses-api';
+import Course from './Course';
+
+const generateSearchResults = (selectedCourses) => {
+  return selectedCourses.map((course, index) => {
+    return ( <Course key={course.courseID} course={course} /> );
+  })
+}
 
 
 export default class SearchBar extends React.Component {
@@ -9,6 +16,7 @@ export default class SearchBar extends React.Component {
       super(props);
       this.state = {
         searchTerm: '',
+        results: [],
       };
       this.submitSearch = this.submitSearch.bind(this);
       this.updateSearchForm = this.updateSearchForm.bind(this);
@@ -18,7 +26,7 @@ export default class SearchBar extends React.Component {
       const {searchTerm} = this.state;
       searchForCourse({searchTerm}).then(res => {
         console.log(res)
-      // this.setState({allCourses});
+      this.setState({results: res.data.results});
       // console.log(allCourses);
       })
       .catch((err) => {
@@ -33,7 +41,7 @@ export default class SearchBar extends React.Component {
 
 
     render() {
-      const {searchTerm} = this.state;
+      const {searchTerm, results} = this.state;
 
       return(
         <React.Fragment>
@@ -50,6 +58,10 @@ export default class SearchBar extends React.Component {
                 <InputGroup.Append>
                     <button className="btn btn-secondary btn-search" onClick={this.submitSearch}></button>
                 </InputGroup.Append>
+                <div className="search-results-container">
+                  {results.length > 0 && generateSearchResults(results)}
+                </div>
+
             </InputGroup>
     </React.Fragment>
 );
