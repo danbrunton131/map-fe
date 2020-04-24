@@ -2,13 +2,10 @@ import '../css/results.css';
 import React from 'react';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
-import { faAngleDown, faAngleUp, faPlusCircle, faShoppingCart, faMinusCircle} from '@fortawesome/free-solid-svg-icons';
-import SmoothCollapse from 'react-smooth-collapse';
 
 
 
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
-    console.log(fulfilledCourses);
     return (
         <ul>
             {requirements.map((requirement, index) => {
@@ -17,8 +14,6 @@ const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
         </ul>
         );
 }
-
-
 
 const genProgramResults = (programResults) => {
     return programResults.map((program, index) => {
@@ -68,7 +63,6 @@ const genProgramResults = (programResults) => {
     }
         const completePercentage = parseFloat((chartData.datasets[0].data[0]*100).toFixed(1));
         const incompletePercentage = parseFloat((chartData.datasets[0].data[1]*100).toFixed(1));
-        console.log(program.programRequirements);
         return (
             <React.Fragment key={index}>
                 <Container>

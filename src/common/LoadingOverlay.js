@@ -4,13 +4,6 @@ import { Ring } from 'react-spinners-css';
 
 
 export default class LoadingOverlay extends React.Component {
-    constructor(props) {
-      super(props);
-      console.log('hit!');
-      this.state = {
-      };
-    }
-
 
     render() {
       

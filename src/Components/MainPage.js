@@ -5,8 +5,14 @@ import CourseSelection from './CourseSelection';
 import MapModal from './MapModal';
 import SearchBar from './SearchBar';
 import LoadingOverlay from '../common/LoadingOverlay';
+import ErrorMessage from '../common/ErrorMessage';
 
 import {fetchAllCourses, submitSelection} from '../api/courses-api';
+
+// time is used as a key to handle subsequent "identical" errors
+const getCurrentTime = () =>{
+  return(new Date());
+}
 
 export const getTermCourseList = (termCoursesByProgram) => {
   let allTermCourses = [];
@@ -28,7 +34,7 @@ export default class MainPage extends React.Component {
             programResults:[], // results once student submits
             modalShown: false,
             selectedSeason:"fall", // current season from CourseSelection
-            courseErrorMessage: "",
+            error: null,
             isLoadingResults: false,
           };
 
@@ -93,8 +99,9 @@ export default class MainPage extends React.Component {
       });
       // Show an error if newCourse is already in Cart
       } else {
-        this.setState({courseErrorMessage: `${newCourse.courseCode} is already in Cart!`});
-      }
+        const error = {message: `${newCourse.courseCode} is already in Cart!`, timeout: 5000};
+        this.setState({error});
+    }
   }
 
     addCourseToCart(newCourse){
@@ -115,7 +122,8 @@ export default class MainPage extends React.Component {
               allCourses: updatedAllCourses
           });
         } else {
-          this.setState({courseErrorMessage: `${newCourse.courseCode} is already in Cart!`});
+          const error = {message: `${newCourse.courseCode} is already in Cart!`, timeout: 5000};
+          this.setState({error});
         }
     }
 
@@ -159,26 +167,19 @@ export default class MainPage extends React.Component {
         this.setState({ modalShown: false});
     }
 
-    disableCourseErrorMessage(){
-      this.setState({courseErrorMessage: ""});
-    }  
 
     render() {
-        const {allCourses, selectedCourses, programResults, courseErrorMessage} = this.state;
+        const {allCourses, selectedCourses, programResults, error} = this.state;
         // console.log(selectedCourses);
         return(
             <div className="container-fluid">
-              <Alert 
-                role="alert" 
-                className="sticky-message course-alert" 
-                show={courseErrorMessage} 
-                variant="warning" 
-                onClose={this.disableCourseErrorMessage.bind(this)} 
-                dismissible 
-                transition={null}
-              >
-                <Alert.Heading className="course-alert-heading">{courseErrorMessage}</Alert.Heading>
-              </Alert>
+            {error &&
+              <ErrorMessage 
+                key={getCurrentTime()} // time is used as a key to handle subsequent "identical" errors
+                timeout={error.timeout}
+                message={error.message}
+              />
+            }
               <Row>
                 <Col sm={12} md={9}>
                   <section aria-label="Search Bar"/>
