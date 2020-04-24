@@ -3,11 +3,13 @@ import React from 'react';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 
-const genProgramRequirements = (requirements) =>{
+const genProgramRequirements = (programRequirements, programId) => {
+    const {fulfilledCourses, requirements} = programRequirements;
+    console.log(fulfilledCourses);
     return (
         <ul>
             {requirements.map((requirement, index) => {
-                return ( <li>{requirement}</li> );})
+                return ( <li key={`${programId}-${index}`}>{requirement}</li> );})
             }
         </ul>
         );
@@ -72,8 +74,8 @@ const genProgramResults = (programResults) => {
                         <Col sm={12} md={8}>
                             <div className="description">
                                 <h2>{program.programName}</h2>
-                                <p>{program.programDescription}</p>
-                                {genProgramRequirements(program.programRequirements.requirements)}
+                                <p>{`Lorem Ipsum ${program.programDescription}`}</p>
+                                {genProgramRequirements(program.programRequirements, program.programId)}
                                 <p>Add clickability to expand each entry to show unmet requirements.</p>
                             </div>
                         </Col>
