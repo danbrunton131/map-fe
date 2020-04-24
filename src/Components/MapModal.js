@@ -2,13 +2,8 @@ import '../css/results.css';
 import React from 'react';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
-import { faAngleDown, faAngleUp, faPlusCircle, faShoppingCart, faMinusCircle} from '@fortawesome/free-solid-svg-icons';
-import SmoothCollapse from 'react-smooth-collapse';
-
-
 
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
-    console.log(fulfilledCourses);
     return (
         <ul>
             {requirements.map((requirement, index) => {
@@ -18,12 +13,10 @@ const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
         );
 }
 
-
-
 const genProgramResults = (programResults) => {
     return programResults.map((program, index) => {
-        const greenHex = "#4dac26"; //colorblind safe "green/good"
-        const redHex = "#d01c8b"; //colorblind safe "red/bad"
+        const greenHex = "#4dac26"; // satisfied color
+        const greyHex = "#dbdbdd"; // unsatisfied
         const backgroundHex = "#FFCE56";
         const chartData = {
             labels: [
@@ -34,12 +27,12 @@ const genProgramResults = (programResults) => {
                 data: [program.programPercentage, 1-program.programPercentage],
                 backgroundColor: [
                 greenHex,
-                redHex,
+                greyHex,
                 backgroundHex
                 ],
                 hoverBackgroundColor: [
                 greenHex,
-                redHex,
+                greyHex,
                 backgroundHex
                 ]
             }]
@@ -68,7 +61,6 @@ const genProgramResults = (programResults) => {
     }
         const completePercentage = parseFloat((chartData.datasets[0].data[0]*100).toFixed(1));
         const incompletePercentage = parseFloat((chartData.datasets[0].data[1]*100).toFixed(1));
-        console.log(program.programRequirements);
         return (
             <React.Fragment key={index}>
                 <Container>

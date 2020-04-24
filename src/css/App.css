@@ -97,7 +97,7 @@ button.close:hover {
   top: 0;
   z-index: 4; /*should be the highest in the app*/
 }
-.course-alert-heading {
+.alert-heading {
   margin-bottom: 0;
   margin-top: 0;
 }
@@ -108,7 +108,7 @@ button.close:hover {
   color: var(--dark-maroon);
 }
 
-.course-alert {
+.map-alert {
   background-color: var(--gold);
   border-color: var(--maroon);
 }
