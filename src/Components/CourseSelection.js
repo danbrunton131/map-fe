@@ -1,58 +1,11 @@
 import '../css/course-selection.css';
 import React from 'react';
 import { Tab, Nav, Col, Row} from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import Course from './Course';
 
 const generateCourseList = (allCourses, addCourseToCart) => {
     return allCourses.map((course, index) => {
-
-      return ( <Course key={course.courseID} course={course} addCourseToCart={addCourseToCart} /> );
-
-      return (
-        <React.Fragment key={course.courseID}>
-          <Col sm={12} md={4} className={"course-item"}>
-            <span
-                tabIndex={0}
-                className={"fake-link"}
-                id={course.courseID}
-                name={course.name}
-                onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
-                onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
-            >
-            {course.courseCode} 
-            </span>
-            {/*Add clickability to expand course to show info about course*/}
-            {/*onKeyPress={(e) => e.key === "Enter" && showCourseInfo(course.courseID)}
-            onClick={() => showCourseInfo(course.courseID)}*/}
-            <div
-                tabIndex={0}
-                className="float-right"
-                //onClick={() => toggleOpen(!isOpen)}
-            >
-              <FontAwesomeIcon icon={faAngleDown} size="xs" />
-            </div>
-          </Col>
-        </React.Fragment>
-      )
-
-      return (
-          <React.Fragment key={course.courseID}>
-            <span
-                tabIndex={0}
-                className={"fake-link"}
-                id={course.courseID}
-                name={course.name}
-                onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
-                onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
-            > 
-            {course.courseCode} 
-            </span> 
-            <br/>
-        </React.Fragment>
-      );
+      return ( <Course style={{display: "inline-block"}} key={course.courseID} course={course} addCourseToCart={addCourseToCart} /> );
     })
   }
 
@@ -94,14 +47,14 @@ const generateCourseList = (allCourses, addCourseToCart) => {
                   </div>
                   <Tab.Content>
                     <Tab.Pane className="tab-pane" eventKey={currentSeason}>
-                      <Row className="course-container">
+                      <div className="course-container">
                         {/* show loading text until course list loads. */}
                         { !allCourses[currentSeason] ? <div> Loading... </div> :
                           allCourses[currentSeason].length > 0 ?
                             generateCourseList(allCourses[currentSeason], addCourseToCart) 
                           : <div> There are no courses available for this Term.</div>
                         }
-                      </Row>
+                      </div>
                     </Tab.Pane>
                   </Tab.Content>
               </Tab.Container>

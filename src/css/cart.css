@@ -1,28 +1,25 @@
-.course-cart-container{
+.course-cart{
     height:100%;
   }
 
 /* Lines up cart component with course selection component*/
-.course-cart-container h2{
+.course-cart h2{
   margin-bottom: 2px;
 }
   
   .cart{
-    height: 600px;
+    min-height: 35.7vh;
     background: #fff;
     position: relative;
-/*    border-style: solid;
-    border-radius: 5px;
-    border-width: 2px;
-    border-color: var(--maroon);*/
-/*    padding: 5px 5px 5px 5px;*/
+    overflow: auto; /* keeps cart-footer at bottom */
     box-shadow: 5px 0px 18px #888888;
 
     /* Top border to match the mcmaster styling */
-    border-top: 6px solid #fdbf57;
+    border-top: 6px solid var(--gold);
   }
 
-  .cart-content-number {
+  .cart-symbol {
+    cursor:pointer; /* clicking cart symbol scrolls to cart*/
     color: white;
     float: right;
     background-color: var(--maroon);
@@ -31,6 +28,8 @@
     margin-top: 5px;
     margin-right: 5px;
     border-radius: 50%;
+    z-index: 3; /*appears over everything on the display, except sticky alert message */
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,26 +37,47 @@
     font-weight: 900;
     font-size: 3rem;
 
-    box-shadow: 0 0 0 0 #888888;
+    box-shadow: 0 0 5px 3px #888888;
   }
 
-/* Position at bottom right of the screen in mobile*/
+  
+  /* On larger screens, display cart icon on top right of cart */
+  @media (min-width: 768px) {
+  .cart-symbol {
+    position: absolute;
+    right: -3px;
+    top: -26px;
+  }
+}
+
+/* Position Cart at bottom right of the screen in mobile*/
 @media (max-width: 768px) {
-  .cart-content-number {
+  .cart-symbol {
     position: fixed;
     bottom: 5px;
     right: 5px;
     margin: 0;
-
-    box-shadow: 0 0 5px 3px #888888;
   }
 }
 
-  .submit-button{
-    display: flex;
-    justify-content: center;
+#lblCartCount {
+  font-size: 1.3rem;
+  border-radius: 50%;
+  color: black;
+  /* background-color: var(--dark-grey); */
+  padding: 1px 1px 1px 1px;
+  position: absolute; 
+  margin: -3.6px 0px 0px 3px;
+  /* top:10px; */
+}
+
+  /* center footer/button at bottom-center of container*/
+  .cart-footer {
     position: absolute;
     bottom: 5px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
   }
 
   /* Resolves classing css between bootstrap and mcmaster css*/
@@ -73,21 +93,10 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
   }
 
-/* fake link css for courses to match mcmaster styling for <a>*/
-.fake-link {
-  color: #7d0040;
-/*  text-decoration: underline;*/
-  cursor: pointer;
-  }
-    
-div.fake-link:hover {
-  color: #222;
-  }
 
 /* Could add a large right margin to the first course-link element
    so the bottom border doesn't touch the cart number bubble overflow-x: */
 .course-link {
-  width: %100;
   font-size: 20px;
   padding: 5px 5px 10px 5px;
   margin: 5px 5px 15px 5px;
@@ -118,3 +127,18 @@ div.fake-link:hover {
 .cart-minus:hover {
   background-color: #d4d4d4;
 }
+
+.course-actions .in-cart {
+  color: var(--bw-blue);
+  cursor: initial;
+}
+
+.cart .course-item {
+  width: 100%;
+}
+
+.cart .course-container {
+  flex-flow: column;
+  margin-bottom: 53px; /* spacing for footer */
+}
+

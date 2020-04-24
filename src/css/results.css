@@ -1,0 +1,14 @@
+.modal-body {
+    overflow-y: scroll;
+}
+
+.modal-content {
+    max-height: calc(100vh - 3.5rem); /* fitting modal on display: margin of modal is 1.75 on top and bottom, so we multiply that by 2*/
+}
+
+/* Modal in mobile view should fit display */
+@media (max-width: 768px) {
+    .modal-content {
+        min-height: -webkit-fill-available; /* 100vh doesn't cover full page on mobile, so we set a min height to for modal to fit screen */
+    }
+  }

@@ -17,6 +17,10 @@ function fetchCourse(data) {
     return axios.get(`${BASE_URL}/api/GetCourseDetails?courseid=${data.courseId}/`, data, axiosConfig);
 }
 
+function searchForCourse(data) {
+    return axios.get(`${BASE_URL}/api/Search?q=${data.searchTerm}`, data, axiosConfig);
+}
+
 
 // expected data: { "selections": [ 1234567, 0101010, 5564732, 1238921 ] }
 function submitSelection(data) {
@@ -27,4 +31,5 @@ export {
     fetchAllCourses,
     fetchCourse,
     submitSelection,
+    searchForCourse,
 };

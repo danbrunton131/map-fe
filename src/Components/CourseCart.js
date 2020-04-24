@@ -1,71 +1,69 @@
 import '../css/cart.css';
-import React from 'react';
-import {Col, Row, Tabs, Tab, Button} from 'react-bootstrap';
+import React, {createRef} from 'react';
+import Course from './Course';
+import {InputGroup, FormControl, Col, Row, Tabs, Tab, Button} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMinus } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
-const generateCourse = (course, index) => {
-  return (
-    <React.Fragment>
-      {/*add onClick to display information about the course*/}
-      <span
-          className={"course-text align-middle"}
-          id={course.courseID}
-          name={course.name}
-      > 
-      {course.courseCode} 
-      </span>
-      <br/>
-    </React.Fragment>
-  );
-}
 
 const generateCourseList = (selectedCourses, removeCourseFromCart) => {
-    return selectedCourses.map((course, index) => {
-      return (
-          <React.Fragment key={course.courseID}>
-            <div className={"course-link fake-link"}>
-              {generateCourse(course, index)}
-              {/*TODO make this button accessible*/}
-              <div 
-                tabIndex={0}
-                className="cart-minus align-middle align-center"
-                onKeyPress={(e) => e.key === "Enter" && removeCourseFromCart(course.courseID)}
-                onClick={() => removeCourseFromCart(course.courseID, course.season)}
-              >
-                <FontAwesomeIcon icon={faMinus} size="xs" />
-              </div>
-            </div>
-        </React.Fragment>
-      );
-    })
-  }
+  return selectedCourses.map((course, index) => {
+    return ( <Course key={course.courseID} course={course} removeCourseFromCart={removeCourseFromCart} /> );
+  })
+}
 
 export default class CourseCart extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {color: "red"};
+      this.state= {
+        isCartValid: null,
+      }
+      this.scrollToCart = createRef();
+      this.onSubmitCourses = this.onSubmitCourses.bind(this);
     }
 
-
+    onSubmitCourses(){
+      const {selectedCourses} = this.props;
+      const isCartValid = selectedCourses.length > 0 && selectedCourses.length < 16;
+      if (isCartValid){
+        this.setState({isCartValid: true}, 
+          this.props.submitCourses()
+        );
+      } else {
+        this.setState({isCartValid: false});
+      }    
+    }
 
     render() {
         const {selectedCourses,removeCourseFromCart} = this.props;
+        const {isCartValid} = this.state;
+
         return(
-            <div className="course-cart-container">
-
-                <h2> Cart </h2>
-                
-                <div className="cart">
-                  <span className="cart-content-number text-center"><span className="align-middle">{selectedCourses.length}</span></span>
-                  {selectedCourses && generateCourseList(selectedCourses,removeCourseFromCart)}
-
-                  <div className="submit-button w-100 px-2">
-                    <button className="btn btn-primary" onClick={this.props.submitCourses}>Submit</button>
-                  </div>
+            <div className="course-cart">
+                <div className="cart-header">
+                  <h2 ref={this.scrollToCart}> Cart </h2>
+                    <span className="cart-symbol" onClick={() => {this.scrollToCart.current.scrollIntoView({ behavior: 'smooth' });}} tabIndex={0} aria-label={`There are ${selectedCourses.length} courses in your cart`}>
+                        <FontAwesomeIcon icon={faShoppingCart} size="xs"/><div className="disable-select" id="lblCartCount">{selectedCourses.length}</div>
+                    </span>
                 </div>
+
+                <div className="cart">
+                  <div className="course-container">
+                    { selectedCourses && 
+                          selectedCourses.length > 0 ?
+                              generateCourseList(selectedCourses, removeCourseFromCart) 
+                            : <div> Add a course from Course Selection for it to appear here.</div>
+                        }
+                  </div>        
+                  <div className="cart-footer px-2">
+                      <button className="btn btn-primary" onClick={this.onSubmitCourses} aria-label="View program results based on courses added to your cart">Submit</button>
+                  </div>  
+                </div>
+                { isCartValid === false && <FormControl.Feedback type="invalid" role="alert">You must add between 0 and 16 courses to your cart. </FormControl.Feedback> }
+
             </div>
         );
+        
     }
   }
   
