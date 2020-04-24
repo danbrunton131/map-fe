@@ -95,11 +95,11 @@ export default class SearchBar extends React.Component {
                  onChange={this.updateSearchForm}
                  aria-labelledby="Search for a course"
                  onKeyPress={this.enterToSubmit.bind(this)}
-                 isInvalid={isSearchValid===false}
+                 isInvalid={searching && isSearchValid===false}
                 >
                 </FormControl>
                 <InputGroup.Append>
-                    <button className="btn btn-secondary btn-search" disabled={isSearchValid===false} onClick={this.validateAndSubmitSearch}></button>
+                    <button className="btn btn-secondary btn-search" disabled={searching && isSearchValid===false} onClick={this.validateAndSubmitSearch}></button>
                 </InputGroup.Append>
                   {searching && 
                     <React.Fragment>
