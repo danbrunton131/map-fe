@@ -3,7 +3,6 @@ import React from 'react';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 
-
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
     return (
         <ul>
@@ -16,8 +15,8 @@ const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
 
 const genProgramResults = (programResults) => {
     return programResults.map((program, index) => {
-        const greenHex = "#4dac26"; //colorblind safe "green/good"
-        const redHex = "#d01c8b"; //colorblind safe "red/bad"
+        const greenHex = "#4dac26"; // satisfied color
+        const greyHex = "#dbdbdd"; // unsatisfied
         const backgroundHex = "#FFCE56";
         const chartData = {
             labels: [
@@ -28,12 +27,12 @@ const genProgramResults = (programResults) => {
                 data: [program.programPercentage, 1-program.programPercentage],
                 backgroundColor: [
                 greenHex,
-                redHex,
+                greyHex,
                 backgroundHex
                 ],
                 hoverBackgroundColor: [
                 greenHex,
-                redHex,
+                greyHex,
                 backgroundHex
                 ]
             }]
