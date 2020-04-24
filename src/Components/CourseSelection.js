@@ -4,9 +4,28 @@ import { Tab, Nav, Col, Row} from 'react-bootstrap';
 import Course from './Course';
 
 const generateCourseList = (allCourses, addCourseToCart) => {
-    return allCourses.map((course, index) => {
+    // divide list in two and return two columns
+    const half_length = Math.ceil(allCourses.length / 2);
+    const leftSide = allCourses.slice(0, half_length);
+    const rightSide = allCourses.slice(half_length);
+
+    return (
+      <div className="course-col-container">
+        <div className="course-col">
+          { generateCourseCol(leftSide, addCourseToCart) }
+        </div>
+
+        <div className="course-col">
+          { generateCourseCol(rightSide, addCourseToCart) }
+        </div>
+      </div>
+    );
+  }
+
+  const generateCourseCol = (courseList, addCourseToCart) => {
+    return courseList.map((course, index) => {
       return ( <Course style={{display: "inline-block"}} key={course.courseID} course={course} addCourseToCart={addCourseToCart} /> );
-    })
+    });
   }
 
   export default class CourseSelection extends React.Component {
