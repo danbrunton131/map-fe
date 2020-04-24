@@ -9,7 +9,7 @@ import ErrorMessage from '../common/ErrorMessage';
 
 import {fetchAllCourses, submitSelection} from '../api/courses-api';
 
-// time is used as a key to handle subsequent "identical" errors
+// time is used as a key to handle subsequent "identical" messages
 const getCurrentTime = () =>{
   return(new Date());
 }
@@ -99,7 +99,7 @@ export default class MainPage extends React.Component {
       });
       // Show an error if newCourse is already in Cart
       } else {
-        const error = {message: `${newCourse.courseCode} is already in Cart!`, timeout: 5000};
+        const error = {message: `${newCourse.courseCode} is already in Cart!`, timeout: 5000, key: getCurrentTime()};
         this.setState({error});
     }
   }
@@ -122,7 +122,7 @@ export default class MainPage extends React.Component {
               allCourses: updatedAllCourses
           });
         } else {
-          const error = {message: `${newCourse.courseCode} is already in Cart!`, timeout: 5000};
+          const error = {message: `${newCourse.courseCode} is already in Cart!`, timeout: 5000, key: getCurrentTime()};
           this.setState({error});
         }
     }
@@ -167,14 +167,14 @@ export default class MainPage extends React.Component {
         this.setState({ modalShown: false});
     }
 
-
     render() {
         const {allCourses, selectedCourses, programResults, error} = this.state;
+        // console.log(selectedCourses);
         return(
             <div className="container-fluid">
             {error &&
               <ErrorMessage 
-                key={getCurrentTime()} // time is used as a key to handle subsequent "identical" errors
+                key={error.key} // this is used as a key to handle subsequent "identical" messages
                 timeout={error.timeout}
                 message={error.message}
               />

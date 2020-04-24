@@ -4,6 +4,8 @@ import {Alert} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 export default class ErrorMessage extends React.Component {
+    _isMounted = false; /* used to prevent state changes on unmounted ErrorMessages */
+
     constructor(props) {
       super(props);
       this.state = {
@@ -14,9 +16,15 @@ export default class ErrorMessage extends React.Component {
     }
 
     componentDidMount(){
+        this._isMounted = true;
+
         if (this.props.timeout){
             this.setTimeout();
         }
+    }
+
+    componentWillUnmount(){
+        this._isMounted = false;
     }
 
     //disable alert once time runs out	
@@ -24,30 +32,32 @@ export default class ErrorMessage extends React.Component {
         const {timeout} = this.props;
 
         window.setTimeout(()=>{	
-            this.closeError();
+            this.closeError()
         }, timeout);	
     }	   
 
     closeError(){
-        this.setState({shown: false});
+        if (this._isMounted){
+            this.setState({shown: false});
+        }
     }  
   
 
     render() {
         const {message} = this.props; 
         const {shown} = this.state;
-      return(
-        <Alert 
-            className="sticky-message map-alert" 
-            role="alert" 
-            show={shown} 
-            variant="warning" 
-            onClose={this.closeError} 
-            dismissible 
-            transition={null}
-      >
-        <Alert.Heading className="alert-heading">{message}</Alert.Heading>
-      </Alert>
+        return(
+            <Alert 
+                className="sticky-message map-alert" 
+                role="alert" 
+                variant="warning" 
+                show={shown}
+                onClose={this.closeError} 
+                dismissible 
+                transition={null}
+            >
+                <Alert.Heading className="alert-heading">{message}</Alert.Heading>
+            </Alert>
         );
     }
   }
@@ -58,6 +68,6 @@ export default class ErrorMessage extends React.Component {
   }
   
   ErrorMessage.defaultProps = {
-    timeout: 5000, // 5000 ms default timeout
+    timeout: 5000, // 5 seconds is the default timeout
   };
   

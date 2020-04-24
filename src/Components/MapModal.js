@@ -4,7 +4,6 @@ import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 
 
-
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
     return (
         <ul>
