@@ -3,7 +3,19 @@ import React from 'react';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 
-const generateProgramResults = (programResults) => {
+const genProgramRequirements = (requirements) =>{
+    return (
+        <ul>
+            {requirements.map((requirement, index) => {
+                return ( <li>{requirement}</li> );})
+            }
+        </ul>
+        );
+}
+
+
+
+const genProgramResults = (programResults) => {
     return programResults.map((program, index) => {
         const greenHex = "#4dac26"; //colorblind safe "green/good"
         const redHex = "#d01c8b"; //colorblind safe "red/bad"
@@ -30,7 +42,7 @@ const generateProgramResults = (programResults) => {
         // Converting pie values to percentages: https://bit.ly/3eFMKfn
         const options = {
             legend: {
-                position: 'left', 
+                // position: 'left', 
                 onClick: (e) => e.stopPropagation(),
             },
             tooltips: {
@@ -51,7 +63,7 @@ const generateProgramResults = (programResults) => {
     }
         const completePercentage = parseFloat((chartData.datasets[0].data[0]*100).toFixed(1));
         const incompletePercentage = parseFloat((chartData.datasets[0].data[1]*100).toFixed(1));
-
+        console.log(program.programRequirements);
         return (
             <React.Fragment key={index}>
                 <Container>
@@ -61,6 +73,7 @@ const generateProgramResults = (programResults) => {
                             <div className="description">
                                 <h2>{program.programName}</h2>
                                 <p>{program.programDescription}</p>
+                                {genProgramRequirements(program.programRequirements.requirements)}
                                 <p>Add clickability to expand each entry to show unmet requirements.</p>
                             </div>
                         </Col>
@@ -112,7 +125,7 @@ export default class ExampleApp extends React.Component {
                 <Modal.Body id="modal-body">
                     {/* Program Result Component */}
                     {Object.keys(sortedProgramResults).length > 0 &&
-                        generateProgramResults(sortedProgramResults)}
+                        genProgramResults(sortedProgramResults)}
                 </Modal.Body>
                 <Modal.Footer id="modal-footer">
                     <Button variant="btn btn-primary" onClick={this.handleCloseModal}>
