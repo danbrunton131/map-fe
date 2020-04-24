@@ -164,8 +164,16 @@ export default class MainPage extends React.Component {
         // console.log(selectedCourses);
         return(
             <div className="container-fluid">
-            <Alert role="alert" className="sticky-message" show={courseErrorMessage} variant="warning" onClose={this.disableCourseErrorMessage.bind(this)} dismissible >
-              <Alert.Heading>{courseErrorMessage}</Alert.Heading>
+            <Alert 
+              role="alert" 
+              className="sticky-message course-alert" 
+              show={courseErrorMessage} 
+              variant="warning" 
+              onClose={this.disableCourseErrorMessage.bind(this)} 
+              dismissible 
+              transition={null}
+            >
+              <Alert.Heading className="course-alert-heading">{courseErrorMessage}</Alert.Heading>
             </Alert>
             <Row>
               <Col sm={12} md={9}>
