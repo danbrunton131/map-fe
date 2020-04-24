@@ -131,4 +131,5 @@ button.close:hover {
   top: 50%;
   color: var(--maroon);
   transform: translate(-50%,0);
+  position: inherit;
 }

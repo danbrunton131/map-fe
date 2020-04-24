@@ -68,7 +68,7 @@ export default class MainPage extends React.Component {
       }
       this.setState({isLoadingResults: true}, 
         () => submitSelection({selections: courseIdList}).then(res => {
-          this.setState({programResults: res.data.matchedPrograms, isLoadingResults: false});
+          this.setState({programResults: res.data.matchedPrograms,});
           this.showModal();
         })
         .catch((err) => {
