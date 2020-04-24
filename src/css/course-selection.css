@@ -37,7 +37,7 @@
   .course-item {
     border-bottom: 1px solid #d4d4d4;
     padding: 5px 5px 5px 5px;
-    width: 50%;
+    width: 100%;
     align-self: flex-start;  
     }
 
@@ -46,10 +46,23 @@
     cursor: pointer;
   }
 
-  /* mobile view should have 1 item per row */
+  .course-col-container {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    flex-flow: row wrap;
+    align-content: center;
+  }
+
+  .course-col {
+    width: 50%;
+    align-self: flex-start;  
+  }
+
+  /* mobile view should have 1 col */
   @media (max-width: 768px) {
-    .course-item {
-      width:100%;
+    .course-col {
+      width: 100%;
     }
   }
 
