@@ -74,24 +74,23 @@ const genProgramResults = (programResults) => {
                 <Container>
                     <div className="program-result" aria-label={`${program.programName} is ${completePercentage}% complete and ${incompletePercentage}% incomplete`} tabIndex={0}>  
                         <Row>
-                        <Col sm={12} md={8}>
-                            <div className="description">
-                                <h2>{program.programName}</h2>
-                                <p>{`Lorem Ipsum ${program.programDescription}`}</p>
-                                <p>Add clickability to expand each entry to show unmet requirements.</p>
-                                <div className="description-textbox">
-                                    <p tabIndex={0}>
-                                        <strong> Requirements </strong>
-                                        {genProgramRequirements(program.programRequirements.requirements, program.fulfilledCourses, program.programId)}
-                                    </p>
+                            <Col sm={12} md={8}>
+                                <div className="description">
+                                    <h2>{program.programName}</h2>
+                                    <p>{`Lorem Ipsum ${program.programDescription}`}</p>
+                                    <div className="description-textbox">
+                                        <p tabIndex={0}>
+                                            <strong> Requirements </strong>
+                                            {genProgramRequirements(program.programRequirements.requirements, program.fulfilledCourses, program.programId)}
+                                        </p>
+                                    </div>
+
+
                                 </div>
-
-
-                            </div>
-                        </Col>
-                        <Col sm={12} md={4}>
-                            <Pie data={chartData} options={options}width={100} height={100}/>
-                        </Col>
+                            </Col>
+                            <Col sm={12} md={4}>
+                                <Pie data={chartData} options={options}width={100} height={100}/>
+                            </Col>
                         </Row>
                     </div>
                 </Container>
