@@ -109,7 +109,7 @@ export default class SearchBar extends React.Component {
                             {results.length > 0 ? generateSearchResults(results, this.props.addCourseToCart) : errorMessage}
                           </div>
                         </div>
-                        : <FormControl.Feedback type="invalid">Your search must be between 0 and 31 characters</FormControl.Feedback> 
+                        : <FormControl.Feedback type="invalid" role="alert">Your search must be between 0 and 31 characters</FormControl.Feedback> 
                       }
                     </React.Fragment> 
                   }

@@ -160,6 +160,7 @@ export default class MainPage extends React.Component {
       this.setState({courseErrorMessage: ""});
     }
 
+    //show course alerts for 5 seconds, then auto-close
     showCourseAlert = (message)=>{
       this.setState({courseErrorMessage: message},()=>{
         window.setTimeout(()=>{
@@ -174,7 +175,7 @@ export default class MainPage extends React.Component {
         // console.log(selectedCourses);
         return(
             <div className="container-fluid">
-            <Alert className="sticky-message" show={courseErrorMessage} variant="warning" onClose={this.disableCourseErrorMessage.bind(this)} dismissible >
+            <Alert role="alert" className="sticky-message" show={courseErrorMessage} variant="warning" onClose={this.disableCourseErrorMessage.bind(this)} dismissible >
               <Alert.Heading>{courseErrorMessage}</Alert.Heading>
             </Alert>
             <Row>
