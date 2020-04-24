@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 export default class ErrorMessage extends React.Component {
     constructor(props) {
       super(props);
-      console.log('hit!');
       this.state = {
           shown: true,
       };
@@ -37,7 +36,6 @@ export default class ErrorMessage extends React.Component {
     render() {
         const {message} = this.props; 
         const {shown} = this.state;
-        console.log(this.props.timeout);
       return(
         <Alert 
             className="sticky-message map-alert" 

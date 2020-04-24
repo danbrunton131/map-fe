@@ -170,7 +170,6 @@ export default class MainPage extends React.Component {
 
     render() {
         const {allCourses, selectedCourses, programResults, error} = this.state;
-        // console.log(selectedCourses);
         return(
             <div className="container-fluid">
             {error &&
