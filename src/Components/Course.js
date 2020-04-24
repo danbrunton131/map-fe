@@ -99,7 +99,7 @@ export default class Course extends React.Component {
           </div>
 
           {/* Course Description */}
-          <SmoothCollapse expanded={isOpen} className="course-description">
+          <SmoothCollapse expanded={isOpen} className="description-textbox">
             <p tabIndex={0}>
             <strong>{course.courseName} </strong>
             {course.courseDesc}

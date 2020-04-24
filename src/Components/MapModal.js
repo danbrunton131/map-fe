@@ -2,9 +2,12 @@ import '../css/results.css';
 import React from 'react';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
+import { faAngleDown, faAngleUp, faPlusCircle, faShoppingCart, faMinusCircle} from '@fortawesome/free-solid-svg-icons';
+import SmoothCollapse from 'react-smooth-collapse';
 
-const genProgramRequirements = (programRequirements, programId) => {
-    const {fulfilledCourses, requirements} = programRequirements;
+
+
+const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
     console.log(fulfilledCourses);
     return (
         <ul>
@@ -75,8 +78,15 @@ const genProgramResults = (programResults) => {
                             <div className="description">
                                 <h2>{program.programName}</h2>
                                 <p>{`Lorem Ipsum ${program.programDescription}`}</p>
-                                {genProgramRequirements(program.programRequirements, program.programId)}
                                 <p>Add clickability to expand each entry to show unmet requirements.</p>
+                                <div className="description-textbox">
+                                    <p tabIndex={0}>
+                                        <strong> Requirements </strong>
+                                        {genProgramRequirements(program.programRequirements.requirements, program.fulfilledCourses, program.programId)}
+                                    </p>
+                                </div>
+
+
                             </div>
                         </Col>
                         <Col sm={12} md={4}>
