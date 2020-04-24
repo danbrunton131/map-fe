@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Row} from 'react-bootstrap';
+import {Col, Row, Alert} from 'react-bootstrap';
 import CourseCart from './CourseCart';
 import CourseSelection from './CourseSelection';
 import MapModal from './MapModal';
@@ -25,8 +25,9 @@ export default class MainPage extends React.Component {
             selectedCourses:[], // courses shown in cart
             programResults:[], // results once student submits
             modalShown: false,
-            selectedSeason:"fall" // current season from CourseSelection
-            };
+            selectedSeason:"fall", // current season from CourseSelection
+            courseErrorMessage: "",
+          };
 
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
@@ -35,6 +36,7 @@ export default class MainPage extends React.Component {
         this.removeCourseFromCart = this.removeCourseFromCart.bind(this);
         this.onSeasonChange = this.onSeasonChange.bind(this);
         this.submitCourses = this.submitCourses.bind(this);
+        this.showCourseAlert = this.showCourseAlert.bind(this);
     }
 
     //add springSummer once BE accounts for the same group
@@ -88,8 +90,7 @@ export default class MainPage extends React.Component {
       });
       // Show an error if newCourse is already in Cart
       } else {
-        newCourse.errorMessage = "Already in Cart!";
-        console.log("Already in Cart!");
+        this.showCourseAlert(`${newCourse.courseCode} is already in Cart!`);
       }
   }
 
@@ -111,7 +112,7 @@ export default class MainPage extends React.Component {
               allCourses: updatedAllCourses
           });
         } else {
-          console.log("Already in Cart!");
+          this.showCourseAlert(`${newCourse.courseCode} is already in Cart!`);
         }
     }
 
@@ -155,11 +156,27 @@ export default class MainPage extends React.Component {
         this.setState({ modalShown: false});
     }
 
+    disableCourseErrorMessage(){
+      this.setState({courseErrorMessage: ""});
+    }
+
+    showCourseAlert = (message)=>{
+      this.setState({courseErrorMessage: message},()=>{
+        window.setTimeout(()=>{
+          this.disableCourseErrorMessage();
+        },5000)
+      });
+    }
+  
+
     render() {
-        const {allCourses, selectedCourses, programResults} = this.state;
-        console.log(selectedCourses);
+        const {allCourses, selectedCourses, programResults, courseErrorMessage} = this.state;
+        // console.log(selectedCourses);
         return(
             <div className="container-fluid">
+            <Alert className="sticky-message" show={courseErrorMessage} variant="warning" onClose={this.disableCourseErrorMessage.bind(this)} dismissible >
+              <Alert.Heading>{courseErrorMessage}</Alert.Heading>
+            </Alert>
             <Row>
               <Col sm={12} md={9}>
                 <section aria-label="Search Bar"/>

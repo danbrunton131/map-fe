@@ -28,7 +28,7 @@
     margin-top: 5px;
     margin-right: 5px;
     border-radius: 50%;
-    z-index: 3; /*appears over everything on the display */
+    z-index: 3; /*appears over everything on the display, except sticky alert message */
 
     display: flex;
     justify-content: center;

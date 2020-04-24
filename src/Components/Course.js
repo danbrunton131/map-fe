@@ -25,7 +25,6 @@ export default class Course extends React.Component {
       
       return(
         <div className="course-item" aria-label={`${course.courseCode}`}>
-        <text> {course.errorMessage} </text>
           {/* Course Code */}
           <span
               className="course-code"
