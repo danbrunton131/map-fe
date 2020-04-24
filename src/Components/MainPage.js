@@ -36,7 +36,6 @@ export default class MainPage extends React.Component {
         this.removeCourseFromCart = this.removeCourseFromCart.bind(this);
         this.onSeasonChange = this.onSeasonChange.bind(this);
         this.submitCourses = this.submitCourses.bind(this);
-        this.showCourseAlert = this.showCourseAlert.bind(this);
     }
 
     //add springSummer once BE accounts for the same group
@@ -90,7 +89,7 @@ export default class MainPage extends React.Component {
       });
       // Show an error if newCourse is already in Cart
       } else {
-        this.showCourseAlert(`${newCourse.courseCode} is already in Cart!`);
+        this.setState({courseErrorMessage: `${newCourse.courseCode} is already in Cart!`});
       }
   }
 
@@ -112,7 +111,7 @@ export default class MainPage extends React.Component {
               allCourses: updatedAllCourses
           });
         } else {
-          this.showCourseAlert(`${newCourse.courseCode} is already in Cart!`);
+          this.setState({courseErrorMessage: `${newCourse.courseCode} is already in Cart!`});
         }
     }
 
@@ -158,17 +157,7 @@ export default class MainPage extends React.Component {
 
     disableCourseErrorMessage(){
       this.setState({courseErrorMessage: ""});
-    }
-
-    //show course alerts for 5 seconds, then auto-close
-    showCourseAlert = (message)=>{
-      this.setState({courseErrorMessage: message},()=>{
-        window.setTimeout(()=>{
-          this.disableCourseErrorMessage();
-        },5000)
-      });
-    }
-  
+    }  
 
     render() {
         const {allCourses, selectedCourses, programResults, courseErrorMessage} = this.state;
