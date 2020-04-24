@@ -78,25 +78,28 @@ export default class MainPage extends React.Component {
       }
   
     addSearchedCourseToCart(newCourse) {
-      const {selectedCourses, allCourses} = this.state;
+      const {selectedCourses} = this.state;
 
-      // if not in cart, add
+      // If newCourse is not already in Cart, add it to Cart
       const cartIndex = selectedCourses.findIndex(selectedCourse => selectedCourse.courseID === newCourse.courseID);
       if (cartIndex === -1) {
         this.setState({
-          selectedCourses: [...selectedCourses, newCourse],
+          selectedCourses: [...selectedCourses, {...newCourse, season: "searched"}],
       });
+      // Show an error if newCourse is already in Cart
+      } else {
+        newCourse.errorMessage = "Already in Cart!";
+        console.log("Already in Cart!");
       }
   }
 
-
-
     addCourseToCart(newCourse){
         const {selectedCourses, allCourses, selectedSeason} = this.state;
-        const newCourseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === newCourse.courseID);
 
-        // verify the course isn't already selected. This is needed for "searchbar" to not add courses multiple times, because the search results doesn't know about current selected courses. 
-        if (!allCourses[selectedSeason][newCourseIndex].selected){
+      // verify the course isn't already added to cart through another season or through the search bar . 
+      const cartIndex = selectedCourses.findIndex(selectedCourse => selectedCourse.courseID === newCourse.courseID);
+      if (cartIndex === -1) {
+        const newCourseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === newCourse.courseID);
           let updatedAllCourses = allCourses;
           // mark course as selected so it cannot be added to cart twice
           updatedAllCourses[selectedSeason][newCourseIndex].selected = true;
@@ -107,25 +110,41 @@ export default class MainPage extends React.Component {
               selectedCourses: [...selectedCourses, allCourses[selectedSeason][newCourseIndex]],
               allCourses: updatedAllCourses
           });
+        } else {
+          console.log("Already in Cart!");
         }
     }
 
     removeCourseFromCart(courseId, season){
-        const {allCourses, selectedCourses, selectedSeason} = this.state;
-        const courseIndex = allCourses[season].findIndex(course => course.courseID === courseId);
+        const {allCourses, selectedCourses} = this.state;
 
-        // deselect course when removing it from cart
-        let updatedAllCourses = allCourses;
-        updatedAllCourses[season][courseIndex].selected = false;
-
-        const updatedSelectedCourses = selectedCourses.filter(function( course ) {
+        // Removing a "Searched" course: its season is "search" and it is not in the AllCourses list (preselected ones)
+        // We simply remove it from the cart.
+        if (season === "searched") {
+          const updatedSelectedCourses = selectedCourses.filter(function( course ) {
             return course.courseID !== courseId;
         });
-          
         this.setState({
-            selectedCourses: updatedSelectedCourses,
-            allCourses: updatedAllCourses
-        });
+          selectedCourses: updatedSelectedCourses,
+      });
+
+      // Remove a course added from Course Selection
+      // Update allCourses to remove "in cart" status of the course 
+      } else {
+          const courseIndex = allCourses[season].findIndex(course => course.courseID === courseId);
+          // deselect course when removing it from cart
+          let updatedAllCourses = allCourses;
+          updatedAllCourses[season][courseIndex].selected = false;
+
+          const updatedSelectedCourses = selectedCourses.filter(function( course ) {
+              return course.courseID !== courseId;
+          });
+            
+          this.setState({
+              selectedCourses: updatedSelectedCourses,
+              allCourses: updatedAllCourses
+          });
+      }
     }
 
     showModal() {

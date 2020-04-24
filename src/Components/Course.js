@@ -25,6 +25,7 @@ export default class Course extends React.Component {
       
       return(
         <div className="course-item" aria-label={`${course.courseCode}`}>
+        <text> {course.errorMessage} </text>
           {/* Course Code */}
           <span
               className="course-code"
@@ -62,8 +63,8 @@ export default class Course extends React.Component {
                 className="course-action float-left mr-3"
                 id={course.courseID}
                 name={course.courseCode}
-                onClick={!course.selected ? () => addCourseToCart(course) : null}
-                onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
+                onClick={() => addCourseToCart(course)}
+                onKeyPress={(e) => e.key === "Enter" && addCourseToCart(course.courseID)}
                 aria-label={`Add ${course.courseCode} to cart`}
               >
                 <FontAwesomeIcon icon={faPlusCircle} size="1x" />
