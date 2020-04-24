@@ -82,3 +82,53 @@ button.close {
 button.close:hover {
   color: #fff;
 }
+
+/* prevent user highlighting of text */
+.disable-select {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+}
+
+.sticky-message {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 4; /*should be the highest in the app*/
+}
+.alert-heading {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.alert-dismissible .close{
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dark-maroon);
+}
+
+.map-alert {
+  background-color: var(--gold);
+  border-color: var(--maroon);
+}
+
+/* transluscent background: https://bit.ly/3eLSog1 */
+.loading-overlay {
+  content: " ";
+  z-index: 10;
+  display: block;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.lds-ring.loading-ring {
+  left: 50%;
+  top: 50%;
+  color: var(--maroon);
+  transform: translate(-50%,-50%);
+}
