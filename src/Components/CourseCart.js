@@ -1,9 +1,10 @@
 import '../css/cart.css';
 import React, {createRef} from 'react';
 import Course from './Course';
-import {Col, Row, Tabs, Tab, Button} from 'react-bootstrap';
+import {InputGroup, FormControl, Col, Row, Tabs, Tab, Button} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+
 
 const generateCourseList = (selectedCourses, removeCourseFromCart) => {
   return selectedCourses.map((course, index) => {
@@ -14,11 +15,29 @@ const generateCourseList = (selectedCourses, removeCourseFromCart) => {
 export default class CourseCart extends React.Component {
     constructor(props) {
       super(props);
+      this.state= {
+        isCartValid: null,
+      }
       this.scrollToCart = createRef();
+      this.onSubmitCourses = this.onSubmitCourses.bind(this);
+    }
+
+    onSubmitCourses(){
+      const {selectedCourses} = this.props;
+      const isCartValid = selectedCourses.length > 0 && selectedCourses.length < 16;
+      if (isCartValid){
+        this.setState({isCartValid: true}, 
+          this.props.submitCourses()
+        );
+      } else {
+        this.setState({isCartValid: false});
+      }    
     }
 
     render() {
         const {selectedCourses,removeCourseFromCart} = this.props;
+        const {isCartValid} = this.state;
+
         return(
             <div className="course-cart">
                 <div className="cart-header">
@@ -37,10 +56,10 @@ export default class CourseCart extends React.Component {
                         }
                   </div>        
                   <div className="cart-footer px-2">
-                      <button className="btn btn-primary" onClick={this.props.submitCourses} aria-label="View program results based on courses added to your cart">Submit</button>
+                      <button className="btn btn-primary" onClick={this.onSubmitCourses} aria-label="View program results based on courses added to your cart">Submit</button>
                   </div>  
-
                 </div>
+                { isCartValid === false && <FormControl.Feedback type="invalid" role="alert">You must add between 0 and 16 courses to your cart. </FormControl.Feedback> }
 
             </div>
         );

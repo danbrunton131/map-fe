@@ -78,11 +78,9 @@ const genProgramResults = (programResults) => {
                                 <div className="description">
                                     <h2>{program.programName}</h2>
                                     <p>{`Lorem Ipsum ${program.programDescription}`}</p>
-                                    <div className="description-textbox">
-                                        <p tabIndex={0}>
-                                            <strong> Requirements </strong>
-                                            {genProgramRequirements(program.programRequirements.requirements, program.fulfilledCourses, program.programId)}
-                                        </p>
+                                    <div tabIndex={0} className="description-textbox">
+                                        <strong> Requirements </strong>
+                                        {genProgramRequirements(program.programRequirements.requirements, program.fulfilledCourses, program.programId)}
                                     </div>
 
 
