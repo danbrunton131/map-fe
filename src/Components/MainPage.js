@@ -31,6 +31,7 @@ export default class MainPage extends React.Component {
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
         this.addCourseToCart = this.addCourseToCart.bind(this);
+        this.addSearchedCourseToCart = this.addSearchedCourseToCart.bind(this);
         this.removeCourseFromCart = this.removeCourseFromCart.bind(this);
         this.onSeasonChange = this.onSeasonChange.bind(this);
         this.submitCourses = this.submitCourses.bind(this);
@@ -76,9 +77,23 @@ export default class MainPage extends React.Component {
         this.setState({selectedSeason});
       }
   
-    addCourseToCart(courseId){
+    addSearchedCourseToCart(newCourse) {
+      const {selectedCourses, allCourses} = this.state;
+
+      // if not in cart, add
+      const cartIndex = selectedCourses.findIndex(selectedCourse => selectedCourse.courseID === newCourse.courseID);
+      if (cartIndex === -1) {
+        this.setState({
+          selectedCourses: [...selectedCourses, newCourse],
+      });
+      }
+  }
+
+
+
+    addCourseToCart(newCourse){
         const {selectedCourses, allCourses, selectedSeason} = this.state;
-        const newCourseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === courseId);
+        const newCourseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === newCourse.courseID);
 
         // verify the course isn't already selected. This is needed for "searchbar" to not add courses multiple times, because the search results doesn't know about current selected courses. 
         if (!allCourses[selectedSeason][newCourseIndex].selected){
@@ -123,12 +138,13 @@ export default class MainPage extends React.Component {
 
     render() {
         const {allCourses, selectedCourses, programResults} = this.state;
+        console.log(selectedCourses);
         return(
             <div className="container-fluid">
             <Row>
               <Col sm={12} md={9}>
                 <section aria-label="Search Bar"/>
-                <SearchBar addCourseToCart={this.addCourseToCart}/>
+                <SearchBar addCourseToCart={this.addSearchedCourseToCart}/>
               </Col>
             </Row>
             <Row>

@@ -62,7 +62,7 @@ export default class Course extends React.Component {
                 className="course-action float-left mr-3"
                 id={course.courseID}
                 name={course.courseCode}
-                onClick={!course.selected ? () => addCourseToCart(course.courseID) : null}
+                onClick={!course.selected ? () => addCourseToCart(course) : null}
                 onKeyPress={!course.selected ? (e) => e.key === "Enter" && addCourseToCart(course.courseID) : null}
                 aria-label={`Add ${course.courseCode} to cart`}
               >
