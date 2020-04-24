@@ -4,6 +4,8 @@ import CourseCart from './CourseCart';
 import CourseSelection from './CourseSelection';
 import MapModal from './MapModal';
 import SearchBar from './SearchBar';
+import LoadingOverlay from '../common/LoadingOverlay';
+
 import {fetchAllCourses, submitSelection} from '../api/courses-api';
 
 export const getTermCourseList = (termCoursesByProgram) => {
@@ -27,6 +29,7 @@ export default class MainPage extends React.Component {
             modalShown: false,
             selectedSeason:"fall", // current season from CourseSelection
             courseErrorMessage: "",
+            isLoadingResults: false,
           };
 
         this.showModal = this.showModal.bind(this);
@@ -63,14 +66,15 @@ export default class MainPage extends React.Component {
         const courseId = selectedCourses[i].courseID;
         courseIdList.push(courseId);
       }
-
-      submitSelection({selections: courseIdList}).then(res => {
-        this.setState({programResults: res.data.matchedPrograms});
-        this.showModal();
-      })
-      .catch((err) => {
-        console.log("AXIOS ERROR: ", err);
-      });
+      this.setState({isLoadingResults: true}, 
+        () => submitSelection({selections: courseIdList}).then(res => {
+          this.setState({programResults: res.data.matchedPrograms, isLoadingResults: false});
+          this.showModal();
+        })
+        .catch((err) => {
+          console.log("AXIOS ERROR: ", err);
+        })
+      );
     }
 
     //confirm caps situation of class list object indexing
@@ -164,39 +168,40 @@ export default class MainPage extends React.Component {
         // console.log(selectedCourses);
         return(
             <div className="container-fluid">
-            <Alert 
-              role="alert" 
-              className="sticky-message course-alert" 
-              show={courseErrorMessage} 
-              variant="warning" 
-              onClose={this.disableCourseErrorMessage.bind(this)} 
-              dismissible 
-              transition={null}
-            >
-              <Alert.Heading className="course-alert-heading">{courseErrorMessage}</Alert.Heading>
-            </Alert>
-            <Row>
-              <Col sm={12} md={9}>
-                <section aria-label="Search Bar"/>
-                <SearchBar addCourseToCart={this.addSearchedCourseToCart}/>
-              </Col>
-            </Row>
-            <Row>
+              <Alert 
+                role="alert" 
+                className="sticky-message course-alert" 
+                show={courseErrorMessage} 
+                variant="warning" 
+                onClose={this.disableCourseErrorMessage.bind(this)} 
+                dismissible 
+                transition={null}
+              >
+                <Alert.Heading className="course-alert-heading">{courseErrorMessage}</Alert.Heading>
+              </Alert>
+              <Row>
                 <Col sm={12} md={9}>
-                    <section aria-label="Course Selection"/>
-                    <CourseSelection allCourses={allCourses} addCourseToCart={this.addCourseToCart} onSeasonChange={this.onSeasonChange}/> 
+                  <section aria-label="Search Bar"/>
+                  <SearchBar addCourseToCart={this.addSearchedCourseToCart}/>
                 </Col>
+              </Row>
+              <Row>
+                  <Col sm={12} md={9}>
+                      <section aria-label="Course Selection"/>
+                      <CourseSelection allCourses={allCourses} addCourseToCart={this.addCourseToCart} onSeasonChange={this.onSeasonChange}/> 
+                  </Col>
 
-                <Col sm={12} md={3}>
-                    <section aria-label="Cart"/>
-                    <CourseCart submitCourses={this.submitCourses} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
+                  <Col sm={12} md={3}>
+                      <section aria-label="Cart"/>
+                      <CourseCart submitCourses={this.submitCourses} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
 
-                </Col>
-            </Row>
+                  </Col>
+              </Row>
 
-            {this.state.modalShown &&
-            <MapModal hideModal={this.hideModal} programResults={programResults}></MapModal>
-            }
+              {this.state.modalShown &&
+                <MapModal hideModal={this.hideModal} programResults={programResults}></MapModal>
+              }
+              {this.state.isLoadingResults && <LoadingOverlay role="alert" aria-label="Your program results are loading"/>}
             </div>
       );
     }

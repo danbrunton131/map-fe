@@ -112,3 +112,23 @@ button.close:hover {
   background-color: var(--gold);
   border-color: var(--maroon);
 }
+
+/* transluscent background: https://bit.ly/3eLSog1 */
+.loading-overlay {
+  content: " ";
+  z-index: 10;
+  display: block;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.loading-ring {
+  left: 50%;
+  top: 50%;
+  color: var(--maroon);
+  transform: translate(-50%,0);
+}
