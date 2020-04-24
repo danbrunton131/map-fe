@@ -126,10 +126,9 @@ button.close:hover {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.loading-ring {
+.lds-ring.loading-ring {
   left: 50%;
   top: 50%;
   color: var(--maroon);
-  transform: translate(-50%,0);
-  position: inherit;
+  transform: translate(-50%,-50%);
 }
