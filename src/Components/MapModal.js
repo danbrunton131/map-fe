@@ -149,15 +149,15 @@ export default class ExampleApp extends React.Component {
         // and active > numPages - 6
 
         items.push(<Pagination.Prev key={"prev"} onClick={this.decrementPagination.bind(this)} />);
-        items.push(<Pagination.Ellipsis key={"firstEllipsis"} />);
-        for (let number = 1; number <= numPages; number++) {
+        if (currentPage > 3) { items.push(<Pagination.Ellipsis key={"firstEllipsis"} />); }
+        for (let number = currentPage-2; number <= currentPage+2; number++) {
             items.push(
                 <Pagination.Item key={number} eventKey={number} active={number === currentPage} onClick={() => this.goToPage(number)}>
                     {number}
                 </Pagination.Item>
             );
         }
-        items.push(<Pagination.Ellipsis key={"secondEllipsis"} />);
+        if (currentPage < numPages-2) { items.push(<Pagination.Ellipsis key={"secondEllipsis"} />); }
         items.push(<Pagination.Next key={"next"} onClick={this.incrementPagination.bind(this)} />);
 
 
