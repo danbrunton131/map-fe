@@ -63,7 +63,7 @@ export default class Course extends React.Component {
                 id={course.courseID}
                 name={course.courseCode}
                 onClick={() => addCourseToCart(course)}
-                onKeyPress={(e) => e.key === "Enter" && addCourseToCart(course.courseID)}
+                onKeyPress={(e) => e.key === "Enter" && addCourseToCart(course)}
                 aria-label={`Add ${course.courseCode} to cart`}
               >
                 <FontAwesomeIcon icon={faPlusCircle} size="1x" />
