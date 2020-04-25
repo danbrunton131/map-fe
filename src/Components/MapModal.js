@@ -123,43 +123,64 @@ export default class ExampleApp extends React.Component {
         this.props.hideModal();
     }
 
-    incrementPagination() {
-        this.setState((state, props) => ({
-            currentPage: state.currentPage+1
-        }));
+    incrementPagination(numPages, currentPage) {
+        if (currentPage < numPages) {
+            this.setState((state, props) => ({
+                currentPage: state.currentPage+1
+            }));
+        }
     }
 
-    decrementPagination() {
-        this.setState((state, props) => ({
-            currentPage: state.currentPage-1
-        }));
+    decrementPagination(numPages, currentPage) {
+        if (currentPage > 1) {
+            this.setState((state, props) => ({
+                currentPage: state.currentPage-1
+            }));
+        }
     }
 
     goToPage(pageNum) {
         this.setState({currentPage: pageNum});
     }
 
+    createPaginationItem(number, currentPage) {
+        return (
+            <Pagination.Item key={number} active={number === currentPage} onClick={() => this.goToPage(number)}>
+                {number}
+            </Pagination.Item>
+        );
+    }
+
     createPagination(numPages, currentPage) {
         let items = [];
 
-        // TODO: only show 5 page nums in pagination
-        // along with first and last pages
-        // TODO: only add ellipsis when numPages > 7 (5 plus first and last)
-        // TODO: remove ellipsis when active < 6
-        // and active > numPages - 6
-
-        items.push(<Pagination.Prev key={"prev"} onClick={this.decrementPagination.bind(this)} />);
+        items.push(<Pagination.Prev key={"prev"} onClick={() => this.decrementPagination(numPages, currentPage)} />);
         if (currentPage > 3) { items.push(<Pagination.Ellipsis key={"firstEllipsis"} />); }
-        for (let number = currentPage-2; number <= currentPage+2; number++) {
-            items.push(
-                <Pagination.Item key={number} eventKey={number} active={number === currentPage} onClick={() => this.goToPage(number)}>
-                    {number}
-                </Pagination.Item>
-            );
-        }
-        if (currentPage < numPages-2) { items.push(<Pagination.Ellipsis key={"secondEllipsis"} />); }
-        items.push(<Pagination.Next key={"next"} onClick={this.incrementPagination.bind(this)} />);
 
+        if (currentPage < 3) {
+            for (let number = 1; number <= 5; number++) {
+                items.push(
+                    this.createPaginationItem(number, currentPage)
+                );
+            }
+        }
+        else if (currentPage > numPages-2) {
+            for (let number = numPages-4; number <= numPages; number++) {
+                items.push(
+                    this.createPaginationItem(number, currentPage)
+                );
+            }
+        }
+        else {
+            for (let number = currentPage-2; number <= currentPage+2; number++) {
+                items.push(
+                    this.createPaginationItem(number, currentPage)
+                );
+            }
+        }
+
+        if (currentPage < numPages-2) { items.push(<Pagination.Ellipsis key={"secondEllipsis"} />); }
+        items.push(<Pagination.Next key={"next"} onClick={() => this.incrementPagination(numPages, currentPage)} />);
 
         const pagination = (
             <div>
