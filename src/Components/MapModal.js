@@ -154,8 +154,8 @@ export default class ExampleApp extends React.Component {
     createPagination(numPages, currentPage) {
         let items = [];
 
-        items.push(<Pagination.Prev key={"prev"} onClick={() => this.decrementPagination(numPages, currentPage)} />);
-        if (currentPage > 3) { items.push(<Pagination.Ellipsis key={"firstEllipsis"} />); }
+        items.push(<Pagination.Prev aria-label="Previous page" key={"prev"} onClick={() => this.decrementPagination(numPages, currentPage)} />);
+        if (currentPage > 3) { items.push(<Pagination.Ellipsis aria-label="More pages" key={"firstEllipsis"} />); }
 
         if (currentPage < 3) {
             for (let number = 1; number <= 5; number++) {
@@ -179,8 +179,8 @@ export default class ExampleApp extends React.Component {
             }
         }
 
-        if (currentPage < numPages-2) { items.push(<Pagination.Ellipsis key={"secondEllipsis"} />); }
-        items.push(<Pagination.Next key={"next"} onClick={() => this.incrementPagination(numPages, currentPage)} />);
+        if (currentPage < numPages-2) { items.push(<Pagination.Ellipsis aria-label="More pages" key={"secondEllipsis"} />); }
+        items.push(<Pagination.Next aria-label="Next page" key={"next"} onClick={() => this.incrementPagination(numPages, currentPage)} />);
 
         const pagination = (
             <div>
