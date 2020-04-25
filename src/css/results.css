@@ -29,3 +29,13 @@
  ul.pagination {
  	margin-bottom: 5px;
  }
+
+ .page-item.active {
+ 	background-color: var(--maroon);
+ 	border-color: var(--maroon);
+ }
+
+ .page-item.active .page-link {
+ 	background-color: var(--maroon);
+ 	border-color: var(--maroon);
+ }
