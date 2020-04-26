@@ -1,4 +1,3 @@
-import '../css/course-selection.css';
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

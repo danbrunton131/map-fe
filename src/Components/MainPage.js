@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Row, Alert} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
 import CourseCart from './CourseCart';
 import CourseSelection from './CourseSelection';
 import MapModal from './MapModal';
