@@ -3,6 +3,13 @@ import React from 'react';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 
+const boldString = (s, b) => {
+    console.log(s);
+    console.log(b);
+    return s.replace(RegExp(b), b.bold());
+}
+
+
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
     console.log(requirements, fulfilledCourses);
 
@@ -10,17 +17,24 @@ const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
     const requirementsCopy = [...requirements]; // clone requirements so we don't modify original! We need to show it. 
     let satisfiedRequirements = []; // indices of matching requirements
 
-    for (let i=0; i< fulfilledCourses.length; i++){
-        const satisfiedRequirementIndex = requirementsCopy.findIndex(requirement => requirement.includes(fulfilledCourses[i])); //find a requirement match
-        // requirementsCopy.splice(satisfiedRequirementIndex, 1); // remove the matching requirement?
+//     for (let i=0; i< fulfilledCourses.length; i++){
+//         const satisfiedRequirementIndex = requirementsCopy.findIndex(requirement => requirement.includes(fulfilledCourses[i])); //find a requirement match
+//         // requirementsCopy.splice(satisfiedRequirementIndex, 1); // remove the matching requirement?
 
-        if (satisfiedRequirementIndex!==-1){
-            console.log(satisfiedRequirementIndex);
-            satisfiedRequirements.push(satisfiedRequirementIndex)
+//         if (satisfiedRequirementIndex!==-1){
+//             // console.log(satisfiedRequirementIndex);
+//             satisfiedRequirements.push(satisfiedRequirementIndex)
+//         }
+//      }
+
+    //embolden first match of each fulfilledCourse
+    for (let reqIndex=0; reqIndex< requirements.length; reqIndex++){
+        for (let fulfilledCourseIndex=0; fulfilledCourseIndex< fulfilledCourses.length; fulfilledCourseIndex++){
+            if (requirements[reqIndex] && fulfilledCourses[0]){
+                    requirements[reqIndex] = boldString(requirements[reqIndex], fulfilledCourses[fulfilledCourseIndex]);
+            }
         }
-
-}
-
+    }
 
 
 
@@ -29,7 +43,10 @@ const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
     return (
         <ul>
             {requirements.map((requirement, index) => {
-                return ( <li key={`${programId}-${index}`}>{requirement}</li> );})
+                return (
+                <li key={`${programId}-${index}`}>
+                    <div dangerouslySetInnerHTML={{ __html: requirement }} />
+                </li> );})
             }
         </ul>
         );
