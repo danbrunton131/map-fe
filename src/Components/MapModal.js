@@ -108,9 +108,23 @@ export default class ExampleApp extends React.Component {
             currentPage: 1,
             pageSize: 5,
             numPages: 1,
+            shownResults: [],
         }
 
         this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
+
+    componentDidMount() {
+        const {sortedProgramResults, currentPage, pageSize} = this.state;
+
+        let numPages = Math.ceil(sortedProgramResults.length / pageSize);
+
+        const newShownResults = sortedProgramResults.slice((currentPage-1)*pageSize, (currentPage-1)*pageSize + 5);
+
+        this.setState((state, props) => ({
+            shownResults: newShownResults,
+            numPages: numPages,
+        }));
     }
   
     handleCloseModal () {
@@ -120,7 +134,8 @@ export default class ExampleApp extends React.Component {
     incrementPagination(numPages, currentPage) {
         if (currentPage < numPages) {
             this.setState((state, props) => ({
-                currentPage: state.currentPage+1
+                currentPage: state.currentPage+1,
+                shownResults: this.genResults(currentPage+1),
             }));
         }
     }
@@ -128,13 +143,23 @@ export default class ExampleApp extends React.Component {
     decrementPagination(numPages, currentPage) {
         if (currentPage > 1) {
             this.setState((state, props) => ({
-                currentPage: state.currentPage-1
+                currentPage: state.currentPage-1,
+                shownResults: this.genResults(currentPage-1),
             }));
         }
     }
 
     goToPage(pageNum) {
-        this.setState({currentPage: pageNum});
+        this.setState({
+            currentPage: pageNum,
+            shownResults: this.genResults(pageNum),
+        });
+    }
+
+    genResults(pageNum) {
+        const {sortedProgramResults, pageSize} = this.state;
+        const newShownResults = sortedProgramResults.slice((pageNum-1)*pageSize, (pageNum-1)*pageSize + 5);
+        return newShownResults;
     }
 
     createPaginationItem(number, currentPage) {
@@ -185,13 +210,7 @@ export default class ExampleApp extends React.Component {
     }
     
     render () {
-        const {sortedProgramResults, currentPage, pageSize} = this.state;
-
-        let numPages = Math.ceil(sortedProgramResults.length / pageSize);
-
-        const shownResults = sortedProgramResults.slice((currentPage-1)*pageSize, (currentPage-1)*pageSize + 5);
-
-        const pagination = this.createPagination(numPages, currentPage);
+        const {shownResults, currentPage, numPages} = this.state;
 
         return (
             <Modal
@@ -211,7 +230,7 @@ export default class ExampleApp extends React.Component {
                 <Modal.Footer id="modal-footer">
                     <div className="footer-container">
                         <div className="pagination">
-                            {pagination}
+                            {this.createPagination(numPages, currentPage)}
                         </div>
                         <Button className="close-button" variant="btn btn-primary" onClick={this.handleCloseModal}>
                             Close
