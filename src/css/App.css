@@ -35,7 +35,7 @@ Scales the contents to be centered, also based on the minimum of the user's disp
 
 /* overriding bootstrap's container-fluid to include Top/Bottom padding */
 .container-fluid{
-  padding: 12px 12px 12px 12px;
+  padding: 40px 40px 40px 40px;
 }
 
 /* add spacing when columns stack */
