@@ -4,48 +4,42 @@ import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 
 const boldString = (s, b) => {
-    console.log(s);
-    console.log(b);
-    return s.replace(RegExp(b), b.bold());
+    return s.replace(RegExp(b), `<strong>${b}</strong>`);
 }
 
-
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
-    console.log(requirements, fulfilledCourses);
-
-    // We need to highlight fulfilled requirements, given an array of fulfilled courses
-    const requirementsCopy = [...requirements]; // clone requirements so we don't modify original! We need to show it. 
-    let satisfiedRequirements = []; // indices of matching requirements
-
-//     for (let i=0; i< fulfilledCourses.length; i++){
-//         const satisfiedRequirementIndex = requirementsCopy.findIndex(requirement => requirement.includes(fulfilledCourses[i])); //find a requirement match
-//         // requirementsCopy.splice(satisfiedRequirementIndex, 1); // remove the matching requirement?
-
-//         if (satisfiedRequirementIndex!==-1){
-//             // console.log(satisfiedRequirementIndex);
-//             satisfiedRequirements.push(satisfiedRequirementIndex)
-//         }
-//      }
-
+    
     //embolden first match of each fulfilledCourse
-    for (let reqIndex=0; reqIndex< requirements.length; reqIndex++){
-        for (let fulfilledCourseIndex=0; fulfilledCourseIndex< fulfilledCourses.length; fulfilledCourseIndex++){
-            if (requirements[reqIndex] && fulfilledCourses[0]){
+    for (let fulfilledCourseIndex=0; fulfilledCourseIndex< fulfilledCourses.length; fulfilledCourseIndex++){
+        for (let reqIndex=0; reqIndex< requirements.length; reqIndex++){
+            if (requirements[reqIndex] && fulfilledCourses[fulfilledCourseIndex]){
+
+                const  match = requirements[reqIndex].search(fulfilledCourses[fulfilledCourseIndex]) >= 0;
+                if(match){
                     requirements[reqIndex] = boldString(requirements[reqIndex], fulfilledCourses[fulfilledCourseIndex]);
+                }
             }
         }
     }
+    // // Track a partially fulfilled requirement
+    // const requirementsCopy = [...requirements]; // clone requirements so we don't modify original! We need to show it. 
+    // let satisfiedRequirements = []; // indices of matching requirements
+    // for (let i=0; i< fulfilledCourses.length; i++){
+    //     const satisfiedRequirementIndex = requirementsCopy.findIndex(requirement => requirement.includes(fulfilledCourses[i])); //find a requirement match
+    //     // requirementsCopy.splice(satisfiedRequirementIndex, 1); // remove the matching requirement?
 
+    //     if (satisfiedRequirementIndex!==-1){
+    //         // console.log(satisfiedRequirementIndex);
+    //         satisfiedRequirements.push(satisfiedRequirementIndex)
+    //     }
+    //  }
 
-
-    console.log(satisfiedRequirements);
-    
     return (
         <ul>
             {requirements.map((requirement, index) => {
                 return (
                 <li key={`${programId}-${index}`}>
-                    <div dangerouslySetInnerHTML={{ __html: requirement }} />
+                    <div dangerouslySetInnerHTML={{ __html: requirement }} /> {/* We need to represent the bold fulfilled courses */}
                 </li> );})
             }
         </ul>
