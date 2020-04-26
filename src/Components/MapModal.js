@@ -4,6 +4,28 @@ import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
+    console.log(requirements, fulfilledCourses);
+
+    // We need to highlight fulfilled requirements, given an array of fulfilled courses
+    const requirementsCopy = [...requirements]; // clone requirements so we don't modify original! We need to show it. 
+    let satisfiedRequirements = []; // indices of matching requirements
+
+    for (let i=0; i< fulfilledCourses.length; i++){
+        const satisfiedRequirementIndex = requirementsCopy.findIndex(requirement => requirement.includes(fulfilledCourses[i])); //find a requirement match
+        // requirementsCopy.splice(satisfiedRequirementIndex, 1); // remove the matching requirement?
+
+        if (satisfiedRequirementIndex!==-1){
+            console.log(satisfiedRequirementIndex);
+            satisfiedRequirements.push(satisfiedRequirementIndex)
+        }
+
+}
+
+
+
+
+    console.log(satisfiedRequirements);
+    
     return (
         <ul>
             {requirements.map((requirement, index) => {
