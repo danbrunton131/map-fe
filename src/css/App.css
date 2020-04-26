@@ -1,12 +1,11 @@
 .App-header {
   background-color: var(--maroon);
-  border-style: solid;
-  border-width: 0px 1px 2px 1px;
   min-height:10vh;
   font-size: calc(10px + 2vmin);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #fff;
 }
 
 /* Design for the body of the app.
@@ -36,7 +35,7 @@ Scales the contents to be centered, also based on the minimum of the user's disp
 
 /* overriding bootstrap's container-fluid to include Top/Bottom padding */
 .container-fluid{
-  padding: 12px 12px 12px 12px;
+  padding: 40px 40px 40px 40px;
 }
 
 /* add spacing when columns stack */

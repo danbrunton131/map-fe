@@ -90,7 +90,7 @@ export default class SearchBar extends React.Component {
                 <FormControl
                  type="text"
                  className="search-input"
-                 placeholder="SEARCH FOR A COURSE..." 
+                 placeholder="Search For a Course..." 
                  defaultValue={searchTerm} 
                  onChange={this.updateSearchForm}
                  aria-labelledby="Search for a course"

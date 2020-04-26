@@ -2,6 +2,8 @@ import '../css/results.css';
 import React from 'react';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
+import Pagination from 'react-bootstrap/Pagination';
+import PageItem from 'react-bootstrap/PageItem';
 
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
     return (
@@ -61,6 +63,7 @@ const genProgramResults = (programResults) => {
     }
         const completePercentage = parseFloat((chartData.datasets[0].data[0]*100).toFixed(1));
         const incompletePercentage = parseFloat((chartData.datasets[0].data[1]*100).toFixed(1));
+
         return (
             <React.Fragment key={index}>
                 <Container>
@@ -102,17 +105,118 @@ export default class ExampleApp extends React.Component {
         super(props);
         this.state = {
             sortedProgramResults: sortProgramResults(this.props.programResults),
+            currentPage: 1,
+            pageSize: 5,
+            numPages: 1,
+            shownResults: [],
+            pagination: [],
         }
 
         this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
+
+    componentDidMount() {
+        const {sortedProgramResults, currentPage, pageSize} = this.state;
+
+        let numPages = Math.ceil(sortedProgramResults.length / pageSize);
+
+        const newShownResults = sortedProgramResults.slice((currentPage-1)*pageSize, (currentPage-1)*pageSize + 5);
+
+        this.setState((state, props) => ({
+            shownResults: newShownResults,
+            numPages: numPages,
+            pagination: this.createPagination(numPages, currentPage),
+        }));
     }
   
     handleCloseModal () {
         this.props.hideModal();
     }
+
+    incrementPagination(numPages, currentPage) {
+        if (currentPage < numPages) {
+            this.setState((state, props) => ({
+                currentPage: state.currentPage+1,
+                shownResults: this.genResults(currentPage+1),
+                pagination: this.createPagination(numPages, currentPage+1),
+            }));
+        }
+    }
+
+    decrementPagination(numPages, currentPage) {
+        if (currentPage > 1) {
+            this.setState((state, props) => ({
+                currentPage: state.currentPage-1,
+                shownResults: this.genResults(currentPage-1),
+                pagination: this.createPagination(numPages, currentPage-1),
+            }));
+        }
+    }
+
+    goToPage(pageNum) {
+        this.setState((state, props) => ({
+            currentPage: pageNum,
+            shownResults: this.genResults(pageNum),
+            pagination: this.createPagination(state.numPages, pageNum),
+        }));
+    }
+
+    genResults(pageNum) {
+        const {sortedProgramResults, pageSize} = this.state;
+        const newShownResults = sortedProgramResults.slice((pageNum-1)*pageSize, (pageNum-1)*pageSize + 5);
+        return newShownResults;
+    }
+
+    createPaginationItem(number, currentPage) {
+        return (
+            <Pagination.Item key={number} active={number === currentPage} onClick={() => this.goToPage(number)}>
+                {number}
+            </Pagination.Item>
+        );
+    }
+
+    createPagination(numPages, currentPage) {
+        let items = [];
+
+        items.push(<Pagination.Prev aria-label="Previous page" key={"prev"} onClick={() => this.decrementPagination(numPages, currentPage)} />);
+        if (currentPage > 3) { items.push(<Pagination.Ellipsis aria-label="More pages" key={"firstEllipsis"} />); }
+
+        if (currentPage < 3) {
+            for (let number = 1; number <= 5; number++) {
+                items.push(
+                    this.createPaginationItem(number, currentPage)
+                );
+            }
+        }
+        else if (currentPage > numPages-2) {
+            for (let number = numPages-4; number <= numPages; number++) {
+                items.push(
+                    this.createPaginationItem(number, currentPage)
+                );
+            }
+        }
+        else {
+            for (let number = currentPage-2; number <= currentPage+2; number++) {
+                items.push(
+                    this.createPaginationItem(number, currentPage)
+                );
+            }
+        }
+
+        if (currentPage < numPages-2) { items.push(<Pagination.Ellipsis aria-label="More pages" key={"secondEllipsis"} />); }
+        items.push(<Pagination.Next aria-label="Next page" key={"next"} onClick={() => this.incrementPagination(numPages, currentPage)} />);
+
+        const pagination = (
+            <div>
+                <Pagination>{items}</Pagination>
+            </div>
+        );
+        return pagination;
+    }
     
     render () {
-        const {sortedProgramResults} = this.state;
+        const {shownResults, currentPage, numPages, pagination} = this.state;
+
         return (
             <Modal
                 show={true} 
@@ -125,13 +229,18 @@ export default class ExampleApp extends React.Component {
                 </Modal.Header>
                 <Modal.Body id="modal-body">
                     {/* Program Result Component */}
-                    {Object.keys(sortedProgramResults).length > 0 &&
-                        genProgramResults(sortedProgramResults)}
+                    {Object.keys(shownResults).length > 0 &&
+                        genProgramResults(shownResults)}
                 </Modal.Body>
                 <Modal.Footer id="modal-footer">
-                    <Button variant="btn btn-primary" onClick={this.handleCloseModal}>
-                        Close
-                    </Button>
+                    <div className="footer-container">
+                        <div className="pagination">
+                            {pagination}
+                        </div>
+                        <Button className="close-button" variant="btn btn-primary" onClick={this.handleCloseModal}>
+                            Close
+                        </Button>
+                    </div>
                 </Modal.Footer>
             </Modal>
         );
