@@ -109,6 +109,7 @@ export default class ExampleApp extends React.Component {
             pageSize: 5,
             numPages: 1,
             shownResults: [],
+            pagination: [],
         }
 
         this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -124,6 +125,7 @@ export default class ExampleApp extends React.Component {
         this.setState((state, props) => ({
             shownResults: newShownResults,
             numPages: numPages,
+            pagination: this.createPagination(numPages, currentPage),
         }));
     }
   
@@ -136,6 +138,7 @@ export default class ExampleApp extends React.Component {
             this.setState((state, props) => ({
                 currentPage: state.currentPage+1,
                 shownResults: this.genResults(currentPage+1),
+                pagination: this.createPagination(numPages, currentPage+1),
             }));
         }
     }
@@ -145,15 +148,17 @@ export default class ExampleApp extends React.Component {
             this.setState((state, props) => ({
                 currentPage: state.currentPage-1,
                 shownResults: this.genResults(currentPage-1),
+                pagination: this.createPagination(numPages, currentPage-1),
             }));
         }
     }
 
     goToPage(pageNum) {
-        this.setState({
+        this.setState((state, props) => ({
             currentPage: pageNum,
             shownResults: this.genResults(pageNum),
-        });
+            pagination: this.createPagination(state.numPages, pageNum),
+        }));
     }
 
     genResults(pageNum) {
@@ -210,7 +215,7 @@ export default class ExampleApp extends React.Component {
     }
     
     render () {
-        const {shownResults, currentPage, numPages} = this.state;
+        const {shownResults, currentPage, numPages, pagination} = this.state;
 
         return (
             <Modal
@@ -230,7 +235,7 @@ export default class ExampleApp extends React.Component {
                 <Modal.Footer id="modal-footer">
                     <div className="footer-container">
                         <div className="pagination">
-                            {this.createPagination(numPages, currentPage)}
+                            {pagination}
                         </div>
                         <Button className="close-button" variant="btn btn-primary" onClick={this.handleCloseModal}>
                             Close
