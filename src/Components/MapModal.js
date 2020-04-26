@@ -3,7 +3,7 @@ import React from 'react';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 
-const boldString = (s, b) => {
+export const boldString = (s, b) => {
     return s.replace(RegExp(b), `<strong>${b}</strong>`);
 }
 
