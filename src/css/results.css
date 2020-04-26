@@ -12,3 +12,30 @@
         min-height: -webkit-fill-available; /* 100vh doesn't cover full page on mobile, so we set a min height to for modal to fit screen */
     }
   }
+
+ .footer-container {
+ 	width: 100%;
+ 	display: flex;
+ 	flex-direction: column;
+ 	flex-wrap: wrap;
+ 	justify-content: center;
+ 	align-items: center;
+ }
+
+ .close-button {
+ 	align-self: flex-end;
+ }
+
+ ul.pagination {
+ 	margin-bottom: 5px;
+ }
+
+ .page-item.active {
+ 	background-color: var(--maroon);
+ 	border-color: var(--maroon);
+ }
+
+ .page-item.active .page-link {
+ 	background-color: var(--maroon);
+ 	border-color: var(--maroon);
+ }
