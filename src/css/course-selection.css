@@ -39,6 +39,8 @@
     padding: 5px 5px 5px 5px;
     width: 100%;
     align-self: flex-start;  
+    overflow: hidden;
+    display:flex;
     }
 
   /* show clickability for course text only*/ 
@@ -75,8 +77,11 @@
     align-content: center;
 
   }
-  
-  .course-action{
+  .course-actions {
+    margin-left: auto;
+  }
+
+  .course-action {
     cursor:pointer;
     color: var(--maroon);
   }  
