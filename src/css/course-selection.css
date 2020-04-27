@@ -44,6 +44,7 @@
   /* show clickability for course text only*/ 
   .course-code {
     cursor: pointer;
+    font-size: 18px; /*matches bootstrap font-size for tabs*/
   }
 
   .course-col-container {
