@@ -16,6 +16,7 @@ export default class ErrorMessage extends React.Component {
 
     componentDidMount(){
         this._isMounted = true;
+        console.log(this.props.timeout);
 
         if (this.props.timeout){
             this.setTimeout();
@@ -40,7 +41,6 @@ export default class ErrorMessage extends React.Component {
             this.setState({shown: false});
         }
     }  
-  
 
     render() {
         const {message} = this.props; 
