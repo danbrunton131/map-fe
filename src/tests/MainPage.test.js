@@ -1,6 +1,7 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
-
+import { shallow } from 'enzyme';
+import ErrorMessage from '../common/ErrorMessage';
+import MainPage from '../Components/MainPage';
 import {getTermCourseList} from '../Components/MainPage.js';
 
 
@@ -17,5 +18,13 @@ describe('getTermCourseList', () => {
       // console.log(getTermCourseList(seasonCourses));
   
     expect(getTermCourseList(seasonCourses)).toEqual(expectedSeasonCourses);
+  });
+});
+
+describe('Test error message', () => {
+  it('should appear if an error exists', () => {
+    const mainPage = shallow(<MainPage />);
+    mainPage.setState({ error: {"message": "bad"} });
+    expect(mainPage.find(ErrorMessage).length).toBe(1);
   });
 });
