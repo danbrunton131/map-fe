@@ -4,6 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import ReactGA from 'react-ga'; // react google analytics
+
+// uncomment these and put in your analytics credentials to use google analytics
+//ReactGA.initialize('UA-XXXXXX-Y');
+// report a page view
+//ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
