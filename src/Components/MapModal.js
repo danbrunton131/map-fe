@@ -19,6 +19,7 @@ const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
                 const  match = requirements[reqIndex].search(fulfilledCourses[fulfilledCourseIndex]) >= 0;
                 if(match){
                     requirements[reqIndex] = boldString(requirements[reqIndex], fulfilledCourses[fulfilledCourseIndex]);
+                    break; // consume this requirement so we don't reuse it in a further requirement, to match Backend functionality
                 }
             }
         }
