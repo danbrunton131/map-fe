@@ -3,14 +3,20 @@ import React from 'react';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 import Pagination from 'react-bootstrap/Pagination';
-import PageItem from 'react-bootstrap/PageItem';
 
 export const boldString = (s, b) => {
     return s.replace(RegExp(b), `<strong>${b}</strong>`);
 }
 
+/* Sort programResults, largest percentage first */
+export const sortProgramResults = (programResults) => {
+    return programResults.sort((a, b) => {
+        return b.programPercentage - a.programPercentage;
+    });
+}
+
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
-    
+
     //embolden first match of each fulfilledCourse
     for (let fulfilledCourseIndex=0; fulfilledCourseIndex< fulfilledCourses.length; fulfilledCourseIndex++){
         for (let reqIndex=0; reqIndex< requirements.length; reqIndex++){
@@ -106,7 +112,7 @@ const genProgramResults = (programResults) => {
                             <Col sm={12} md={8}>
                                 <div className="description">
                                     <h2>{program.programName}</h2>
-                                    <p>{`Lorem Ipsum ${program.programDescription}`}</p>
+                                    <p>{program.programDescription ? program.programDescription : "Lorem Ipsum"}</p>
                                     <div tabIndex={0} className="description-textbox">
                                         <strong> Requirements </strong>
                                         {genProgramRequirements(program.programRequirements.requirements, program.fulfilledCourses, program.programId)}
@@ -123,14 +129,6 @@ const genProgramResults = (programResults) => {
                 </Container>
             </React.Fragment>
         );
-    });
-}
-
-
-/* Sort programResults, largest percentage first */
-export const sortProgramResults = (programResults) => {
-    return programResults.sort((a, b) => {
-        return b.programPercentage - a.programPercentage;
     });
 }
 
@@ -249,7 +247,7 @@ export default class ExampleApp extends React.Component {
     }
     
     render () {
-        const {shownResults, currentPage, numPages, pagination} = this.state;
+        const {shownResults, pagination} = this.state;
 
         return (
             <Modal
