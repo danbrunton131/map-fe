@@ -1,7 +1,5 @@
-import '../css/course-selection.css';
 import React from 'react';
 import { Ring } from 'react-spinners-css';
-
 
 export default class LoadingOverlay extends React.Component {
 

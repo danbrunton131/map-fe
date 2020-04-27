@@ -5,11 +5,45 @@ import {Pie} from 'react-chartjs-2';
 import Pagination from 'react-bootstrap/Pagination';
 import PageItem from 'react-bootstrap/PageItem';
 
+export const boldString = (s, b) => {
+    return s.replace(RegExp(b), `<strong>${b}</strong>`);
+}
+
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
+    
+    //embolden first match of each fulfilledCourse
+    for (let fulfilledCourseIndex=0; fulfilledCourseIndex< fulfilledCourses.length; fulfilledCourseIndex++){
+        for (let reqIndex=0; reqIndex< requirements.length; reqIndex++){
+            if (requirements[reqIndex] && fulfilledCourses[fulfilledCourseIndex]){
+
+                const  match = requirements[reqIndex].search(fulfilledCourses[fulfilledCourseIndex]) >= 0;
+                if(match){
+                    requirements[reqIndex] = boldString(requirements[reqIndex], fulfilledCourses[fulfilledCourseIndex]);
+                    break; // consume this requirement so we don't reuse it in a further requirement, to match Backend functionality
+                }
+            }
+        }
+    }
+    // // Track a partially fulfilled requirement
+    // const requirementsCopy = [...requirements]; // clone requirements so we don't modify original! We need to show it. 
+    // let satisfiedRequirements = []; // indices of matching requirements
+    // for (let i=0; i< fulfilledCourses.length; i++){
+    //     const satisfiedRequirementIndex = requirementsCopy.findIndex(requirement => requirement.includes(fulfilledCourses[i])); //find a requirement match
+    //     // requirementsCopy.splice(satisfiedRequirementIndex, 1); // remove the matching requirement?
+
+    //     if (satisfiedRequirementIndex!==-1){
+    //         // console.log(satisfiedRequirementIndex);
+    //         satisfiedRequirements.push(satisfiedRequirementIndex)
+    //     }
+    //  }
+
     return (
         <ul>
             {requirements.map((requirement, index) => {
-                return ( <li key={`${programId}-${index}`}>{requirement}</li> );})
+                return (
+                <li key={`${programId}-${index}`}>
+                    <div dangerouslySetInnerHTML={{ __html: requirement }} /> {/* We need to represent the bold fulfilled courses */}
+                </li> );})
             }
         </ul>
         );
@@ -18,7 +52,7 @@ const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
 const genProgramResults = (programResults) => {
     return programResults.map((program, index) => {
         const greenHex = "#4dac26"; // satisfied color
-        const greyHex = "#dbdbdd"; // unsatisfied
+        const greyHex = "#efefef"; // unsatisfied
         const backgroundHex = "#FFCE56";
         const chartData = {
             labels: [
