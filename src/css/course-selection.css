@@ -39,11 +39,14 @@
     padding: 5px 5px 5px 5px;
     width: 100%;
     align-self: flex-start;  
+    overflow: hidden; /* useful for tiny display overflows - allows icons to stay in the course-item */
+    display:flex;
     }
 
   /* show clickability for course text only*/ 
   .course-code {
     cursor: pointer;
+    font-size: 18px; /*matches bootstrap font-size for tabs*/
   }
 
   .course-col-container {
@@ -74,8 +77,11 @@
     align-content: center;
 
   }
-  
-  .course-action{
+  .course-actions {
+    margin-left: auto;
+  }
+
+  .course-action {
     cursor:pointer;
     color: var(--maroon);
   }  
