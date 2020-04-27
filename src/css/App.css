@@ -59,10 +59,6 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   background-color: blue;
 }*/
 
-.description {
-  /*background-color: grey;*/
-}
-
 .program-result {
   /*background-color: pink;*/
   box-shadow: 2px 2px 10px #888888;

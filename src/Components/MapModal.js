@@ -51,7 +51,7 @@ const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
 const genProgramResults = (programResults) => {
     return programResults.map((program, index) => {
         const greenHex = "#4dac26"; // satisfied color
-        const greyHex = "#dbdbdd"; // unsatisfied
+        const greyHex = "#efefef"; // unsatisfied
         const backgroundHex = "#FFCE56";
         const chartData = {
             labels: [
