@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import {boldString} from '../Components/MapModal.js';
+import {boldString, sortProgramResults} from '../Components/MapModal.js';
 
 const requirement = "6 units of EARTHSC 1G03, ENVIRSC 1C03";
 const updatedRequirement = "6 units of <strong>EARTHSC 1G03</strong>, ENVIRSC 1C03";

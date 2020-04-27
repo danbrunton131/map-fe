@@ -40,7 +40,6 @@ export default class ErrorMessage extends React.Component {
             this.setState({shown: false});
         }
     }  
-  
 
     render() {
         const {message} = this.props; 
