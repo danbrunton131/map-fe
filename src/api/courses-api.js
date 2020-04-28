@@ -13,7 +13,7 @@ const params = new URLSearchParams(document.location.search.substring(1));
 const calculatorId = params.get("id");
 
 function fetchAllCourses(data) {
-    return axios.get(`${BASE_URL}/api/GetCourseData${calculatorId ? `calc_id=${calculatorId}` : ""}`, data, axiosConfig);  // if no calculator id present, send "" and the backend defaults to "1"
+    return axios.get(`${BASE_URL}/api/GetCourseData${calculatorId ? `?calc_id=${calculatorId}` : ""}`, data, axiosConfig);  // if no calculator id present, send "" and the backend defaults to "1"
 }
 
 // expected data: { "selections": [ 1234567, 0101010, 5564732, 1238921 ] }

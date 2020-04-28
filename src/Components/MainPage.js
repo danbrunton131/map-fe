@@ -47,10 +47,9 @@ export default class MainPage extends React.Component {
         this.submitCourses = this.submitCourses.bind(this);
     }
 
+    //add springSummer once BE accounts for the same group
     componentDidMount(){
         fetchAllCourses().then(res => {
-          console.log(res);
-
           if (res.data.error){
             const error = {message: 'The Calculator ID specified does not exist!', key: getCurrentTime()};
             this.setState({error});
@@ -61,6 +60,7 @@ export default class MainPage extends React.Component {
               spring: getTermCourseList(res.data.courseLists.Spring),
               summer: getTermCourseList(res.data.courseLists.Summer),
             };
+            this.props.setCalculatorTitle(res.data.calcTitle);
             this.setState({allCourses, calcTitle: res.data.calcTitle});
           }
         })
