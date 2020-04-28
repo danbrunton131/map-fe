@@ -47,7 +47,6 @@ export default class MainPage extends React.Component {
         this.submitCourses = this.submitCourses.bind(this);
     }
 
-    //add springSummer once BE accounts for the same group
     componentDidMount(){
         fetchAllCourses().then(res => {
           console.log(res);
