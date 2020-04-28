@@ -23,7 +23,7 @@ function submitSelection(data) {
 }
 
 function searchForCourse(data) {
-    return axios.get(`${BASE_URL}/api/Search?q=${data.searchTerm}?calc_id=${calculatorId}`, data, axiosConfig);
+    return axios.get(`${BASE_URL}/api/Search?q=${data.searchTerm}`, data, axiosConfig);
 }
 
 // function fetchCourse(data) {
