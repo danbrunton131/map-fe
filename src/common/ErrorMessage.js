@@ -65,7 +65,3 @@ export default class ErrorMessage extends React.Component {
     timeout: PropTypes.number, // timeout is in milliseconds
   }
   
-  ErrorMessage.defaultProps = {
-    timeout: 5000, // 5 seconds is the default timeout
-  };
-  

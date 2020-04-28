@@ -50,14 +50,20 @@ export default class MainPage extends React.Component {
     //add springSummer once BE accounts for the same group
     componentDidMount(){
         fetchAllCourses().then(res => {
-          const allCourses = {
-            fall: getTermCourseList(res.data.courseLists.Fall), 
-            winter: getTermCourseList(res.data.courseLists.Winter),
-            spring: getTermCourseList(res.data.courseLists.Spring),
-            summer: getTermCourseList(res.data.courseLists.Summer),
-          };
-          this.setState({allCourses});
-        //   console.log(allCourses);
+          console.log(res);
+
+          if (res.data.error){
+            const error = {message: 'The Calculator ID specified does not exist!', key: getCurrentTime()};
+            this.setState({error});
+          } else {
+            const allCourses = {
+              fall: getTermCourseList(res.data.courseLists.Fall), 
+              winter: getTermCourseList(res.data.courseLists.Winter),
+              spring: getTermCourseList(res.data.courseLists.Spring),
+              summer: getTermCourseList(res.data.courseLists.Summer),
+            };
+            this.setState({allCourses, calcTitle: res.data.calcTitle});
+          }
         })
         .catch((err) => {
           console.log("AXIOS ERROR: ", err);
