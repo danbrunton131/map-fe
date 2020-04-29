@@ -28,19 +28,6 @@ const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
             }
         }
     }
-    // // Track a partially fulfilled requirement
-    // const requirementsCopy = [...requirements]; // clone requirements so we don't modify original! We need to show it. 
-    // let satisfiedRequirements = []; // indices of matching requirements
-    // for (let i=0; i< fulfilledCourses.length; i++){
-    //     const satisfiedRequirementIndex = requirementsCopy.findIndex(requirement => requirement.includes(fulfilledCourses[i])); //find a requirement match
-    //     // requirementsCopy.splice(satisfiedRequirementIndex, 1); // remove the matching requirement?
-
-    //     if (satisfiedRequirementIndex!==-1){
-    //         // console.log(satisfiedRequirementIndex);
-    //         satisfiedRequirements.push(satisfiedRequirementIndex)
-    //     }
-    //  }
-
     return (
         <ul>
             {requirements.map((requirement, index) => {
