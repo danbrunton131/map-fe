@@ -1,5 +1,5 @@
 import '../css/results.css';
-import React from 'react';
+import React, {createRef} from 'react';
 import PropTypes from 'prop-types';
 
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
@@ -127,6 +127,7 @@ export default class MapModal extends React.Component {
         }
 
         this.handleCloseModal = this.handleCloseModal.bind(this);
+        this.modalRef = createRef();
     }
 
     componentDidMount() {
@@ -225,7 +226,7 @@ export default class MapModal extends React.Component {
                 <Pagination>{items}</Pagination>
             </div>
         );
-        this.modalRef.scrollTop = 0
+        this.modalRef.current.scrollTop = 0; // when changing pages, return to top of modal content
         return pagination;
     }
     
@@ -242,7 +243,7 @@ export default class MapModal extends React.Component {
                 <Modal.Header id="modal-header" closeButton>
                     <Modal.Title id="modal-title">Program Results</Modal.Title>
                 </Modal.Header>
-                <Modal.Body id="modal-body" ref={ref => this.modalRef = ref}>
+                <Modal.Body id="modal-body" ref={this.modalRef}>
                     {/* Program Result Component */}
                     {Object.keys(shownResults).length > 0 &&
                         genProgramResults(shownResults)}
