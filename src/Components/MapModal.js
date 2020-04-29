@@ -21,10 +21,7 @@ const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
         for (let fulfilledCourseIndex=0; fulfilledCourseIndex<fulfilledCourses.length; fulfilledCourseIndex++){
             const fulfilledCourse = fulfilledCourses[reqIndex][fulfilledCourseIndex];
             if (requirements[reqIndex] && fulfilledCourse){ //verify the fulfilled course isn't an empty array for this requirement
-                const match = requirements[reqIndex].search(fulfilledCourse) >= 0;
-                if(match){
-                    requirements[reqIndex] = boldAllMatches(requirements[reqIndex], fulfilledCourse); // bold all instances of fulfilled course in this specific requirement. 
-                }
+                requirements[reqIndex] = boldAllMatches(requirements[reqIndex], fulfilledCourse); // bold all instances of fulfilled course in this specific requirement. 
             }
         }
     }
@@ -37,7 +34,7 @@ const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
                 </li> );})
             }
         </ul>
-        );
+    );
 }
 
 const genProgramResults = (programResults) => {
