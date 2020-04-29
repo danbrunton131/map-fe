@@ -225,6 +225,7 @@ export default class MapModal extends React.Component {
                 <Pagination>{items}</Pagination>
             </div>
         );
+        this.modalRef.scrollTop = 0
         return pagination;
     }
     
@@ -241,7 +242,7 @@ export default class MapModal extends React.Component {
                 <Modal.Header id="modal-header" closeButton>
                     <Modal.Title id="modal-title">Program Results</Modal.Title>
                 </Modal.Header>
-                <Modal.Body id="modal-body">
+                <Modal.Body id="modal-body" ref={ref => this.modalRef = ref}>
                     {/* Program Result Component */}
                     {Object.keys(shownResults).length > 0 &&
                         genProgramResults(shownResults)}
