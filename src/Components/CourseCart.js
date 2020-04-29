@@ -68,7 +68,7 @@ export default class CourseCart extends React.Component {
   }
   
 CourseCart.propTypes = {
-    selectedCourses: PropTypes.object.isRequired,
+    selectedCourses: PropTypes.array.isRequired,
     submitCourses: PropTypes.func.isRequired,
     removeCourseFromCart: PropTypes.func.isRequired,
 }

@@ -282,6 +282,6 @@ export default class MapModal extends React.Component {
 }
 
 MapModal.propTypes = {
-    programResults: PropTypes.object.isRequired,
+    programResults: PropTypes.array.isRequired,
     hideModal: PropTypes.func.isRequired,
 }

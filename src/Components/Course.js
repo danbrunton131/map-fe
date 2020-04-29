@@ -112,7 +112,6 @@ export default class Course extends React.Component {
 
 
   Course.propTypes = {
-    key: PropTypes.string.isRequired,
     course: PropTypes.object.isRequired,
     removeCourseFromCart: PropTypes.func, // in CourseCart, removeCourseFromCart is used
     addCourseToCart: PropTypes.func, // in SearchBar or CourseSelection, addCourseToCart is used
