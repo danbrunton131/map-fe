@@ -1,7 +1,7 @@
 import '../css/cart.css';
 import React, {createRef} from 'react';
 import Course from './Course';
-import {InputGroup, FormControl, Col, Row, Tabs, Tab, Button} from 'react-bootstrap';
+import {FormControl} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
@@ -60,7 +60,6 @@ export default class CourseCart extends React.Component {
                   </div>  
                 </div>
                 { isCartValid === false && <FormControl.Feedback type="invalid" role="alert">You must add between 0 and 16 courses to your cart. </FormControl.Feedback> }
-
             </div>
         );
         

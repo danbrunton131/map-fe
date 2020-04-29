@@ -2,19 +2,57 @@ import React, {Component} from 'react';
 import './css/custom.css';
 import './css/App.css';
 import MainPage from './Components/MainPage';
+import ErrorMessage from './common/ErrorMessage';
+import {fetchAllCourses} from './api/courses-api';
+import {getCurrentTime} from './common/utilities';
+
+export const getTermCourseList = (termCoursesByProgram) => {
+  let allTermCourses = [];
+  for (let classType in termCoursesByProgram){ 
+    const classTypeList = termCoursesByProgram[classType];
+    for (let i=0; i<classTypeList.length;i++){ //i is the course itself
+      allTermCourses.push({...classTypeList[i], key:classTypeList[i].courseID});
+    }
+  }
+  return allTermCourses;
+}
 
 export default class App extends Component {
   constructor() {
     super();
-    this.state={}
+    this.state={
+      title: null,
+      allCourses: null,
+      error: null,
+    }
   }
 
-  setCalculatorTitle = (title) => {
-    this.setState({title});
+  componentDidMount(){
+    fetchAllCourses().then(res => {
+      if (res.data.error){
+        const error = {message: 'The Calculator ID specified does not exist!', key: getCurrentTime()};
+        this.setState({error});
+      } else {
+        const allCourses = {
+          fall: getTermCourseList(res.data.courseLists.Fall), 
+          winter: getTermCourseList(res.data.courseLists.Winter),
+          spring: getTermCourseList(res.data.courseLists.Spring),
+          summer: getTermCourseList(res.data.courseLists.Summer),
+        };
+        this.setState({allCourses, title: res.data.calcTitle});
+      }
+    })
+    .catch((err) => {
+      console.log("AXIOS ERROR: ", err);
+    });
+  }
+
+  showErrorMessage(message){
+    this.setState({error: message});
   }
   
   render(){
-    const {title} = this.state;
+    const {title, error, allCourses} = this.state;
 
     return (
       <div className="App">
@@ -22,7 +60,12 @@ export default class App extends Component {
           <h1 className="maroon"> {title} </h1>
         </header>
         <div className="App-body" role="main"> 
-          <MainPage setCalculatorTitle={this.setCalculatorTitle.bind(this)}/>
+          {error && <ErrorMessage 
+              key={error.key} // this is used as a key to handle subsequent "identical" messages
+              timeout={error.timeout}
+              message={error.message}
+          /> }
+          {allCourses && <MainPage allCourses={allCourses} showErrorMessage={this.showErrorMessage.bind(this)}/>}
         </div>
       </div>
     );

@@ -3,11 +3,11 @@ import React from 'react';
 import { Tab, Nav, Col, Row} from 'react-bootstrap';
 import Course from './Course';
 
-const generateCourseList = (allCourses, addCourseToCart) => {
+const generateCourseList = (courseSelectionList, addCourseToCart) => {
     // divide list in two and return two columns
-    const half_length = Math.ceil(allCourses.length / 2);
-    const leftSide = allCourses.slice(0, half_length);
-    const rightSide = allCourses.slice(half_length);
+    const half_length = Math.ceil(courseSelectionList.length / 2);
+    const leftSide = courseSelectionList.slice(0, half_length);
+    const rightSide = courseSelectionList.slice(half_length);
 
     return (
       <div className="course-col-container">
@@ -41,7 +41,7 @@ const generateCourseList = (allCourses, addCourseToCart) => {
     }
 
     render() {
-      const {allCourses, addCourseToCart} = this.props;
+      const {courseSelectionList, addCourseToCart} = this.props;
       const {currentSeason} = this.state;
 
       return(
@@ -68,9 +68,9 @@ const generateCourseList = (allCourses, addCourseToCart) => {
                     <Tab.Pane className="tab-pane" eventKey={currentSeason}>
                       <div className="course-container">
                         {/* show loading text until course list loads. */}
-                        { !allCourses[currentSeason] ? <div> Loading... </div> :
-                          allCourses[currentSeason].length > 0 ?
-                            generateCourseList(allCourses[currentSeason], addCourseToCart) 
+                        { !courseSelectionList[currentSeason] ? <div> Loading... </div> :
+                          courseSelectionList[currentSeason].length > 0 ?
+                            generateCourseList(courseSelectionList[currentSeason], addCourseToCart) 
                           : <div> There are no courses available for this Term.</div>
                         }
                       </div>
