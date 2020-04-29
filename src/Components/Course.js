@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp, faPlusCircle, faShoppingCart, faMinusCircle} from '@fortawesome/free-solid-svg-icons';
 import SmoothCollapse from 'react-smooth-collapse';
@@ -108,4 +108,11 @@ export default class Course extends React.Component {
         </div>
       );
     }
+  }
+
+
+  Course.propTypes = {
+    course: PropTypes.object.isRequired,
+    removeCourseFromCart: PropTypes.func, // in CourseCart, removeCourseFromCart is used
+    addCourseToCart: PropTypes.func, // in SearchBar or CourseSelection, addCourseToCart is used
   }

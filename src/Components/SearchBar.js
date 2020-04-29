@@ -1,5 +1,6 @@
 import '../css/search.css';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { InputGroup, FormControl } from 'react-bootstrap';
 import {searchForCourse} from '../api/courses-api';
 import Course from './Course';
@@ -117,4 +118,9 @@ export default class SearchBar extends React.Component {
         </div>
       );
     }
+}
+
+
+SearchBar.propTypes = {
+  addCourseToCart: PropTypes.func.isRequired,
 }

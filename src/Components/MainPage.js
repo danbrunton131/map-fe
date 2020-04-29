@@ -1,40 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Col, Row} from 'react-bootstrap';
 import CourseCart from './CourseCart';
 import CourseSelection from './CourseSelection';
 import MapModal from './MapModal';
 import SearchBar from './SearchBar';
 import LoadingOverlay from '../common/LoadingOverlay';
-import ErrorMessage from '../common/ErrorMessage';
+import {getCurrentTime} from '../common/utilities';
 
-import {fetchAllCourses, submitSelection} from '../api/courses-api';
-
-// time is used as a key to handle subsequent "identical" messages
-const getCurrentTime = () =>{
-  return(new Date());
-}
-
-export const getTermCourseList = (termCoursesByProgram) => {
-  let allTermCourses = [];
-  for (let classType in termCoursesByProgram){ 
-    const classTypeList = termCoursesByProgram[classType];
-    for (let i=0; i<classTypeList.length;i++){ //i is the course itself
-      allTermCourses.push({...classTypeList[i], key:classTypeList[i].courseID});
-    }
-  }
-  return allTermCourses;
-}
+import {submitSelection} from '../api/courses-api';
 
 export default class MainPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            allCourses:{}, // courses fetched from BE
+            courseSelectionList: this.props.allCourses, // courses fetched from BE
             selectedCourses:[], // courses shown in cart
             programResults:[], // results once student submits
             modalShown: false,
             selectedSeason:"fall", // current season from CourseSelection
-            error: null,
             isLoadingResults: false,
           };
 
@@ -45,23 +29,6 @@ export default class MainPage extends React.Component {
         this.removeCourseFromCart = this.removeCourseFromCart.bind(this);
         this.onSeasonChange = this.onSeasonChange.bind(this);
         this.submitCourses = this.submitCourses.bind(this);
-    }
-
-    //add springSummer once BE accounts for the same group
-    componentDidMount(){
-        fetchAllCourses().then(res => {
-          const allCourses = {
-            fall: getTermCourseList(res.data.courseLists.Fall), 
-            winter: getTermCourseList(res.data.courseLists.Winter),
-            spring: getTermCourseList(res.data.courseLists.Spring),
-            summer: getTermCourseList(res.data.courseLists.Summer),
-          };
-          this.setState({allCourses});
-        //   console.log(allCourses);
-        })
-        .catch((err) => {
-          console.log("AXIOS ERROR: ", err);
-      });
     }
 
     submitCourses(){
@@ -100,37 +67,37 @@ export default class MainPage extends React.Component {
       // Show an error if newCourse is already in Cart
       } else {
         const error = {message: `${newCourse.courseCode} is already in Cart!`, timeout: 5000, key: getCurrentTime()};
-        this.setState({error});
-    }
+        this.props.showErrorMessage(error);
+      }
   }
 
     addCourseToCart(newCourse){
-        const {selectedCourses, allCourses, selectedSeason} = this.state;
+        const {selectedCourses, courseSelectionList, selectedSeason} = this.state;
 
       // verify the course isn't already added to cart through another season or through the search bar . 
       const cartIndex = selectedCourses.findIndex(selectedCourse => selectedCourse.courseID === newCourse.courseID);
       if (cartIndex === -1) {
-        const newCourseIndex = allCourses[selectedSeason].findIndex(course => course.courseID === newCourse.courseID);
-          let updatedAllCourses = allCourses;
+        const newCourseIndex = courseSelectionList[selectedSeason].findIndex(course => course.courseID === newCourse.courseID);
+          let updatedCourseSelectionList = courseSelectionList;
           // mark course as selected so it cannot be added to cart twice
-          updatedAllCourses[selectedSeason][newCourseIndex].selected = true;
-          // track the semester of the course for deletion of courses. (allCourses is organzed by season)
-          updatedAllCourses[selectedSeason][newCourseIndex].season = selectedSeason; 
+          updatedCourseSelectionList[selectedSeason][newCourseIndex].selected = true;
+          // track the semester of the course for deletion of courses. (courseSelectionList is organzed by season)
+          updatedCourseSelectionList[selectedSeason][newCourseIndex].season = selectedSeason; 
 
           this.setState({
-              selectedCourses: [...selectedCourses, allCourses[selectedSeason][newCourseIndex]],
-              allCourses: updatedAllCourses
+              selectedCourses: [...selectedCourses, courseSelectionList[selectedSeason][newCourseIndex]],
+              courseSelectionList: updatedCourseSelectionList
           });
         } else {
           const error = {message: `${newCourse.courseCode} is already in Cart!`, timeout: 5000, key: getCurrentTime()};
-          this.setState({error});
+          this.props.showErrorMessage(error);
         }
     }
 
     removeCourseFromCart(courseId, season){
-        const {allCourses, selectedCourses} = this.state;
+        const {courseSelectionList, selectedCourses} = this.state;
 
-        // Removing a "Searched" course: its season is "search" and it is not in the AllCourses list (preselected ones)
+        // Removing a "Searched" course: its season is "search" and it is not in the courseSelectionList (preselected ones)
         // We simply remove it from the cart.
         if (season === "searched") {
           const updatedSelectedCourses = selectedCourses.filter(function( course ) {
@@ -141,12 +108,12 @@ export default class MainPage extends React.Component {
       });
 
       // Remove a course added from Course Selection
-      // Update allCourses to remove "in cart" status of the course 
+      // Update courseSelectionList to remove "in cart" status of the course 
       } else {
-          const courseIndex = allCourses[season].findIndex(course => course.courseID === courseId);
+          const courseIndex = courseSelectionList[season].findIndex(course => course.courseID === courseId);
           // deselect course when removing it from cart
-          let updatedAllCourses = allCourses;
-          updatedAllCourses[season][courseIndex].selected = false;
+          let updatedCourseSelectionList = courseSelectionList;
+          updatedCourseSelectionList[season][courseIndex].selected = false;
 
           const updatedSelectedCourses = selectedCourses.filter(function( course ) {
               return course.courseID !== courseId;
@@ -154,7 +121,7 @@ export default class MainPage extends React.Component {
             
           this.setState({
               selectedCourses: updatedSelectedCourses,
-              allCourses: updatedAllCourses
+              courseSelectionList: updatedCourseSelectionList
           });
       }
     }
@@ -168,17 +135,10 @@ export default class MainPage extends React.Component {
     }
 
     render() {
-        const {allCourses, selectedCourses, programResults, error} = this.state;
-        // console.log(selectedCourses);
+        const {courseSelectionList, selectedCourses, programResults} = this.state;
+
         return(
             <div className="container-fluid">
-            {error &&
-              <ErrorMessage 
-                key={error.key} // this is used as a key to handle subsequent "identical" messages
-                timeout={error.timeout}
-                message={error.message}
-              />
-            }
               <Row>
                 <Col sm={12} md={9}>
                   <section aria-label="Search Bar"/>
@@ -188,22 +148,25 @@ export default class MainPage extends React.Component {
               <Row>
                   <Col sm={12} md={9}>
                       <section aria-label="Course Selection"/>
-                      <CourseSelection allCourses={allCourses} addCourseToCart={this.addCourseToCart} onSeasonChange={this.onSeasonChange}/> 
+                      <CourseSelection courseSelectionList={courseSelectionList} addCourseToCart={this.addCourseToCart} onSeasonChange={this.onSeasonChange}/> 
                   </Col>
 
                   <Col sm={12} md={3}>
                       <section aria-label="Cart"/>
                       <CourseCart submitCourses={this.submitCourses} selectedCourses={selectedCourses} removeCourseFromCart={this.removeCourseFromCart}/>
-
                   </Col>
               </Row>
 
               {this.state.modalShown &&
                 <MapModal hideModal={this.hideModal} programResults={programResults}></MapModal>
               }
-              {this.state.isLoadingResults && <LoadingOverlay role="alert" aria-label="Your program results are loading"/>}
+              {this.state.isLoadingResults && <LoadingOverlay aria-label="Your program results are loading"/>}
             </div>
       );
     }
   }
-  
+
+MainPage.propTypes = {
+  allCourses: PropTypes.object.isRequired,
+  showErrorMessage: PropTypes.func.isRequired,
+}
