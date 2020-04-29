@@ -4,18 +4,7 @@ import './css/App.css';
 import MainPage from './Components/MainPage';
 import ErrorMessage from './common/ErrorMessage';
 import {fetchAllCourses} from './api/courses-api';
-import {getCurrentTime} from './common/utilities';
-
-export const getTermCourseList = (termCoursesByProgram) => {
-  let allTermCourses = [];
-  for (let classType in termCoursesByProgram){ 
-    const classTypeList = termCoursesByProgram[classType];
-    for (let i=0; i<classTypeList.length;i++){ //i is the course itself
-      allTermCourses.push({...classTypeList[i], key:classTypeList[i].courseID});
-    }
-  }
-  return allTermCourses;
-}
+import {getCurrentTime, getTermCourseList} from './common/utilities';
 
 export default class App extends Component {
   constructor() {
@@ -53,6 +42,7 @@ export default class App extends Component {
   
   render(){
     const {title, error, allCourses} = this.state;
+    console.log(this.state.error);
 
     return (
       <div className="App">
