@@ -160,7 +160,7 @@ export default class MainPage extends React.Component {
               {this.state.modalShown &&
                 <MapModal hideModal={this.hideModal} programResults={programResults}></MapModal>
               }
-              {this.state.isLoadingResults && <LoadingOverlay role="alert" aria-label="Your program results are loading"/>}
+              {this.state.isLoadingResults && <LoadingOverlay aria-label="Your program results are loading"/>}
             </div>
       );
     }
