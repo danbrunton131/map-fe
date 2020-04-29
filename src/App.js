@@ -42,7 +42,6 @@ export default class App extends Component {
   
   render(){
     const {title, error, allCourses} = this.state;
-    console.log(this.state.error);
 
     return (
       <div className="App">

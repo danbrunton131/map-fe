@@ -4,7 +4,11 @@ import ErrorMessage from '../common/ErrorMessage';
 import App from '../App';
 
 describe('Test error message', () => {
-  const app = mount(<App />);
+    let app;
+    beforeEach(() => {
+      app = mount(<App />);
+    });
+
   jest.useFakeTimers();
 
 
@@ -16,7 +20,7 @@ describe('Test error message', () => {
 
   it('should close after timeout', () => {
     jest.useFakeTimers();
-    app.setState({ error: {"timeout": 7000, "message": "bad"}});
+    app.setState({ error: {timeout: 7000, message: "bad"}});
 
     setTimeout(() => {
       expect(app.find(ErrorMessage).state().shown).toEqual(false);
