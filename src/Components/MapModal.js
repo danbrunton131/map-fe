@@ -5,10 +5,7 @@ import PropTypes from 'prop-types';
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 import Pagination from 'react-bootstrap/Pagination';
-
-export const boldString = (s, b) => {
-    return s.replace(RegExp(b), `<strong>${b}</strong>`);
-}
+import {boldAllMatches} from '../common/utilities';
 
 /* Sort programResults, largest percentage first */
 export const sortProgramResults = (programResults) => {
@@ -17,17 +14,16 @@ export const sortProgramResults = (programResults) => {
     });
 }
 
+// requirements are structured like [reqString1, reqString2,...]
+// fulfilledCourses follow the same indexing as requirements, but instead include an array of courses satisfied in that requirement. 
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
-
-    //embolden first match of each fulfilledCourse
-    for (let fulfilledCourseIndex=0; fulfilledCourseIndex< fulfilledCourses.length; fulfilledCourseIndex++){
-        for (let reqIndex=0; reqIndex< requirements.length; reqIndex++){
-            if (requirements[reqIndex] && fulfilledCourses[fulfilledCourseIndex]){
-
-                const  match = requirements[reqIndex].search(fulfilledCourses[fulfilledCourseIndex]) >= 0;
+    for (let reqIndex=0; reqIndex< requirements.length; reqIndex++){
+        for (let fulfilledCourseIndex=0; fulfilledCourseIndex<fulfilledCourses.length; fulfilledCourseIndex++){
+            const fulfilledCourse = fulfilledCourses[reqIndex][fulfilledCourseIndex];
+            if (requirements[reqIndex] && fulfilledCourse){ //verify the fulfilled course isn't an empty array for this requirement
+                const match = requirements[reqIndex].search(fulfilledCourse) >= 0;
                 if(match){
-                    requirements[reqIndex] = boldString(requirements[reqIndex], fulfilledCourses[fulfilledCourseIndex]);
-                    break; // consume this requirement so we don't reuse it in a further requirement, to match Backend functionality
+                    requirements[reqIndex] = boldAllMatches(requirements[reqIndex], fulfilledCourse); // bold all instances of fulfilled course in this specific requirement. 
                 }
             }
         }
