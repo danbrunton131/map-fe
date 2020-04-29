@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Col, Row} from 'react-bootstrap';
 import CourseCart from './CourseCart';
 import CourseSelection from './CourseSelection';
@@ -164,4 +165,8 @@ export default class MainPage extends React.Component {
       );
     }
   }
-  
+
+MainPage.propTypes = {
+  allCourses: PropTypes.object.isRequired,
+  showErrorMessage: PropTypes.func.isRequired,
+}

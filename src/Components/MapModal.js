@@ -1,5 +1,7 @@
 import '../css/results.css';
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 import Pagination from 'react-bootstrap/Pagination';
@@ -132,7 +134,7 @@ const genProgramResults = (programResults) => {
     });
 }
 
-export default class ExampleApp extends React.Component {
+export default class MapModal extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
@@ -277,4 +279,9 @@ export default class ExampleApp extends React.Component {
             </Modal>
         );
     }
+}
+
+MapModal.propTypes = {
+    programResults: PropTypes.object.isRequired,
+    hideModal: PropTypes.func.isRequired,
 }

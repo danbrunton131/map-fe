@@ -1,6 +1,7 @@
 import '../css/course-selection.css';
 import React from 'react';
-import { Tab, Nav, Col, Row} from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { Tab, Nav} from 'react-bootstrap';
 import Course from './Course';
 
 const generateCourseList = (courseSelectionList, addCourseToCart) => {
@@ -82,3 +83,8 @@ const generateCourseList = (courseSelectionList, addCourseToCart) => {
   }
 }
   
+CourseSelection.propTypes = {
+  courseSelectionList: PropTypes.object.isRequired,
+  addCourseToCart: PropTypes.func.isRequired,
+  onSeasonChange: PropTypes.func.isRequired,
+}

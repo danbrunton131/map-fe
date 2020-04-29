@@ -60,8 +60,8 @@ export default class ErrorMessage extends React.Component {
     }
   }
 
-  ErrorMessage.propTypes = {
+ErrorMessage.propTypes = {
     message: PropTypes.string.isRequired,
     timeout: PropTypes.number, // timeout is in milliseconds
-  }
-  
+}
+

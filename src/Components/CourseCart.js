@@ -1,5 +1,6 @@
 import '../css/cart.css';
 import React, {createRef} from 'react';
+import PropTypes from 'prop-types';
 import Course from './Course';
 import {FormControl} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -66,3 +67,8 @@ export default class CourseCart extends React.Component {
     }
   }
   
+CourseCart.propTypes = {
+    selectedCourses: PropTypes.object.isRequired,
+    submitCourses: PropTypes.func.isRequired,
+    removeCourseFromCart: PropTypes.func.isRequired,
+}
