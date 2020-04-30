@@ -13,8 +13,14 @@ const getTermCourseList = (termCoursesByProgram) => {
     }
     return allTermCourses;
   }
-  
+
+const boldAllMatches = (string, match) => {
+  return string.replace(RegExp(match, 'g'), `<strong>${match}</strong>`);
+}
+
+
 export {
     getCurrentTime,
     getTermCourseList,
+    boldAllMatches,
 };

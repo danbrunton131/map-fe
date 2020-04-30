@@ -1,14 +1,11 @@
 import '../css/results.css';
-import React from 'react';
+import React, {createRef} from 'react';
 import PropTypes from 'prop-types';
 
 import {Modal, Button, Row, Col, Container} from 'react-bootstrap';
 import {Pie} from 'react-chartjs-2';
 import Pagination from 'react-bootstrap/Pagination';
-
-export const boldString = (s, b) => {
-    return s.replace(RegExp(b), `<strong>${b}</strong>`);
-}
+import {boldAllMatches} from '../common/utilities';
 
 /* Sort programResults, largest percentage first */
 export const sortProgramResults = (programResults) => {
@@ -17,34 +14,17 @@ export const sortProgramResults = (programResults) => {
     });
 }
 
+// requirements are structured like [reqString1, reqString2,...]
+// fulfilledCourses follow the same indexing as requirements, but instead include an array of courses satisfied in that requirement. 
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
-
-    //embolden first match of each fulfilledCourse
-    for (let fulfilledCourseIndex=0; fulfilledCourseIndex< fulfilledCourses.length; fulfilledCourseIndex++){
-        for (let reqIndex=0; reqIndex< requirements.length; reqIndex++){
-            if (requirements[reqIndex] && fulfilledCourses[fulfilledCourseIndex]){
-
-                const  match = requirements[reqIndex].search(fulfilledCourses[fulfilledCourseIndex]) >= 0;
-                if(match){
-                    requirements[reqIndex] = boldString(requirements[reqIndex], fulfilledCourses[fulfilledCourseIndex]);
-                    break; // consume this requirement so we don't reuse it in a further requirement, to match Backend functionality
-                }
+    for (let reqIndex=0; reqIndex< requirements.length; reqIndex++){
+        for (let fulfilledCourseIndex=0; fulfilledCourseIndex<fulfilledCourses.length; fulfilledCourseIndex++){
+            const fulfilledCourse = fulfilledCourses[reqIndex][fulfilledCourseIndex];
+            if (requirements[reqIndex] && fulfilledCourse){ //verify the fulfilled course isn't an empty array for this requirement
+                requirements[reqIndex] = boldAllMatches(requirements[reqIndex], fulfilledCourse); // bold all instances of fulfilled course in this specific requirement. 
             }
         }
     }
-    // // Track a partially fulfilled requirement
-    // const requirementsCopy = [...requirements]; // clone requirements so we don't modify original! We need to show it. 
-    // let satisfiedRequirements = []; // indices of matching requirements
-    // for (let i=0; i< fulfilledCourses.length; i++){
-    //     const satisfiedRequirementIndex = requirementsCopy.findIndex(requirement => requirement.includes(fulfilledCourses[i])); //find a requirement match
-    //     // requirementsCopy.splice(satisfiedRequirementIndex, 1); // remove the matching requirement?
-
-    //     if (satisfiedRequirementIndex!==-1){
-    //         // console.log(satisfiedRequirementIndex);
-    //         satisfiedRequirements.push(satisfiedRequirementIndex)
-    //     }
-    //  }
-
     return (
         <ul>
             {requirements.map((requirement, index) => {
@@ -54,7 +34,7 @@ const genProgramRequirements = (requirements, fulfilledCourses, programId) => {
                 </li> );})
             }
         </ul>
-        );
+    );
 }
 
 const genProgramResults = (programResults) => {
@@ -147,6 +127,7 @@ export default class MapModal extends React.Component {
         }
 
         this.handleCloseModal = this.handleCloseModal.bind(this);
+        this.modalRef = createRef();
     }
 
     componentDidMount() {
@@ -245,6 +226,7 @@ export default class MapModal extends React.Component {
                 <Pagination>{items}</Pagination>
             </div>
         );
+        this.modalRef.current.scrollTop = 0; // when changing pages, return to top of modal content
         return pagination;
     }
     
@@ -261,7 +243,7 @@ export default class MapModal extends React.Component {
                 <Modal.Header id="modal-header" closeButton>
                     <Modal.Title id="modal-title">Program Results</Modal.Title>
                 </Modal.Header>
-                <Modal.Body id="modal-body">
+                <Modal.Body id="modal-body" ref={this.modalRef}>
                     {/* Program Result Component */}
                     {Object.keys(shownResults).length > 0 &&
                         genProgramResults(shownResults)}
