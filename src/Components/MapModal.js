@@ -194,31 +194,37 @@ export default class MapModal extends React.Component {
         let items = [];
 
         items.push(<Pagination.Prev aria-label="Previous page" key={"prev"} onClick={() => this.decrementPagination(numPages, currentPage)} />);
-        if (currentPage > 3) { items.push(<Pagination.Ellipsis aria-label="More pages" key={"firstEllipsis"} />); }
+        if (currentPage > 3 && numPages > 5) { items.push(<Pagination.Ellipsis aria-label="More pages" key={"firstEllipsis"} />); }
 
         if (currentPage < 3) {
             for (let number = 1; number <= 5; number++) {
-                items.push(
-                    this.createPaginationItem(number, currentPage)
-                );
+                if (number <= numPages) {
+                    items.push(
+                        this.createPaginationItem(number, currentPage)
+                    );
+                }
             }
         }
         else if (currentPage > numPages-2) {
             for (let number = numPages-4; number <= numPages; number++) {
-                items.push(
-                    this.createPaginationItem(number, currentPage)
-                );
+                if (number <= numPages && number > 0) {
+                    items.push(
+                        this.createPaginationItem(number, currentPage)
+                    );
+                }
             }
         }
         else {
             for (let number = currentPage-2; number <= currentPage+2; number++) {
-                items.push(
-                    this.createPaginationItem(number, currentPage)
-                );
+                if (number <= numPages) {
+                    items.push(
+                        this.createPaginationItem(number, currentPage)
+                    );
+                }
             }
         }
 
-        if (currentPage < numPages-2) { items.push(<Pagination.Ellipsis aria-label="More pages" key={"secondEllipsis"} />); }
+        if (currentPage < numPages-2 && numPages > 5) { items.push(<Pagination.Ellipsis aria-label="More pages" key={"secondEllipsis"} />); }
         items.push(<Pagination.Next aria-label="Next page" key={"next"} onClick={() => this.incrementPagination(numPages, currentPage)} />);
 
         const pagination = (
