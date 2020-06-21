@@ -3,8 +3,8 @@ import React, {createRef} from 'react';
 import PropTypes from 'prop-types';
 import Course from './Course';
 import {FormControl} from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 
 const generateCourseList = (selectedCourses, removeCourseFromCart) => {
