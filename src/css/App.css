@@ -2,10 +2,24 @@
   background-color: var(--maroon);
   min-height:10vh;
   font-size: calc(10px + 2vmin);
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+}
+
+.about-icon {
+  position: relative;
+  right: 5px;
+  cursor: pointer;
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 90%;
 }
 
 /* Design for the body of the app.
@@ -38,12 +52,30 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   .container-fluid{
     padding: 40px 40px 40px 40px;
   }
+
+  .about-icon {
+    top: -10px;
+    font-size: 20px;
+  }
+
+  .popover {
+    max-width: 675px;
+  }
 }
 
 /* add spacing when columns stack */
 @media (max-width: 768px) {
   [class*="col-"] {
       margin-bottom: 15px;
+  }
+
+  .about-icon {
+    top: -30px;
+    font-size: 20px;
+  }
+
+  .popover {
+    max-width: 95%;
   }
 }
 
