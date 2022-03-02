@@ -8,7 +8,7 @@ import SearchBar from './SearchBar';
 import LoadingOverlay from '../common/LoadingOverlay';
 import {getCurrentTime} from '../common/utilities';
 
-import {submitSelection} from '../api/courses-api';
+import {submitSelection} from '../apiLocal/courses-api';
 
 export default class MainPage extends React.Component {
     constructor(props) {

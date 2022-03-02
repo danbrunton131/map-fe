@@ -1,0 +1,448 @@
+const courses = [
+    {
+        "code": "ASTRON 1F03",
+        "description": "Topics include orbital motion, electromagnetic radiation, the solar system, stars and stellar evolution, the Milky Way Galaxy, galaxies and quasars, the evolution of the universe.",
+        "id": 0,
+        "name": "Introduction to Astronomy and Astrophysics",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Three lectures; one term",
+    },
+    {
+        "code": "BIOLOGY 1A03",
+        "description": "Structure, molecular composition and function in sub-cellular and cellular systems.",
+        "id": 1,
+        "name": "Cellular and Molecular Biology",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Three hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks); one term"
+    },
+    {
+        "code": "BIOLOGY 1M03",
+        "description": "Fundamental evolutionary and ecological concepts with particular reference to the diversity of life.",
+        "id": 2,
+        "name": "Biodiversity, Evolution and Humanity",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Three lectures, seminar/lab (two hours every other week); one term"
+    },
+    {
+        "code": "BIOPHYS 1S03",
+        "description": "A conceptual course, based on and requiring Grade 12 Physics. Applications to biological systems exploring the interdisciplinary field of biophysics. Topics include: Sound, Hearing and Echolocation, Optics of Vision, Animal Locomotion, Thermal Motion of Molecules, Heat and Heat Flow in biological systems, Fluid Dynamics. Intended for students in Life Science Gateway, Chemical and Physical Sciences Gateway, and those interested in physical aspects of biology.",
+        "id": 3,
+        "name": "Biophysics of Movement and the Senses: From Microbes to Moose",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": false
+        },
+        "timetable": "Three lectures; one term"
+    },
+    {
+        "code": "CHEM 1A03",
+        "description": "A discussion of chemical fundamentals, including bonding, structure, reactivity, and energetics of phase transitions, with emphasis on applications to health, energy, and the environment. Laboratories highlight experimental techniques.",
+        "id": 4,
+        "name": "Introductory Chemistry 1",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": false
+        },
+        "timetable": "Three hours (lectures, web modules), one lab (two and one half hours) every other week; one term"
+    },
+    {
+        "code": "CHEM 1AA3",
+        "description": "Three lectures, one lab (two and one half hours) every other week; one term",
+        "id": 5,
+        "name": "Introductory Chemistry 2",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three lectures, one lab (two and one half hours) every other week; one term"
+    },
+    {
+        "code": "CHEM 1R03",
+        "description": "A general introduction to chemistry, suitable for students without Grade 12 Chemistry U.",
+        "id": 6,
+        "name": "General Chemistry",
+        "source": "Honours Earth & Environmental Sciences",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three lectures, one tutorial; Winter term"
+    },
+    {
+        "code": "COMPSCI 1DM3",
+        "description": "Sets, functions, relations, trees and graphs; counting principles, modular arithmetic, discrete probabilities; induction and recursion, recurrence relations.",
+        "id": 7,
+        "name": "Discrete Mathematics for Computer Science",
+        "source": "Honours Mathematics & Computer Science",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three lectures, one tutorial (two hours), second term"
+    },
+    {
+        "code": "COMPSCI 1MD3",
+        "description": "Introduction to fundamental programming concepts: values and types, expressions and evaluation, control flow constructs and exceptions, recursion, input/output and file processing.",
+        "id": 8,
+        "name": "Introduction to Programming",
+        "source": "Honours Biodiversity and Environmental Sciences",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Three lectures, one tutorial (one hour); first term"
+    },
+    {
+        "code": "COMPSCI 1XC3",
+        "description": "Acquiring familiarity with professional software development settings via practical experience with interaction with UNIX-like systems, programming in C, with documentation, testing, benchmarking, profiling and debugging; shell interaction and programming, pipes and filters; revision control.",
+        "id": 9,
+        "name": "Computer Science Practice and Experience: Development Basics",
+        "source": "Honours Mathematics & Computer Science",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Two lectures, two labs (two hours each); second term"
+    },
+    {
+        "code": "COMPSCI 1XD3",
+        "description": "Introduction to different aspects of design: Identifying user needs, goals and desires and translating them into software, and structuring and communicating the structure of software to improve reliability, readability and adaptability. Topics include web languages and protocols, types and design patterns.",
+        "id": 10,
+        "name": "Computer Science Practice and Experience: Introduction to Software Design Using Web Programming",
+        "source": "Honours Mathematics & Computer Science",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Two lectures, two labs (two hours each); second term"
+    },
+    {
+        "code": "EARTHSC 1G03",
+        "description": "An introduction to Earth’s composition and processes including topics such as rocks, fossils, plate tectonics, earthquakes, volcanoes, and glaciers. We will consider the interactions between people and Earth’s environments and the implications for sustainable development. Two field trips will be held during regular lab periods.",
+        "id": 11,
+        "name": "Earth and the Environment",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Three lectures, one lab (two hours); one term"
+    },
+    {
+        "code": "EARTHSCI 1G03",
+        "description": "An introduction to Earth’s composition and processes including topics such as rocks, fossils, plate tectonics, earthquakes, volcanoes, and glaciers. We will consider the interactions between people and Earth’s environments and the implications for sustainable development. Two field trips will be held during regular lab periods.",
+        "id": 12,
+        "name": "Earth and the Environment",
+        "source": "Environmental Science",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Three lectures, one lab (two hours); one term"
+    },
+    {
+        "code": "ENVIRSC 1C03",
+        "description": "An introduction to the science of environmental issues and sustainability through the study of the soil, climate and water processes.",
+        "id": 13,
+        "name": "Climate, Water and Environment",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Lectures, web modules (three hours), one lab (two hours); one term"
+    },
+    {
+        "code": "ENVSOCTY 1HA3",
+        "description": "An introduction to human (societal) - environment interactions, mostly through a human geographic perspective. Topics include: the spatial significance of culture and cultural difference; cities as forms of cultural settlements; the rise of urban societies; the meanings of cultural landscapes; geographical perspectives on local and global politics; humans’ changing relationship with the environment; and contemporary environmental issues.",
+        "id": 14,
+        "name": "Society, Culture and Environment",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Two lectures, one tutorial (one hour); one term"
+    },
+    {
+        "code": "ENVSOCTY 1HB3",
+        "description": "An introduction to the study of relationships between people and their environments. The natural, built, social and economic environments are examined through human geography, urban studies, population and development studies, and environmental studies. Topics include: the meaning, and changing significance, of globalization; the causes and consequences of uneven economic and social development; the nature of changes in world population via demographic change and migration; the nature and consequences of global urbanization; and urban planning.",
+        "id": 15,
+        "name": "Population, Cities and Development ",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Two lectures, one tutorial (one hour); one term"
+    },
+    {
+        "code": "LIFESCI 1D03",
+        "description": "An introduction to the physics underlying some of the medical imaging techniques used in the diagnosis and treatment of disease. Topics include: X-ray (transmission) radiography, computed tomography, an introduction to magnetic resonance imaging (MRI), basic principles of ultrasonography, radioactivity and nuclear medicine, and a brief investigation into the biological effects of radiation.",
+        "id": 16,
+        "name": "Medical Imaging Physics",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three lectures, one tutorial; one term"
+    },
+    {
+        "code": "MATH 1A03",
+        "description": "For students in science: geared towards applications, with attention to underlying concepts. Functions: limits, continuity, derivatives, optimization, curve sketching. Antiderivative, definite integral, techniques of integration.",
+        "id": 17,
+        "name": "Calculus For Science 1",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": false
+        },
+        "timetable": "Three lectures, one tutorial; one term"
+    },
+    {
+        "code": "MATH 1AA3",
+        "description": "For students in science: additional techniques of integration, applications of definite integrals, differential equations, polar coordinates, parametrized curves. Sequences, infinite series, power series. Partial derivatives, double integrals.",
+        "id": 18,
+        "name": "Calculus For Science 2",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three lectures, one tutorial; one term"
+    },
+    {
+        "code": "MATH 1B03",
+        "description": "Vector spaces given by solutions to linear systems. Linear independence, dimension. Determinants. Eigenvalues, eigenvectors and diagonalisation. Complex numbers.",
+        "id": 19,
+        "name": "Linear Algebra 1",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Three lectures, one tutorial; one term"
+    },
+    {
+        "code": "MATH 1LS3",
+        "description": "Topics from differential and integral calculus, differential equations, discrete-time dynamical systems, chosen for their relevance to the life sciences.",
+        "id": 20,
+        "name": "Calculus for the Life Sciences 1",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Three lectures, one tutorial; one term"
+    },
+    {
+        "code": "MATH 1LT3",
+        "description": "Applications of integration, autonomous differential equations, functions of several variables; probability as application of calculus. All topics chosen for their relevance to the life sciences.",
+        "id": 21,
+        "name": "Calculus for the Life Sciences 2",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three lectures, one tutorial; one term"
+    },
+    {
+        "code": "MATH 1MM3",
+        "description": "Integral calculus of polynomial, rational, exponential and logarithmic functions. Optimization problems. Applications in Sciences, Social Sciences and Business",
+        "id": 22,
+        "name": "Applied Calculus",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three lectures, one tutorial; one term"
+    },
+    {
+        "code": "MATH 1MP3",
+        "description": "Introduction to mathematical problem-solving using computational methods. Introduction to a programming language; good scientific programming practices.",
+        "id": 23,
+        "name": "Introduction to Mathematical Scientific Computation ",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Three lectures, one lab; one term"
+    },
+    {
+        "code": "MATH 1X03",
+        "description": "Algebraic, geometric and numeric approaches to calculus, development of mathematical thinking, intuition and theoretical foundations. Functions: limits, continuity, derivatives, applications. Antiderivative, definite integral, integration techniques.",
+        "id": 24,
+        "name": "Calculus for Math and Stats 1",
+        "source": "Honours Actuarial and Financial Mathematics",
+        "term": {
+            "fall": true,
+            "winter": false
+        },
+        "timetable": "Three lectures, one tutorial; one term"
+    },
+    {
+        "code": "MATH 1XX3",
+        "description": "For students in mathematics and statistics. Additional techniques of integration, applications of definite integrals, differential equations, polar coordinates, parametrized curves. Sequences, infinite series, power series. Partial derivatives, double integrals.",
+        "id": 25,
+        "name": "Calculus for Math and Stats 2",
+        "source": "Honours Actuarial and Financial Mathematics",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three lectures, one tutorial; one term"
+    },
+    {
+        "code": "MUSIC 1A03",
+        "description": "An introductory survey of Western music, from Gregorian chant to the time of Bach and Handel. Emphasis is on important composers and their works in relation to their society and culture. No previous knowledge of music required.",
+        "id": 26,
+        "name": "Introduction to the History of Music",
+        "source": "Honours Psychology, Neuroscience & Behaviour – Music Cognition Specialization",
+        "term": {
+            "fall": true,
+            "winter": false
+        },
+        "timetable": "Three lectures; one term"
+    },
+    {
+        "code": "MUSIC 1AA3",
+        "description": "An introductory survey of Western music, from the time of Mozart to the present. Composers studied include Beethoven, Schubert, Chopin, Verdi, Wagner, Debussy, and Stravinsky. No previous knowledge of music required.",
+        "id": 27,
+        "name": "Introduction to the History of Music",
+        "source": "Honours Psychology, Neuroscience & Behaviour – Music Cognition Specialization",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three lectures; one term"
+    },
+    {
+        "code": "PHYSICS 1A03",
+        "description": "A first course in university physics, taught using examples and applications from many areas of science. Topics include the concepts of force and energy, mechanics, waves and fluids.",
+        "id": 28,
+        "name": "Introductory Physics",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": true
+        },
+        "timetable": "Three hours (lectures, web modules), one lab (two hours) every other week; one term"
+    },
+    {
+        "code": "PHYSICS 1AA3",
+        "description": "A course presenting aspects of modern physics relevant to life sciences. Electromagnetic fields. Atomic, quantum, and nuclear physics. Applications to imaging and understanding biological systems.",
+        "id": 29,
+        "name": "Introduction To Modern Physics",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three lectures, one lab (three hours) every other week; one term"
+    },
+    {
+        "code": "PHYSICS 1C03",
+        "description": "A first course in university physics intended for physics and chemistry students, or students in any other discipline who have an appropriate secondary school background. This course is a comprehensive treatment of linear and rotational mechanics - kinematics, dynamics, and the relevant conservation laws.",
+        "id": 30,
+        "name": "Physics for the Chemical and Physical Sciences",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": false
+        },
+        "timetable": "Three lectures, one lab (two hours) every week; one term"
+    },
+    {
+        "code": "PHYSICS 1CC3",
+        "description": "This course is the continuation of PHYSICS 1C03. Topics include simple harmonic motion, waves, interference, electrostatics, magnetostatics and an introduction to quantum physics.",
+        "id": 31,
+        "name": "Modern Physics for the Chemical and Physical Sciences",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three lectures, one lab (three hours) every other week; one term"
+    },
+    {
+        "code": "PSYCH 1F03",
+        "description": "Students completing this course will have a good understanding of the methods, research questions and major areas of psychology. This course would be ideal for students looking to complete an elective requirement without necessarily planning to continue study in psychology. Students considering applying to an Honours Psychology, Neuroscience & Behaviour program are referred to PSYCH 1X03 for which this course is an anti-requisite.",
+        "id": 32,
+        "name": "Survey of Psychology",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "On-line web modules, discussions and testing; one term"
+    },
+    {
+        "code": "PSYCH 1FF3",
+        "description": "This course introduces important themes as the foundations to investigate psychology, neuroscience and behaviour with an emphasis on sensory systems, and behaviours critical to survival. This course would be ideal for students looking to complete an elective requirement without necessarily planning to continue study in psychology. Students considering applying to an Honours Psychology, Neuroscience & Behaviour program are referred to PSYCH 1XX3 for which this course is an anti-requisite.",
+        "id": 33,
+        "name": "Survey of Biological Basis of Psychology",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": false
+        },
+        "timetable": "Online web modules, discussions and testing; one term"
+    },
+    {
+        "code": "PSYCH 1X03",
+        "description": "This course introduces the scientific methods used to study the psychology of higher order processes and interpersonal behaviour. Students interested in applying to an Honours Psychology, Neuroscience & Behaviour program are encouraged to take PSYCH 1X03 rather than PSYCH 1F03.",
+        "id": 34,
+        "name": "Introduction to Psychology, Neuroscience & Behaviour",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": false
+        },
+        "timetable": "Lecture, web modules, weekly tutorials (three hours); one term"
+    },
+    {
+        "code": "PSYCH 1XX3",
+        "description": "This course introduces important themes as the foundations to investigate psychology, neuroscience and behaviour with an emphasis on sensory systems, and behaviours critical to survival. Students interested in applying to an Honours Psychology, Neuroscience & Behaviour program are encouraged to take PSYCH 1XX3 rather than PSYCH 1FF3.",
+        "id": 35,
+        "name": "Foundations of Psychology, Neuroscience & Behaviour",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three hours (lecture, web modules, weekly tutorials); one term"
+    },
+    {
+        "code": "SCIENCE 1A03",
+        "description": "Designed to prepare students for their university careers through the introduction to the people, academic programs, resources and attitudes needed during their undergraduate studies. Course content is taught through in-class sessions and mini-projects and will focus on investigating science through research to explore the opportunities and experiences available to students in the Faculty of Science.",
+        "id": 36,
+        "name": "Investigating Science: Opportunities & Experiences",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": true,
+            "winter": false
+        },
+        "timetable": "Lecture (two hours), tutorial (three hours); one term"
+    }
+];
+
+export default courses;

@@ -7,6 +7,9 @@ import {Pie} from 'react-chartjs-2';
 import Pagination from 'react-bootstrap/Pagination';
 import {boldAllMatches} from '../common/utilities';
 
+
+const MAC_SITES_PROGRAMS_URL = "https:/mps-macsites.mcmaster.ca/mapsci/beyond-level-1/programs/";
+
 /* Sort programResults, largest percentage first */
 export const sortProgramResults = (programResults) => {
     return programResults.sort((a, b) => {
@@ -93,14 +96,20 @@ const genProgramResults = (programResults) => {
                         <Row>
                             <Col sm={12} md={8}>
                                 <div className="description">
-                                    <h2>{program.programName}</h2>
-                                    <p>{program.programDescription ? program.programDescription : "Lorem Ipsum"}</p>
+                                    <div class="h3">{program.programName}</div>
+                                    { program.programSlug && 
+                                        <a 
+                                            href={MAC_SITES_PROGRAMS_URL + "/" + program.programSlug}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                        Learn More
+                                        </a>
+                                    }
                                     <div tabIndex={0} className="description-textbox">
-                                        <strong> Requirements </strong>
+                                        <strong>Requirements</strong>
                                         {genProgramRequirements(program.programRequirements.requirements, program.fulfilledCourses, program.programId)}
                                     </div>
-
-
                                 </div>
                             </Col>
                             <Col sm={12} md={4}>
