@@ -28,7 +28,7 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   min-height: 90vh; /* between header + body, height is 100vh */
   justify-content: center; 
   font-size: calc(10px + 2vmin);
-  background-color: var(--cool-grey);
+  background-color: white;
 }
 
 .App-logo {
@@ -45,7 +45,6 @@ Scales the contents to be centered, also based on the minimum of the user's disp
 .App-link {
   color: #61dafb;
 }
-
 
 /* overriding bootstrap's container-fluid to include Top/Bottom padding */
 @media (min-width: 768px) {

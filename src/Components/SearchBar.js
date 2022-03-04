@@ -2,7 +2,7 @@ import '../css/search.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { InputGroup, FormControl } from 'react-bootstrap';
-import {searchForCourse} from '../api/courses-api';
+import {searchForCourse} from '../apiLocal/courses-api';
 import Course from './Course';
 
 const generateSearchResults = (selectedCourses, addCourseToCart) => {

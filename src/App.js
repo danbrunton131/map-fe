@@ -3,7 +3,9 @@ import './css/custom.css';
 import './css/App.css';
 import MainPage from './Components/MainPage';
 import ErrorMessage from './common/ErrorMessage';
-import {fetchAllCourses} from './api/courses-api';
+
+import {fetchAllCourses} from './apiLocal/courses-api';
+
 import {getCurrentTime, getTermCourseList} from './common/utilities';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
@@ -80,20 +82,6 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header" role="banner">
-          <div className="app-title">
-            <h1 className="maroon app-title"> {title} </h1>  
-          </div>
-          <span className="about-icon">
-            <OverlayTrigger placement="bottom" overlay={popover}>
-              <FontAwesomeIcon 
-                  icon={faQuestionCircle}
-                  size="lg"
-                  tabIndex={0}
-                  aria-label="About Button"/>
-            </OverlayTrigger>
-          </span>
-        </header>
         <div className="App-body" role="main"> 
           {error && <ErrorMessage 
               key={error.key} // this is used as a key to handle subsequent "identical" messages

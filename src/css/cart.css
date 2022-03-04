@@ -9,7 +9,7 @@
   
   .cart{
     min-height: 35.7vh;
-    background: #fff;
+    background: var(--light-grey);
     position: relative;
     overflow: auto; /* keeps cart-footer at bottom */
     box-shadow: 5px 0px 18px #888888;

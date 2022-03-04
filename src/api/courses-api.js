@@ -5,7 +5,7 @@ let axiosConfig = {
     headers: {
         'Content-Type': 'application/json',
         // "Access-Control-Allow-Origin": "*",
-    },
+    }
 };
 
 // get query param of calculator id
@@ -18,6 +18,7 @@ function fetchAllCourses(data) {
 
 // expected data: { "selections": [ 1234567, 0101010, 5564732, 1238921 ] }
 function submitSelection(data) {
+
     const selection = {...data, calc_id: calculatorId || ""}; // if no calculator id present, send "" and the backend defaults to "1"
     return axios.post(`${BASE_URL}/api/SubmitCourseSelections/`, selection, axiosConfig);
 }
@@ -29,8 +30,6 @@ function searchForCourse(data) {
 // function fetchCourse(data) {
 //     return axios.get(`${BASE_URL}/api/GetCourseDetails?courseid=${data.courseId}?calc_id=${calculatorId}/`, data, axiosConfig);
 // }
-
-
 
 export {
     fetchAllCourses,
