@@ -93,14 +93,16 @@ const genProgramResults = (programResults) => {
                         <Row>
                             <Col sm={12} md={8}>
                                 <div className="description">
-                                    <h2>{program.programName}</h2>
-                                    <p>{program.programDescription ? program.programDescription : "Lorem Ipsum"}</p>
+                                    <div className="h3">{program.programName}</div>
+                                    { program.programHref && 
+                                        <a href={program.programHref} target="_blank" rel="noreferrer">
+                                            Learn more
+                                        </a>
+                                    }
                                     <div tabIndex={0} className="description-textbox">
-                                        <strong> Requirements </strong>
+                                        <strong>Requirements</strong>
                                         {genProgramRequirements(program.programRequirements.requirements, program.fulfilledCourses, program.programId)}
                                     </div>
-
-
                                 </div>
                             </Col>
                             <Col sm={12} md={4}>
