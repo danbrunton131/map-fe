@@ -57,12 +57,6 @@ const generateCourseList = (courseSelectionList, addCourseToCart) => {
                       <Nav.Item>
                         <Nav.Link className="nav-item nav-link" eventKey="winter" title="Winter">Winter</Nav.Link>
                       </Nav.Item>   
-                      <Nav.Item>
-                        <Nav.Link className="nav-item nav-link" eventKey="spring" title="Spring">Spring</Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link className="nav-item nav-link" eventKey="summer" title="Summer">Summer</Nav.Link>
-                      </Nav.Item>
                     </Nav>
                   </div>
                   <Tab.Content>
