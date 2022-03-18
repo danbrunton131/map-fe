@@ -53,7 +53,7 @@ export default class CourseCart extends React.Component {
                     { selectedCourses && 
                           selectedCourses.length > 0 ?
                               generateCourseList(selectedCourses, removeCourseFromCart) 
-                            : <div> Add a course from Course Selection for it to appear here.</div>
+                            : <p>Add a course from Course Selection for it to appear here.</p>
                         }
                   </div>        
                   <div className="cart-footer px-2">

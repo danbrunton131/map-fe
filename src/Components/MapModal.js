@@ -7,8 +7,7 @@ import {Pie} from 'react-chartjs-2';
 import Pagination from 'react-bootstrap/Pagination';
 import {boldAllMatches} from '../common/utilities';
 
-
-const MAC_SITES_PROGRAMS_URL = "https:/mps-macsites.mcmaster.ca/mapsci/beyond-level-1/programs/";
+import { MAC_SITES_PROGRAMS_URL} from '../variables.js';
 
 /* Sort programResults, largest percentage first */
 export const sortProgramResults = (programResults) => {
@@ -16,7 +15,6 @@ export const sortProgramResults = (programResults) => {
         return b.programPercentage - a.programPercentage;
     });
 }
-
 // requirements are structured like [reqString1, reqString2,...]
 // fulfilledCourses follow the same indexing as requirements, but instead include an array of courses satisfied in that requirement. 
 const genProgramRequirements = (requirements, fulfilledCourses, programId) => {

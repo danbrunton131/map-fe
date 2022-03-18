@@ -21,7 +21,7 @@ const submitSelection = function({ selections })
     {
         const results = calculateEligibility(requirements, courseSet);
 
-        const fulfilledCourses = results.requirements.map((requirement) => 
+        const fulfilledCourses = results.log.map((requirement) => 
             requirement.fulfilledCourses);
             
         return {
@@ -29,7 +29,7 @@ const submitSelection = function({ selections })
             programDescription: "",
             programId: id,
             programName: name,
-            programPercentage: results.criteria.percentage,
+            programPercentage: results.consumed.percentage,
             programRequirements: {
                 requirements: requirements.map(({ count, from }) => 
                     `${count*3} units from ${from.join(', ')}`)
@@ -41,7 +41,7 @@ const submitSelection = function({ selections })
     return new Promise((resolve) => resolve({ data: { matchedPrograms }}));
 }
 
-// search filter function needs a bit of work.
+// quick search solution: should be improved on if actually relied on
 
 const searchForCourse = function({ searchTerm })
 {

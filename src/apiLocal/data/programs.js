@@ -12,6 +12,8 @@ const firstTermMath = ["MATH 1A03", "MATH 1LS3", "MATH 1X03"];
 const secondTermMath = ["MATH 1AA3", "MATH 1LT3", "MATH 1XX3"];
 
 // program ids with a leading ? are not official mosiac API codes
+// only works for courses worth 3 units
+// doesn't support OR logic and nested requirements
 
 const programs = [{
     id: "?HBIOCHEM",
