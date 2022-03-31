@@ -42,7 +42,7 @@ const programs = [{
     name: "Environmental Science",
     slug: "honours-environmental-sciences",
     requirements: [
-        { count: 2, from: ["EARTHSCI 1G03", "ENVIRSC 1C03"] },
+        { count: 2, from: ["EARTHSC 1G03", "ENVIRSC 1C03"] },
         { count: 2, from: ["MATH 1A03", "MATH 1LS3"] },
         { count: 6, from: scienceOneCourseList }
     ],
