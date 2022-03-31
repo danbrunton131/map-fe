@@ -144,18 +144,6 @@ const courses = [
         "timetable": "Three lectures, one lab (two hours); one term"
     },
     {
-        "code": "EARTHSCI 1G03",
-        "description": "An introduction to Earth’s composition and processes including topics such as rocks, fossils, plate tectonics, earthquakes, volcanoes, and glaciers. We will consider the interactions between people and Earth’s environments and the implications for sustainable development. Two field trips will be held during regular lab periods.",
-        "id": 12,
-        "name": "Earth and the Environment",
-        "source": "Environmental Science",
-        "term": {
-            "fall": true,
-            "winter": true
-        },
-        "timetable": "Three lectures, one lab (two hours); one term"
-    },
-    {
         "code": "ENVIRSC 1C03",
         "description": "An introduction to the science of environmental issues and sustainability through the study of the soil, climate and water processes.",
         "id": 13,

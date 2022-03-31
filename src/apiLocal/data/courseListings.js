@@ -56,14 +56,6 @@ const courseListings = {
                     "courseName": "Earth and the Environment"
                 }
             ],
-            "EARTHSCI": [
-                {
-                    "courseCode": "EARTHSCI 1G03",
-                    "courseDesc": "An introduction to Earth’s composition and processes including topics such as rocks, fossils, plate tectonics, earthquakes, volcanoes, and glaciers. We will consider the interactions between people and Earth’s environments and the implications for sustainable development. Two field trips will be held during regular lab periods.\nThree lectures, one lab (two hours); one term",
-                    "courseID": 12,
-                    "courseName": "Earth and the Environment"
-                }
-            ],
             "ENVIRSC": [
                 {
                     "courseCode": "ENVIRSC 1C03",
@@ -233,14 +225,6 @@ const courseListings = {
                     "courseCode": "EARTHSC 1G03",
                     "courseDesc": "An introduction to Earth’s composition and processes including topics such as rocks, fossils, plate tectonics, earthquakes, volcanoes, and glaciers. We will consider the interactions between people and Earth’s environments and the implications for sustainable development. Two field trips will be held during regular lab periods.\nThree lectures, one lab (two hours); one term",
                     "courseID": 11,
-                    "courseName": "Earth and the Environment"
-                }
-            ],
-            "EARTHSCI": [
-                {
-                    "courseCode": "EARTHSCI 1G03",
-                    "courseDesc": "An introduction to Earth’s composition and processes including topics such as rocks, fossils, plate tectonics, earthquakes, volcanoes, and glaciers. We will consider the interactions between people and Earth’s environments and the implications for sustainable development. Two field trips will be held during regular lab periods.\nThree lectures, one lab (two hours); one term",
-                    "courseID": 12,
                     "courseName": "Earth and the Environment"
                 }
             ],
