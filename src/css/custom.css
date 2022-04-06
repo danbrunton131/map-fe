@@ -43,6 +43,14 @@ h2,
 	color: #5E6A71;
 }
 
+h3,
+.h3 {
+	margin-bottom: 0.5rem;
+}
+
+p {
+	margin-bottom: 0.5rem;
+}
 /* Custom stylesheet */
 @import url("https://documents.mcmaster.ca/www/cdn/css/1.0/mcm-bw.css");
 

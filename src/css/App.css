@@ -28,7 +28,7 @@ Scales the contents to be centered, also based on the minimum of the user's disp
   min-height: 90vh; /* between header + body, height is 100vh */
   justify-content: center; 
   font-size: calc(10px + 2vmin);
-  background-color: var(--cool-grey);
+  background-color: #fff;
 }
 
 .App-logo {

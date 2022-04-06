@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {BASE_URL} from '../variables';
+import {BASE_URL} from '../variables.js';
 
 let axiosConfig = {
     headers: {
@@ -29,8 +29,6 @@ function searchForCourse(data) {
 // function fetchCourse(data) {
 //     return axios.get(`${BASE_URL}/api/GetCourseDetails?courseid=${data.courseId}?calc_id=${calculatorId}/`, data, axiosConfig);
 // }
-
-
 
 export {
     fetchAllCourses,

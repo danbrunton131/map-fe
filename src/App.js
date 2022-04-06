@@ -80,20 +80,6 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header" role="banner">
-          <div className="app-title">
-            <h1 className="maroon app-title"> {title} </h1>  
-          </div>
-          <span className="about-icon">
-            <OverlayTrigger placement="bottom" overlay={popover}>
-              <FontAwesomeIcon 
-                  icon={faQuestionCircle}
-                  size="lg"
-                  tabIndex={0}
-                  aria-label="About Button"/>
-            </OverlayTrigger>
-          </span>
-        </header>
         <div className="App-body" role="main"> 
           {error && <ErrorMessage 
               key={error.key} // this is used as a key to handle subsequent "identical" messages
@@ -105,5 +91,21 @@ export default class App extends Component {
       </div>
     );
   }
-
 }
+
+/*
+  <header className="App-header" role="banner">
+    <div className="app-title">
+      <h1 className="maroon app-title"> {title} </h1>  
+    </div>
+    <span className="about-icon">
+      <OverlayTrigger placement="bottom" overlay={popover}>
+        <FontAwesomeIcon 
+            icon={faQuestionCircle}
+            size="lg"
+            tabIndex={0}
+            aria-label="About Button"/>
+      </OverlayTrigger>
+    </span>
+  </header>
+*/
