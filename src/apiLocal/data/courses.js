@@ -9,7 +9,7 @@ const courses = [
             "fall": true,
             "winter": true
         },
-        "timetable": "Three lectures; one term",
+        "timetable": "Three lectures; one term"
     },
     {
         "code": "BIOLOGY 1A03",
@@ -146,7 +146,7 @@ const courses = [
     {
         "code": "ENVIRSC 1C03",
         "description": "An introduction to the science of environmental issues and sustainability through the study of the soil, climate and water processes.",
-        "id": 13,
+        "id": 12,
         "name": "Climate, Water and Environment",
         "source": "Honours Biochemistry",
         "term": {
@@ -158,7 +158,7 @@ const courses = [
     {
         "code": "ENVSOCTY 1HA3",
         "description": "An introduction to human (societal) - environment interactions, mostly through a human geographic perspective. Topics include: the spatial significance of culture and cultural difference; cities as forms of cultural settlements; the rise of urban societies; the meanings of cultural landscapes; geographical perspectives on local and global politics; humans’ changing relationship with the environment; and contemporary environmental issues.",
-        "id": 14,
+        "id": 13,
         "name": "Society, Culture and Environment",
         "source": "Honours Biochemistry",
         "term": {
@@ -170,7 +170,7 @@ const courses = [
     {
         "code": "ENVSOCTY 1HB3",
         "description": "An introduction to the study of relationships between people and their environments. The natural, built, social and economic environments are examined through human geography, urban studies, population and development studies, and environmental studies. Topics include: the meaning, and changing significance, of globalization; the causes and consequences of uneven economic and social development; the nature of changes in world population via demographic change and migration; the nature and consequences of global urbanization; and urban planning.",
-        "id": 15,
+        "id": 14,
         "name": "Population, Cities and Development ",
         "source": "Honours Biochemistry",
         "term": {
@@ -182,7 +182,7 @@ const courses = [
     {
         "code": "LIFESCI 1D03",
         "description": "An introduction to the physics underlying some of the medical imaging techniques used in the diagnosis and treatment of disease. Topics include: X-ray (transmission) radiography, computed tomography, an introduction to magnetic resonance imaging (MRI), basic principles of ultrasonography, radioactivity and nuclear medicine, and a brief investigation into the biological effects of radiation.",
-        "id": 16,
+        "id": 15,
         "name": "Medical Imaging Physics",
         "source": "Honours Biochemistry",
         "term": {
@@ -194,7 +194,7 @@ const courses = [
     {
         "code": "MATH 1A03",
         "description": "For students in science: geared towards applications, with attention to underlying concepts. Functions: limits, continuity, derivatives, optimization, curve sketching. Antiderivative, definite integral, techniques of integration.",
-        "id": 17,
+        "id": 16,
         "name": "Calculus For Science 1",
         "source": "Honours Biochemistry",
         "term": {
@@ -206,7 +206,7 @@ const courses = [
     {
         "code": "MATH 1AA3",
         "description": "For students in science: additional techniques of integration, applications of definite integrals, differential equations, polar coordinates, parametrized curves. Sequences, infinite series, power series. Partial derivatives, double integrals.",
-        "id": 18,
+        "id": 17,
         "name": "Calculus For Science 2",
         "source": "Honours Biochemistry",
         "term": {
@@ -218,7 +218,7 @@ const courses = [
     {
         "code": "MATH 1B03",
         "description": "Vector spaces given by solutions to linear systems. Linear independence, dimension. Determinants. Eigenvalues, eigenvectors and diagonalisation. Complex numbers.",
-        "id": 19,
+        "id": 18,
         "name": "Linear Algebra 1",
         "source": "Honours Biochemistry",
         "term": {
@@ -230,7 +230,7 @@ const courses = [
     {
         "code": "MATH 1LS3",
         "description": "Topics from differential and integral calculus, differential equations, discrete-time dynamical systems, chosen for their relevance to the life sciences.",
-        "id": 20,
+        "id": 19,
         "name": "Calculus for the Life Sciences 1",
         "source": "Honours Biochemistry",
         "term": {
@@ -242,7 +242,7 @@ const courses = [
     {
         "code": "MATH 1LT3",
         "description": "Applications of integration, autonomous differential equations, functions of several variables; probability as application of calculus. All topics chosen for their relevance to the life sciences.",
-        "id": 21,
+        "id": 20,
         "name": "Calculus for the Life Sciences 2",
         "source": "Honours Biochemistry",
         "term": {
@@ -254,7 +254,7 @@ const courses = [
     {
         "code": "MATH 1MM3",
         "description": "Integral calculus of polynomial, rational, exponential and logarithmic functions. Optimization problems. Applications in Sciences, Social Sciences and Business",
-        "id": 22,
+        "id": 21,
         "name": "Applied Calculus",
         "source": "Honours Biochemistry",
         "term": {
@@ -266,7 +266,7 @@ const courses = [
     {
         "code": "MATH 1MP3",
         "description": "Introduction to mathematical problem-solving using computational methods. Introduction to a programming language; good scientific programming practices.",
-        "id": 23,
+        "id": 22,
         "name": "Introduction to Mathematical Scientific Computation ",
         "source": "Honours Biochemistry",
         "term": {
@@ -278,7 +278,7 @@ const courses = [
     {
         "code": "MATH 1X03",
         "description": "Algebraic, geometric and numeric approaches to calculus, development of mathematical thinking, intuition and theoretical foundations. Functions: limits, continuity, derivatives, applications. Antiderivative, definite integral, integration techniques.",
-        "id": 24,
+        "id": 23,
         "name": "Calculus for Math and Stats 1",
         "source": "Honours Actuarial and Financial Mathematics",
         "term": {
@@ -290,7 +290,7 @@ const courses = [
     {
         "code": "MATH 1XX3",
         "description": "For students in mathematics and statistics. Additional techniques of integration, applications of definite integrals, differential equations, polar coordinates, parametrized curves. Sequences, infinite series, power series. Partial derivatives, double integrals.",
-        "id": 25,
+        "id": 24,
         "name": "Calculus for Math and Stats 2",
         "source": "Honours Actuarial and Financial Mathematics",
         "term": {
@@ -302,7 +302,7 @@ const courses = [
     {
         "code": "MUSIC 1A03",
         "description": "An introductory survey of Western music, from Gregorian chant to the time of Bach and Handel. Emphasis is on important composers and their works in relation to their society and culture. No previous knowledge of music required.",
-        "id": 26,
+        "id": 25,
         "name": "Introduction to the History of Music",
         "source": "Honours Psychology, Neuroscience & Behaviour – Music Cognition Specialization",
         "term": {
@@ -314,7 +314,7 @@ const courses = [
     {
         "code": "MUSIC 1AA3",
         "description": "An introductory survey of Western music, from the time of Mozart to the present. Composers studied include Beethoven, Schubert, Chopin, Verdi, Wagner, Debussy, and Stravinsky. No previous knowledge of music required.",
-        "id": 27,
+        "id": 26,
         "name": "Introduction to the History of Music",
         "source": "Honours Psychology, Neuroscience & Behaviour – Music Cognition Specialization",
         "term": {
@@ -326,7 +326,7 @@ const courses = [
     {
         "code": "PHYSICS 1A03",
         "description": "A first course in university physics, taught using examples and applications from many areas of science. Topics include the concepts of force and energy, mechanics, waves and fluids.",
-        "id": 28,
+        "id": 27,
         "name": "Introductory Physics",
         "source": "Honours Biochemistry",
         "term": {
@@ -338,7 +338,7 @@ const courses = [
     {
         "code": "PHYSICS 1AA3",
         "description": "A course presenting aspects of modern physics relevant to life sciences. Electromagnetic fields. Atomic, quantum, and nuclear physics. Applications to imaging and understanding biological systems.",
-        "id": 29,
+        "id": 28,
         "name": "Introduction To Modern Physics",
         "source": "Honours Biochemistry",
         "term": {
@@ -350,7 +350,7 @@ const courses = [
     {
         "code": "PHYSICS 1C03",
         "description": "A first course in university physics intended for physics and chemistry students, or students in any other discipline who have an appropriate secondary school background. This course is a comprehensive treatment of linear and rotational mechanics - kinematics, dynamics, and the relevant conservation laws.",
-        "id": 30,
+        "id": 29,
         "name": "Physics for the Chemical and Physical Sciences",
         "source": "Honours Biochemistry",
         "term": {
@@ -362,7 +362,7 @@ const courses = [
     {
         "code": "PHYSICS 1CC3",
         "description": "This course is the continuation of PHYSICS 1C03. Topics include simple harmonic motion, waves, interference, electrostatics, magnetostatics and an introduction to quantum physics.",
-        "id": 31,
+        "id": 30,
         "name": "Modern Physics for the Chemical and Physical Sciences",
         "source": "Honours Biochemistry",
         "term": {
@@ -374,7 +374,7 @@ const courses = [
     {
         "code": "PSYCH 1F03",
         "description": "Students completing this course will have a good understanding of the methods, research questions and major areas of psychology. This course would be ideal for students looking to complete an elective requirement without necessarily planning to continue study in psychology. Students considering applying to an Honours Psychology, Neuroscience & Behaviour program are referred to PSYCH 1X03 for which this course is an anti-requisite.",
-        "id": 32,
+        "id": 31,
         "name": "Survey of Psychology",
         "source": "Honours Biochemistry",
         "term": {
@@ -386,7 +386,7 @@ const courses = [
     {
         "code": "PSYCH 1FF3",
         "description": "This course introduces important themes as the foundations to investigate psychology, neuroscience and behaviour with an emphasis on sensory systems, and behaviours critical to survival. This course would be ideal for students looking to complete an elective requirement without necessarily planning to continue study in psychology. Students considering applying to an Honours Psychology, Neuroscience & Behaviour program are referred to PSYCH 1XX3 for which this course is an anti-requisite.",
-        "id": 33,
+        "id": 32,
         "name": "Survey of Biological Basis of Psychology",
         "source": "Honours Biochemistry",
         "term": {
@@ -398,7 +398,7 @@ const courses = [
     {
         "code": "PSYCH 1X03",
         "description": "This course introduces the scientific methods used to study the psychology of higher order processes and interpersonal behaviour. Students interested in applying to an Honours Psychology, Neuroscience & Behaviour program are encouraged to take PSYCH 1X03 rather than PSYCH 1F03.",
-        "id": 34,
+        "id": 33,
         "name": "Introduction to Psychology, Neuroscience & Behaviour",
         "source": "Honours Biochemistry",
         "term": {
@@ -410,7 +410,7 @@ const courses = [
     {
         "code": "PSYCH 1XX3",
         "description": "This course introduces important themes as the foundations to investigate psychology, neuroscience and behaviour with an emphasis on sensory systems, and behaviours critical to survival. Students interested in applying to an Honours Psychology, Neuroscience & Behaviour program are encouraged to take PSYCH 1XX3 rather than PSYCH 1FF3.",
-        "id": 35,
+        "id": 34,
         "name": "Foundations of Psychology, Neuroscience & Behaviour",
         "source": "Honours Biochemistry",
         "term": {
@@ -422,7 +422,7 @@ const courses = [
     {
         "code": "SCIENCE 1A03",
         "description": "Designed to prepare students for their university careers through the introduction to the people, academic programs, resources and attitudes needed during their undergraduate studies. Course content is taught through in-class sessions and mini-projects and will focus on investigating science through research to explore the opportunities and experiences available to students in the Faculty of Science.",
-        "id": 36,
+        "id": 35,
         "name": "Investigating Science: Opportunities & Experiences",
         "source": "Honours Biochemistry",
         "term": {
@@ -431,6 +431,6 @@ const courses = [
         },
         "timetable": "Lecture (two hours), tutorial (three hours); one term"
     }
-];
+]
 
 export default courses;
