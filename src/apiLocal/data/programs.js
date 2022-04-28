@@ -168,6 +168,7 @@ const programs = [{
 {
     id: "HCHEMBIOL",
     name: "Honours Chemical Biology",
+    slug: "honours-chemical-biology",
     requirements: [
         { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
         { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03"] },

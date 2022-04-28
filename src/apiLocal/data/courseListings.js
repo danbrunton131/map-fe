@@ -60,7 +60,7 @@ const courseListings = {
                 {
                     "courseCode": "ENVIRSC 1C03",
                     "courseDesc": "An introduction to the science of environmental issues and sustainability through the study of the soil, climate and water processes.\nLectures, web modules (three hours), one lab (two hours); one term",
-                    "courseID": 13,
+                    "courseID": 12,
                     "courseName": "Climate, Water and Environment"
                 }
             ],
@@ -68,13 +68,13 @@ const courseListings = {
                 {
                     "courseCode": "ENVSOCTY 1HA3",
                     "courseDesc": "An introduction to human (societal) - environment interactions, mostly through a human geographic perspective. Topics include: the spatial significance of culture and cultural difference; cities as forms of cultural settlements; the rise of urban societies; the meanings of cultural landscapes; geographical perspectives on local and global politics; humans’ changing relationship with the environment; and contemporary environmental issues.\nTwo lectures, one tutorial (one hour); one term",
-                    "courseID": 14,
+                    "courseID": 13,
                     "courseName": "Society, Culture and Environment"
                 },
                 {
                     "courseCode": "ENVSOCTY 1HB3",
                     "courseDesc": "An introduction to the study of relationships between people and their environments. The natural, built, social and economic environments are examined through human geography, urban studies, population and development studies, and environmental studies. Topics include: the meaning, and changing significance, of globalization; the causes and consequences of uneven economic and social development; the nature of changes in world population via demographic change and migration; the nature and consequences of global urbanization; and urban planning.\nTwo lectures, one tutorial (one hour); one term",
-                    "courseID": 15,
+                    "courseID": 14,
                     "courseName": "Population, Cities and Development "
                 }
             ],
@@ -82,31 +82,31 @@ const courseListings = {
                 {
                     "courseCode": "MATH 1A03",
                     "courseDesc": "For students in science: geared towards applications, with attention to underlying concepts. Functions: limits, continuity, derivatives, optimization, curve sketching. Antiderivative, definite integral, techniques of integration.\nThree lectures, one tutorial; one term",
-                    "courseID": 17,
+                    "courseID": 16,
                     "courseName": "Calculus For Science 1"
                 },
                 {
                     "courseCode": "MATH 1B03",
                     "courseDesc": "Vector spaces given by solutions to linear systems. Linear independence, dimension. Determinants. Eigenvalues, eigenvectors and diagonalisation. Complex numbers.\nThree lectures, one tutorial; one term",
-                    "courseID": 19,
+                    "courseID": 18,
                     "courseName": "Linear Algebra 1"
                 },
                 {
                     "courseCode": "MATH 1LS3",
                     "courseDesc": "Topics from differential and integral calculus, differential equations, discrete-time dynamical systems, chosen for their relevance to the life sciences.\nThree lectures, one tutorial; one term",
-                    "courseID": 20,
+                    "courseID": 19,
                     "courseName": "Calculus for the Life Sciences 1"
                 },
                 {
                     "courseCode": "MATH 1MP3",
                     "courseDesc": "Introduction to mathematical problem-solving using computational methods. Introduction to a programming language; good scientific programming practices.\nThree lectures, one lab; one term",
-                    "courseID": 23,
+                    "courseID": 22,
                     "courseName": "Introduction to Mathematical Scientific Computation "
                 },
                 {
                     "courseCode": "MATH 1X03",
                     "courseDesc": "Algebraic, geometric and numeric approaches to calculus, development of mathematical thinking, intuition and theoretical foundations. Functions: limits, continuity, derivatives, applications. Antiderivative, definite integral, integration techniques.\nThree lectures, one tutorial; one term",
-                    "courseID": 24,
+                    "courseID": 23,
                     "courseName": "Calculus for Math and Stats 1"
                 }
             ],
@@ -114,7 +114,7 @@ const courseListings = {
                 {
                     "courseCode": "MUSIC 1A03",
                     "courseDesc": "An introductory survey of Western music, from Gregorian chant to the time of Bach and Handel. Emphasis is on important composers and their works in relation to their society and culture. No previous knowledge of music required.\nThree lectures; one term",
-                    "courseID": 26,
+                    "courseID": 25,
                     "courseName": "Introduction to the History of Music"
                 }
             ],
@@ -122,13 +122,13 @@ const courseListings = {
                 {
                     "courseCode": "PHYSICS 1A03",
                     "courseDesc": "A first course in university physics, taught using examples and applications from many areas of science. Topics include the concepts of force and energy, mechanics, waves and fluids.\nThree hours (lectures, web modules), one lab (two hours) every other week; one term",
-                    "courseID": 28,
+                    "courseID": 27,
                     "courseName": "Introductory Physics"
                 },
                 {
                     "courseCode": "PHYSICS 1C03",
                     "courseDesc": "A first course in university physics intended for physics and chemistry students, or students in any other discipline who have an appropriate secondary school background. This course is a comprehensive treatment of linear and rotational mechanics - kinematics, dynamics, and the relevant conservation laws.\nThree lectures, one lab (two hours) every week; one term",
-                    "courseID": 30,
+                    "courseID": 29,
                     "courseName": "Physics for the Chemical and Physical Sciences"
                 }
             ],
@@ -136,13 +136,13 @@ const courseListings = {
                 {
                     "courseCode": "PSYCH 1FF3",
                     "courseDesc": "This course introduces important themes as the foundations to investigate psychology, neuroscience and behaviour with an emphasis on sensory systems, and behaviours critical to survival. This course would be ideal for students looking to complete an elective requirement without necessarily planning to continue study in psychology. Students considering applying to an Honours Psychology, Neuroscience & Behaviour program are referred to PSYCH 1XX3 for which this course is an anti-requisite.\nOnline web modules, discussions and testing; one term",
-                    "courseID": 33,
+                    "courseID": 32,
                     "courseName": "Survey of Biological Basis of Psychology"
                 },
                 {
                     "courseCode": "PSYCH 1X03",
                     "courseDesc": "This course introduces the scientific methods used to study the psychology of higher order processes and interpersonal behaviour. Students interested in applying to an Honours Psychology, Neuroscience & Behaviour program are encouraged to take PSYCH 1X03 rather than PSYCH 1F03.\nLecture, web modules, weekly tutorials (three hours); one term",
-                    "courseID": 34,
+                    "courseID": 33,
                     "courseName": "Introduction to Psychology, Neuroscience & Behaviour"
                 }
             ],
@@ -150,7 +150,7 @@ const courseListings = {
                 {
                     "courseCode": "SCIENCE 1A03",
                     "courseDesc": "Designed to prepare students for their university careers through the introduction to the people, academic programs, resources and attitudes needed during their undergraduate studies. Course content is taught through in-class sessions and mini-projects and will focus on investigating science through research to explore the opportunities and experiences available to students in the Faculty of Science.\nLecture (two hours), tutorial (three hours); one term",
-                    "courseID": 36,
+                    "courseID": 35,
                     "courseName": "Investigating Science: Opportunities & Experiences"
                 }
             ]
@@ -232,7 +232,7 @@ const courseListings = {
                 {
                     "courseCode": "ENVIRSC 1C03",
                     "courseDesc": "An introduction to the science of environmental issues and sustainability through the study of the soil, climate and water processes.\nLectures, web modules (three hours), one lab (two hours); one term",
-                    "courseID": 13,
+                    "courseID": 12,
                     "courseName": "Climate, Water and Environment"
                 }
             ],
@@ -240,13 +240,13 @@ const courseListings = {
                 {
                     "courseCode": "ENVSOCTY 1HA3",
                     "courseDesc": "An introduction to human (societal) - environment interactions, mostly through a human geographic perspective. Topics include: the spatial significance of culture and cultural difference; cities as forms of cultural settlements; the rise of urban societies; the meanings of cultural landscapes; geographical perspectives on local and global politics; humans’ changing relationship with the environment; and contemporary environmental issues.\nTwo lectures, one tutorial (one hour); one term",
-                    "courseID": 14,
+                    "courseID": 13,
                     "courseName": "Society, Culture and Environment"
                 },
                 {
                     "courseCode": "ENVSOCTY 1HB3",
                     "courseDesc": "An introduction to the study of relationships between people and their environments. The natural, built, social and economic environments are examined through human geography, urban studies, population and development studies, and environmental studies. Topics include: the meaning, and changing significance, of globalization; the causes and consequences of uneven economic and social development; the nature of changes in world population via demographic change and migration; the nature and consequences of global urbanization; and urban planning.\nTwo lectures, one tutorial (one hour); one term",
-                    "courseID": 15,
+                    "courseID": 14,
                     "courseName": "Population, Cities and Development "
                 }
             ],
@@ -254,7 +254,7 @@ const courseListings = {
                 {
                     "courseCode": "LIFESCI 1D03",
                     "courseDesc": "An introduction to the physics underlying some of the medical imaging techniques used in the diagnosis and treatment of disease. Topics include: X-ray (transmission) radiography, computed tomography, an introduction to magnetic resonance imaging (MRI), basic principles of ultrasonography, radioactivity and nuclear medicine, and a brief investigation into the biological effects of radiation.\nThree lectures, one tutorial; one term",
-                    "courseID": 16,
+                    "courseID": 15,
                     "courseName": "Medical Imaging Physics"
                 }
             ],
@@ -262,43 +262,43 @@ const courseListings = {
                 {
                     "courseCode": "MATH 1AA3",
                     "courseDesc": "For students in science: additional techniques of integration, applications of definite integrals, differential equations, polar coordinates, parametrized curves. Sequences, infinite series, power series. Partial derivatives, double integrals.\nThree lectures, one tutorial; one term",
-                    "courseID": 18,
+                    "courseID": 17,
                     "courseName": "Calculus For Science 2"
                 },
                 {
                     "courseCode": "MATH 1B03",
                     "courseDesc": "Vector spaces given by solutions to linear systems. Linear independence, dimension. Determinants. Eigenvalues, eigenvectors and diagonalisation. Complex numbers.\nThree lectures, one tutorial; one term",
-                    "courseID": 19,
+                    "courseID": 18,
                     "courseName": "Linear Algebra 1"
                 },
                 {
                     "courseCode": "MATH 1LS3",
                     "courseDesc": "Topics from differential and integral calculus, differential equations, discrete-time dynamical systems, chosen for their relevance to the life sciences.\nThree lectures, one tutorial; one term",
-                    "courseID": 20,
+                    "courseID": 19,
                     "courseName": "Calculus for the Life Sciences 1"
                 },
                 {
                     "courseCode": "MATH 1LT3",
                     "courseDesc": "Applications of integration, autonomous differential equations, functions of several variables; probability as application of calculus. All topics chosen for their relevance to the life sciences.\nThree lectures, one tutorial; one term",
-                    "courseID": 21,
+                    "courseID": 20,
                     "courseName": "Calculus for the Life Sciences 2"
                 },
                 {
                     "courseCode": "MATH 1MM3",
                     "courseDesc": "Integral calculus of polynomial, rational, exponential and logarithmic functions. Optimization problems. Applications in Sciences, Social Sciences and Business\nThree lectures, one tutorial; one term",
-                    "courseID": 22,
+                    "courseID": 21,
                     "courseName": "Applied Calculus"
                 },
                 {
                     "courseCode": "MATH 1MP3",
                     "courseDesc": "Introduction to mathematical problem-solving using computational methods. Introduction to a programming language; good scientific programming practices.\nThree lectures, one lab; one term",
-                    "courseID": 23,
+                    "courseID": 22,
                     "courseName": "Introduction to Mathematical Scientific Computation "
                 },
                 {
                     "courseCode": "MATH 1XX3",
                     "courseDesc": "For students in mathematics and statistics. Additional techniques of integration, applications of definite integrals, differential equations, polar coordinates, parametrized curves. Sequences, infinite series, power series. Partial derivatives, double integrals.\nThree lectures, one tutorial; one term",
-                    "courseID": 25,
+                    "courseID": 24,
                     "courseName": "Calculus for Math and Stats 2"
                 }
             ],
@@ -306,7 +306,7 @@ const courseListings = {
                 {
                     "courseCode": "MUSIC 1AA3",
                     "courseDesc": "An introductory survey of Western music, from the time of Mozart to the present. Composers studied include Beethoven, Schubert, Chopin, Verdi, Wagner, Debussy, and Stravinsky. No previous knowledge of music required.\nThree lectures; one term",
-                    "courseID": 27,
+                    "courseID": 26,
                     "courseName": "Introduction to the History of Music"
                 }
             ],
@@ -314,19 +314,19 @@ const courseListings = {
                 {
                     "courseCode": "PHYSICS 1A03",
                     "courseDesc": "A first course in university physics, taught using examples and applications from many areas of science. Topics include the concepts of force and energy, mechanics, waves and fluids.\nThree hours (lectures, web modules), one lab (two hours) every other week; one term",
-                    "courseID": 28,
+                    "courseID": 27,
                     "courseName": "Introductory Physics"
                 },
                 {
                     "courseCode": "PHYSICS 1AA3",
                     "courseDesc": "A course presenting aspects of modern physics relevant to life sciences. Electromagnetic fields. Atomic, quantum, and nuclear physics. Applications to imaging and understanding biological systems.\nThree lectures, one lab (three hours) every other week; one term",
-                    "courseID": 29,
+                    "courseID": 28,
                     "courseName": "Introduction To Modern Physics"
                 },
                 {
                     "courseCode": "PHYSICS 1CC3",
                     "courseDesc": "This course is the continuation of PHYSICS 1C03. Topics include simple harmonic motion, waves, interference, electrostatics, magnetostatics and an introduction to quantum physics.\nThree lectures, one lab (three hours) every other week; one term",
-                    "courseID": 31,
+                    "courseID": 30,
                     "courseName": "Modern Physics for the Chemical and Physical Sciences"
                 }
             ],
@@ -334,13 +334,13 @@ const courseListings = {
                 {
                     "courseCode": "PSYCH 1F03",
                     "courseDesc": "Students completing this course will have a good understanding of the methods, research questions and major areas of psychology. This course would be ideal for students looking to complete an elective requirement without necessarily planning to continue study in psychology. Students considering applying to an Honours Psychology, Neuroscience & Behaviour program are referred to PSYCH 1X03 for which this course is an anti-requisite.\nOn-line web modules, discussions and testing; one term",
-                    "courseID": 32,
+                    "courseID": 31,
                     "courseName": "Survey of Psychology"
                 },
                 {
                     "courseCode": "PSYCH 1XX3",
                     "courseDesc": "This course introduces important themes as the foundations to investigate psychology, neuroscience and behaviour with an emphasis on sensory systems, and behaviours critical to survival. Students interested in applying to an Honours Psychology, Neuroscience & Behaviour program are encouraged to take PSYCH 1XX3 rather than PSYCH 1FF3.\nThree hours (lecture, web modules, weekly tutorials); one term",
-                    "courseID": 35,
+                    "courseID": 34,
                     "courseName": "Foundations of Psychology, Neuroscience & Behaviour"
                 }
             ]
