@@ -7,7 +7,8 @@ import {Pie} from 'react-chartjs-2';
 import Pagination from 'react-bootstrap/Pagination';
 import {boldAllMatches} from '../common/utilities';
 
-import { MAC_SITES_PROGRAMS_URL} from '../variables.js';
+//import { MAC_SITES_PROGRAMS_URL} from '../variables.js';
+const MAC_SITES_PROGRAMS_URL = `http://mapsci.ca/level-2-programs/`; 
 
 /* Sort programResults, largest percentage first */
 export const sortProgramResults = (programResults) => {
@@ -97,7 +98,7 @@ const genProgramResults = (programResults) => {
                                     <div class="h3">{program.programName}</div>
                                     { program.programSlug && 
                                         <a 
-                                            href={MAC_SITES_PROGRAMS_URL + "/" + program.programSlug}
+                                            href={MAC_SITES_PROGRAMS_URL + program.programSlug}
                                             target="_blank"
                                             rel="noreferrer"
                                         >
