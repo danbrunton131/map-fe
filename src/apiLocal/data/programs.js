@@ -15,18 +15,7 @@ const secondTermMath = ["MATH 1AA3", "MATH 1LT3", "MATH 1XX3"];
 // only works for courses worth 3 units
 // doesn't support OR logic and nested requirements
 
-const programs = [{
-    id: "?HBIOCHEM",
-    name: "Honours Biochemistry",
-    slug: "honours-biochemistry",
-    requirements: [
-        { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03"] },
-        { count: 2, from: ["CHEM 1A03", "CHEM 1AA3"] },
-        { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
-        { count: 1, from: ["PHYSICS 1A03", "PHYSICS 1C03"] },
-        { count: 3, from: scienceOneCourseList }
-    ]
-},
+const programs = [
 {
     id: "HACTFMTH",
     name: "Honours Actuarial and Financial Mathematics",
