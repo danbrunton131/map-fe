@@ -150,8 +150,11 @@ const programs = [
     slug: "honours-biology-pnb",
     requirements: [
         { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03"] },
-        { count: 1, from: firstTermMath },
-        { count: 1, from: secondTermMath },
+        { count: 1, from: ["PSYCH 1XX3", "PYSCH 1FF3"] },
+        { count: 2, from: ["CHEM 1A03", "CHEM 1AA3"] },
+        { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
+        { count: 1, from: ["PHYSICS 1A03", "PHYSICS 1C03"]},
+        { count: 1, from: scienceOneCourseList }
     ]
 },
 {
