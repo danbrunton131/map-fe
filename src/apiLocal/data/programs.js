@@ -100,7 +100,7 @@ const programs = [
 },
 {
     id: "HBIOLOGY",
-    name: "Honours Biology",
+    name: "Honours Biology Core",
     slug: "honours-biology",
     requirements: [
         { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03"] },
@@ -112,6 +112,18 @@ const programs = [
 },
 {
     id: "HBIOLPHYS",
+    name: "Honours Biology – Physiology Core",
+    slug: "honours-biology-physiology-core",
+    requirements: [
+        { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03"] },
+        { count: 2, from: ["CHEM 1A03", "CHEM 1AA3"] },
+        { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
+        { count: 1, from: ["PHYSICS 1A03", "PHYSICS 1C03"] },
+        { count: 2, from: scienceOneCourseList }
+    ]
+},
+{
+    id: "HBIOLPHYSC",
     name: "Honours Biology — Physiology Research Specialization",
     slug: "honours-biology-physiology-research-specialization",
     requirements: [
@@ -124,7 +136,7 @@ const programs = [
 },
 {
     id: "?HBIOLRS",
-    name: "Honours Biology — Research Specialization ",
+    name: "Honours Biology — Research Specialization",
     slug: "honours-biology-research-specialization",
     requirements: [
         { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03"] },
@@ -266,7 +278,7 @@ const programs = [
 },
 {
     id: "HMATHSTATM",
-    name: "Honours Mathematics & Statistics — Mathematics Sub-Plan",
+    name: "Honours Mathematics & Statistics — Mathematics Specialization",
     slug: "onours-mathematics-and-statistics-mathematics-sub-plan",
     requirements: [
         { count: 1, from: firstTermMath },
@@ -276,7 +288,7 @@ const programs = [
 },
 {
     id: "HMATHSTATS",
-    name: "Honours Mathematics and Statistics — Statistics Sub-Plan",
+    name: "Honours Mathematics and Statistics — Statistics Specialization",
     slug: "honours-mathematics-and-statistics-statistics-sub-plan",
     requirements: [
         { count: 1, from: firstTermMath },
@@ -315,6 +327,18 @@ const programs = [
     id: "HMOLEBIOL",
     name: "Honours Molecular Biology and Genetics Research Specialization",
     slug: "honours-molecular-biology-and-genetics-research-specialization",
+    requirements: [
+        { count: 2, from: ["BIOLOGY 1M03", "BIOLOGY 1A03"] },
+        { count: 2, from: ["CHEM 1A03", "CHEM 1AA3"] },
+        { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
+        { count: 1, from: ["PHYSICS 1A03", "PHYSICS 1C03"] },
+        { count: 2, from: scienceOneCourseList }
+    ]
+},
+{
+    id: "?HMOLEBIOC",
+    name: "Honours Molecular Biology and Genetics Core",
+    slug: "honours-molecular-biology-and-genetics-core",
     requirements: [
         { count: 2, from: ["BIOLOGY 1M03", "BIOLOGY 1A03"] },
         { count: 2, from: ["CHEM 1A03", "CHEM 1AA3"] },
