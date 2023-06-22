@@ -219,12 +219,12 @@ const programs = [
     name: "Honours Life Sciences",
     slug: "honours-life-sciences",
     requirements: [
-        { count: 1, from: ["BIOLOGY 1A03"] },
+        { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03"] },
         { count: 1, from: ["CHEM 1A03"] },
         { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
         { count: 1, from: ["PHYSICS 1A03", "PHYSICS 1C03"] },
-        { count: 1, from: ["BIOLOGY 1M03", "EARTHSC 1G03", "ENVIRSC 1C03", "PSYCH 1FF3", "PSYCH 1XX3"] },
-        { count: 3, from: scienceOneCourseList }
+        { count: 1, from: ["EARTHSC 1G03", "ENVIRSC 1C03", "PSYCH 1FF3", "PSYCH 1XX3"] },
+        { count: 2, from: scienceOneCourseList }
     ]
 },
 {
