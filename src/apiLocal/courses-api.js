@@ -16,14 +16,13 @@ const submitSelection = function({ selections })
 {
     const courseSet = new Set(selections.map((idIndex) => courses[idIndex].code));
     
-    const matchedPrograms = programs.map(
-    ({ id, name, requirements, slug }) => 
+    const matchedPrograms = programs.map(({ id, name, requirements, slug }) => 
     {
         const results = calculateEligibility(requirements, courseSet);
 
         const fulfilledCourses = results.log.map((requirement) => 
-            requirement.fulfilledCourses);
-            
+            requirement.fulfilledCourses); 
+        
         return {
             fulfilledCourses, 
             programDescription: "",
@@ -31,8 +30,12 @@ const submitSelection = function({ selections })
             programName: name,
             programPercentage: results.consumed.percentage,
             programRequirements: {
-                requirements: requirements.map(({ count, from }) => 
-                    `${count*3} units from ${from.join(', ')}`)
+                requirements: requirements.map(({ count, from }, index) => 
+                {
+                    const fulfilledRequirementsUnits = results.log[index].numerator * 3;
+
+                    return `<strong>${fulfilledRequirementsUnits}/${count*3} units</strong> from ${from.join(', ')}`
+                })
             },
             programSlug: slug
         }
