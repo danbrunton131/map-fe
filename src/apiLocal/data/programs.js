@@ -28,11 +28,11 @@ const programs = [
 },
 {
     id: "ENVSCIENCE",
-    name: "Environmental Science",
+    name: "Environmental Sciences",
     slug: "honours-environmental-sciences",
     requirements: [
-        { count: 2, from: ["EARTHSC 1G03", "ENVIRSC 1C03"] },
-        { count: 2, from: ["MATH 1A03", "MATH 1LS3"] },
+        { count: 1, from: ["EARTHSC 1G03", "ENVIRSC 1C03"] },
+        { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
         { count: 6, from: scienceOneCourseList }
     ],
 },
