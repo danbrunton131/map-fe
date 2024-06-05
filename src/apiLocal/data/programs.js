@@ -440,6 +440,7 @@ const programs = [
     requirements: [
         { count: 2, from: [...firstTermMath, ...secondTermMath] },
         { count: 1, from: ["COMPSCI 1MD3", "MATH 1B03", "MATH 1MP3"]}
+        { count: 2, from: scienceOneCourseList }
     ]
 }
 ];
