@@ -241,22 +241,9 @@ const programs = [
     ]
 },
 {
-    id: "HLSCISMSYS",
-    name: "Honours Life Sciences — Sensory Motor Systems Specialization ",
-    slug: "",
-    requirements: [
-        { count: 1, from: ["BIOLOGY 1A03"] },
-        { count: 1, from: ["CHEM 1A03"] },
-        { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
-        { count: 1, from: ["PHYSICS 1A03", "PHYSICS 1C03"] },
-        { count: 1, from: ["BIOLOGY 1M03", "EARTHSC 1G03", "ENVIRSC 1C03", "PSYCH 1FF3", "PSYCH 1XX3"] },
-        { count: 3, from: scienceOneCourseList }
-    ]
-},
-{
     id: "HMATHCSCI",
     name: "Honours Mathematics & Computer Science",
-    slug: "honours-life-sciences-sensory-motor-systems-specialization",
+    slug: "honours-mathematics-computer-science",
     requirements: [
         { count: 1, from: firstTermMath },
         { count: 1, from: secondTermMath },
