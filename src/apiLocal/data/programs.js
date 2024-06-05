@@ -368,7 +368,7 @@ const programs = [
         { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03"] },
         { count: 1, from: ["PSYCH 1FF3", "PSYCH 1XX3"] },
         { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
-        { count: 1, from: ["PHYSICS 1A03", "PHYSICS 1C03"] },
+        { count: 1, from: ["BIOPHYS 1S03", "CHEM 1A03", "PHYSICS 1A03", "PHYSICS 1C03"] },
         { count: 3, from: scienceOneCourseList }
     ]
 },
