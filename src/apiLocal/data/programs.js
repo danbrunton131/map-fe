@@ -4,7 +4,7 @@ const scienceOneCourseList = [
     "ASTRON 1F03", "BIOLOGY 1A03", "BIOLOGY 1M03", "BIOPHYS 1S03", "CHEM 1A03", "CHEM 1AA3",
     "EARTHSC 1G03", "ENVIRSC 1C03", "ENVSOCTY 1HA3", "ENVSOCTY 1HB3", "LIFESCI 1D03", "MATH 1A03",
     "MATH 1AA3", "MATH 1B03", "MATH 1LS3", "MATH 1LT3", "MATH 1MM3", "MATH 1MP3", "PHYSICS 1A03",
-    "PHYSICS 1AA3", "PHYSICS 1C03", "PHYSICS 1CC3", "PSYCH 1F03", "PSYCH 1FF3", "PSYCH 1X03",
+    "PHYSICS 1AA3", "PHYSICS 1C03", "MEDPHYS 1A03", "PHYSICS 1CC3", "PSYCH 1F03", "PSYCH 1FF3", "PSYCH 1X03",
     "PSYCH 1XX3", "SCIENCE 1A03"
 ];
 
@@ -304,7 +304,7 @@ const programs = [
         { count: 1, from: firstTermMath },
         { count: 1, from: secondTermMath },
         { count: 1, from: ["PHYSICS 1A03", "PHYSICS 1C03"] },
-        { count: 1, from: ["PHYSICS 1AA3", "PHYSICS 1CC3", "BIOPHYS 1S03", "LIFESCI 1D03"] },
+        { count: 1, from: ["MEDPHYS 1A03", "PHYSICS 1AA3", "PHYSICS 1CC3"] },
         { count: 1, from: ["CHEM 1A03"] },
         { count: 1, from: ["BIOLOGY 1A03", "CHEM 1AA3", "MATH 1B03"] },
         { count: 2, from: scienceOneCourseList }
