@@ -1,8 +1,8 @@
 // Ask Ben about changing honours mathematics and computer science admission requirements
 
 const scienceOneCourseList = [
-    "ASTRON 1F03", "BIOLOGY 1A03", "BIOLOGY 1M03", "BIOPHYS 1S03", "CHEM 1A03", "CHEM 1AA3",
-    "EARTHSC 1G03", "ENVIRSC 1C03", "ENVSOCTY 1HA3", "ENVSOCTY 1HB3", "LIFESCI 1D03", "MATH 1A03",
+    "ASTRON 1F03", "BIOLOGY 1A03", "BIOLOGY 1M03", "CHEM 1A03", "CHEM 1AA3",
+    "EARTHSC 1G03", "ENVIRSC 1C03", "ENVSOCTY 1HA3", "ENVSOCTY 1HB3", "MATH 1A03",
     "MATH 1AA3", "MATH 1B03", "MATH 1LS3", "MATH 1LT3", "MATH 1MM3", "MATH 1MP3", "PHYSICS 1A03",
     "PHYSICS 1AA3", "PHYSICS 1C03", "MEDPHYS 1A03", "PHYSICS 1CC3", "PSYCH 1F03", "PSYCH 1FF3", "PSYCH 1X03",
     "PSYCH 1XX3", "SCIENCE 1A03"
@@ -232,11 +232,11 @@ const programs = [
     name: "Honours Life Sciences — Origins of Disease Specialization",
     slug: "honours-life-sciences-orgins-of-desease-specialization",
     requirements: [
-        { count: 1, from: ["BIOLOGY 1A03"] },
+        { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03] },
         { count: 2, from: ["CHEM 1A03", "CHEM 1AA3"] },
         { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
         { count: 1, from: ["PHYSICS 1A03", "PHYSICS 1C03"] },
-        { count: 1, from: ["BIOLOGY 1M03", "EARTHSC 1G03", "ENVIRSC 1C03", "PSYCH 1FF3", "PSYCH 1XX3"] },
+        { count: 1, from: ["EARTHSC 1G03", "ENVIRSC 1C03", "PSYCH 1FF3", "PSYCH 1XX3"] },
         { count: 2, from: scienceOneCourseList }
     ]
 },
@@ -368,7 +368,7 @@ const programs = [
         { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03"] },
         { count: 1, from: ["PSYCH 1FF3", "PSYCH 1XX3"] },
         { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
-        { count: 1, from: ["BIOPHYS 1S03", "CHEM 1A03", "PHYSICS 1A03", "PHYSICS 1C03"] },
+        { count: 1, from: ["MEDPHYS 1A03", "CHEM 1A03", "PHYSICS 1A03", "PHYSICS 1C03"] },
         { count: 3, from: scienceOneCourseList }
     ]
 },
@@ -380,7 +380,7 @@ const programs = [
         { count: 1, from: ["PSYCH 1FF3", "PSYCH 1XX3"] },
         { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
         { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03"] },
-        { count: 1, from: ["BIOPHYS 1S03", "CHEM 1A03", "PHYSICS 1A03", "PHYSICS 1C03"] },
+        { count: 1, from: ["MEDPHYS 1A03", "CHEM 1A03", "PHYSICS 1A03", "PHYSICS 1C03"] },
         { count: 3, from: scienceOneCourseList }
     ]
 },
@@ -392,7 +392,7 @@ const programs = [
         { count: 1, from: ["PSYCH 1FF3", "PSYCH 1XX3"] },
         { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
         { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03"] },
-        { count: 1, from: ["BIOPHYS 1S03", "CHEM 1A03", "PHYSICS 1A03", "PHYSICS 1C03"] },
+        { count: 1, from: ["MEDPHYS 1A03", "CHEM 1A03", "PHYSICS 1A03", "PHYSICS 1C03"] },
         { count: 2, from: scienceOneCourseList },
         { count: 1, from: ["MUSIC 1A03", "MUSIC 1AA3"] },
     ]
