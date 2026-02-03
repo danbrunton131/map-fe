@@ -385,19 +385,6 @@ const programs = [
     ]
 },
 {
-    id: "HPSYCNEBEC",
-    name: "Honours Psychology, Neuroscience & Behaviour – Music Cognition Specialization",
-    slug: "honours-pnb-music-cognition-specialization",
-    requirements: [
-        { count: 1, from: ["PSYCH 1FF3", "PSYCH 1XX3"] },
-        { count: 1, from: ["MATH 1A03", "MATH 1LS3"] },
-        { count: 2, from: ["BIOLOGY 1A03", "BIOLOGY 1M03"] },
-        { count: 1, from: ["BIOPHYS 1S03", "CHEM 1A03", "PHYSICS 1A03", "PHYSICS 1C03"] },
-        { count: 2, from: scienceOneCourseList },
-        { count: 1, from: ["MUSIC 1A03", "MUSIC 1AA3"] },
-    ]
-},
-{
     id: "?HSUSCHEM",
     name: "Honours Sustainable Chemistry",
     slug: "honours-sustainable-chemistry",
