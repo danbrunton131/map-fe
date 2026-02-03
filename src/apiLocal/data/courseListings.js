@@ -250,14 +250,6 @@ const courseListings = {
                     "courseName": "Population, Cities and Development "
                 }
             ],
-            "LIFESCI": [
-                {
-                    "courseCode": "LIFESCI 1D03",
-                    "courseDesc": "An introduction to the physics underlying some of the medical imaging techniques used in the diagnosis and treatment of disease. Topics include: X-ray (transmission) radiography, computed tomography, an introduction to magnetic resonance imaging (MRI), basic principles of ultrasonography, radioactivity and nuclear medicine, and a brief investigation into the biological effects of radiation.\nThree lectures, one tutorial; one term",
-                    "courseID": 15,
-                    "courseName": "Medical Imaging Physics"
-                }
-            ],
             "MATH": [
                 {
                     "courseCode": "MATH 1AA3",
