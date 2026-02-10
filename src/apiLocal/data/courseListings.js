@@ -121,7 +121,7 @@ const courseListings = {
             "PHYSICS": [
                 {
                     "courseCode": "PHYSICS 1A03",
-                    "courseDesc": "A first course in university physics, taught using examples and applications from many areas of science. Topics include the concepts of force and energy, mechanics, waves and fluids.\nThree hours (lectures, web modules), one lab (two hours) every other week; one term",
+                    "courseDesc": "A first course in university physics, taught using examples and applications from many areas of science. Topics include the concepts of force and energy, mechanics, waves and fluids.\nThree hours (lectures, web modules), one lab (two hours) every other week; one term \nPHYSICS 1V03 when offered is considered equivalent to PHYSICS 1A03 and 1C03",
                     "courseID": 27,
                     "courseName": "Introductory Physics"
                 },
@@ -305,7 +305,7 @@ const courseListings = {
             "PHYSICS": [
                 {
                     "courseCode": "PHYSICS 1A03",
-                    "courseDesc": "A first course in university physics, taught using examples and applications from many areas of science. Topics include the concepts of force and energy, mechanics, waves and fluids.\nThree hours (lectures, web modules), one lab (two hours) every other week; one term",
+                    "courseDesc": "A first course in university physics, taught using examples and applications from many areas of science. Topics include the concepts of force and energy, mechanics, waves and fluids.\nThree hours (lectures, web modules), one lab (two hours) every other week; one term \nPHYSICS 1V03 when offered is considered equivalent to PHYSICS 1A03 and 1C03",
                     "courseID": 27,
                     "courseName": "Introductory Physics"
                 },
