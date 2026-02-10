@@ -333,7 +333,7 @@ const courses = [
             "fall": true,
             "winter": true
         },
-        "timetable": "Three hours (lectures, web modules), one lab (two hours) every other week; one term"
+        "timetable": "Three hours (lectures, web modules), one lab (two hours) every other week, PHYSICS 1V03 when offered is considered equivalent to PHYSICS 1A03 and 1C03; one term"
     },
     {
         "code": "PHYSICS 1AA3",
