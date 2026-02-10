@@ -13,7 +13,7 @@ const courseListings = {
             "BIOLOGY": [
                 {
                     "courseCode": "BIOLOGY 1A03",
-                    "courseDesc": "Structure, molecular composition and function in sub-cellular and cellular systems.\nThree hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks); one term",
+                    "courseDesc": "Structure, molecular composition and function in sub-cellular and cellular systems.\nThree hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks); one term \nBIOLOGY 1A02 & 1A01 when offered and taken together are considered equivalent to BIOLOGY 1A03 ",
                     "courseID": 1,
                     "courseName": "Cellular and Molecular Biology"
                 },
@@ -169,7 +169,7 @@ const courseListings = {
             "BIOLOGY": [
                 {
                     "courseCode": "BIOLOGY 1A03",
-                    "courseDesc": "Structure, molecular composition and function in sub-cellular and cellular systems.\nThree hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks); one term",
+                    "courseDesc": "Structure, molecular composition and function in sub-cellular and cellular systems.\nThree hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks); one term \nBIOLOGY 1A02 & 1A01 when offered and taken together are considered equivalent to BIOLOGY 1A03 ",
                     "courseID": 1,
                     "courseName": "Cellular and Molecular Biology"
                 },
