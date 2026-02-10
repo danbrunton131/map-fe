@@ -21,7 +21,7 @@ const courses = [
             "fall": true,
             "winter": true
         },
-        "timetable": "Three hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks); one term"
+        "timetable": "Three hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks), BIOLOGY 1A02 & 1A01 when offered and taken together are considered equivalent to BIOLOGY 1A03 ; one term"
     },
     {
         "code": "BIOLOGY 1M03",
