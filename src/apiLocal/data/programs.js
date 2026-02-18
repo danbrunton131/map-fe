@@ -304,7 +304,7 @@ const programs = [
         { count: 1, from: firstTermMath },
         { count: 1, from: secondTermMath },
         { count: 1, from: ["PHYSICS 1A03", "PHYSICS 1C03"] },
-        { count: 1, from: ["MEDPHYS 1A03", "PHYSICS 1AA3", "PHYSICS 1CC3"] },
+        { count: 1, from: ["MEDPHYS 1A03", "PHYSICS 1AA3", "PHYSICS 1CC3", "MEDPHYS 1A03"] },
         { count: 1, from: ["CHEM 1A03"] },
         { count: 1, from: ["BIOLOGY 1A03", "CHEM 1AA3", "MATH 1B03"] },
         { count: 2, from: scienceOneCourseList }
