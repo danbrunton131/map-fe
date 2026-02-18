@@ -316,12 +316,6 @@ const courseListings = {
                     "courseName": "Introduction To Modern Physics"
                 },
                 {
-                    "courseCode": "MEDPHYS 1A03",
-                    "courseDesc": "An exploration of how physics can be used to understand biological systems and in medicine to diagnose and treat disease. Topics will include x-ray, nuclear medicine and MRI imaging, the optics of vision and imaging of the eye, and sound, heat, heat flow and fluid dynamics in ultrasound imaging and therapy.\nThree lectures; one term",
-                    "courseID": 36,
-                    "courseName": "Physics in Medicine and Biology"
-                },
-                {
                     "courseCode": "PHYSICS 1CC3",
                     "courseDesc": "This course is the continuation of PHYSICS 1C03. Topics include simple harmonic motion, waves, interference, electrostatics, magnetostatics and an introduction to quantum physics.\nThree lectures, one lab (three hours) every other week; one term",
                     "courseID": 30,
