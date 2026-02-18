@@ -430,7 +430,7 @@ const courses = [
             "winter": false
         },
         "timetable": "Lecture (two hours), tutorial (three hours); one term"
-    }
+    },
     {
         "code": "MEDPHYS 1A03",
         "description": "An exploration of how physics can be used to understand biological systems and in medicine to diagnose and treat disease. Topics will include x-ray, nuclear medicine and MRI imaging, the optics of vision and imaging of the eye, and sound, heat, heat flow and fluid dynamics in ultrasound imaging and therapy.",
