@@ -21,7 +21,7 @@ const courses = [
             "fall": true,
             "winter": true
         },
-        "timetable": "Three hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks); one term"
+        "timetable": "Three hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks), BIOLOGY 1A02 & 1A01 when offered and taken together are considered equivalent to BIOLOGY 1A03 ; one term"
     },
     {
         "code": "BIOLOGY 1M03",
@@ -333,7 +333,7 @@ const courses = [
             "fall": true,
             "winter": true
         },
-        "timetable": "Three hours (lectures, web modules), one lab (two hours) every other week; one term"
+        "timetable": "Three hours (lectures, web modules), one lab (two hours) every other week, PHYSICS 1V03 when offered is considered equivalent to PHYSICS 1A03 and 1C03; one term"
     },
     {
         "code": "PHYSICS 1AA3",
@@ -430,6 +430,18 @@ const courses = [
             "winter": false
         },
         "timetable": "Lecture (two hours), tutorial (three hours); one term"
+    },
+    {
+        "code": "MEDPHYS 1A03",
+        "description": "An exploration of how physics can be used to understand biological systems and in medicine to diagnose and treat disease. Topics will include x-ray, nuclear medicine and MRI imaging, the optics of vision and imaging of the eye, and sound, heat, heat flow and fluid dynamics in ultrasound imaging and therapy.",
+        "id": 36,
+        "name": "Physics in Medicine and Biology",
+        "source": "Honours Biochemistry",
+        "term": {
+            "fall": false,
+            "winter": true
+        },
+        "timetable": "Three lectures; one term"
     }
 ]
 

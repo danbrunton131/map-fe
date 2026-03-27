@@ -13,7 +13,7 @@ const courseListings = {
             "BIOLOGY": [
                 {
                     "courseCode": "BIOLOGY 1A03",
-                    "courseDesc": "Structure, molecular composition and function in sub-cellular and cellular systems.\nThree hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks); one term",
+                    "courseDesc": "Structure, molecular composition and function in sub-cellular and cellular systems.\nThree hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks); one term \nBIOLOGY 1A02 & 1A01 when offered and taken together are considered equivalent to BIOLOGY 1A03 ",
                     "courseID": 1,
                     "courseName": "Cellular and Molecular Biology"
                 },
@@ -121,7 +121,7 @@ const courseListings = {
             "PHYSICS": [
                 {
                     "courseCode": "PHYSICS 1A03",
-                    "courseDesc": "A first course in university physics, taught using examples and applications from many areas of science. Topics include the concepts of force and energy, mechanics, waves and fluids.\nThree hours (lectures, web modules), one lab (two hours) every other week; one term",
+                    "courseDesc": "A first course in university physics, taught using examples and applications from many areas of science. Topics include the concepts of force and energy, mechanics, waves and fluids.\nThree hours (lectures, web modules), one lab (two hours) every other week; one term \nPHYSICS 1V03 when offered is considered equivalent to PHYSICS 1A03 and 1C03",
                     "courseID": 27,
                     "courseName": "Introductory Physics"
                 },
@@ -169,7 +169,7 @@ const courseListings = {
             "BIOLOGY": [
                 {
                     "courseCode": "BIOLOGY 1A03",
-                    "courseDesc": "Structure, molecular composition and function in sub-cellular and cellular systems.\nThree hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks); one term",
+                    "courseDesc": "Structure, molecular composition and function in sub-cellular and cellular systems.\nThree hours (lectures, web modules), one lab (three hours, alternating weeks), one tutorial (one hour, alternating weeks); one term \nBIOLOGY 1A02 & 1A01 when offered and taken together are considered equivalent to BIOLOGY 1A03 ",
                     "courseID": 1,
                     "courseName": "Cellular and Molecular Biology"
                 },
@@ -250,14 +250,6 @@ const courseListings = {
                     "courseName": "Population, Cities and Development "
                 }
             ],
-            "LIFESCI": [
-                {
-                    "courseCode": "LIFESCI 1D03",
-                    "courseDesc": "An introduction to the physics underlying some of the medical imaging techniques used in the diagnosis and treatment of disease. Topics include: X-ray (transmission) radiography, computed tomography, an introduction to magnetic resonance imaging (MRI), basic principles of ultrasonography, radioactivity and nuclear medicine, and a brief investigation into the biological effects of radiation.\nThree lectures, one tutorial; one term",
-                    "courseID": 15,
-                    "courseName": "Medical Imaging Physics"
-                }
-            ],
             "MATH": [
                 {
                     "courseCode": "MATH 1AA3",
@@ -313,7 +305,7 @@ const courseListings = {
             "PHYSICS": [
                 {
                     "courseCode": "PHYSICS 1A03",
-                    "courseDesc": "A first course in university physics, taught using examples and applications from many areas of science. Topics include the concepts of force and energy, mechanics, waves and fluids.\nThree hours (lectures, web modules), one lab (two hours) every other week; one term",
+                    "courseDesc": "A first course in university physics, taught using examples and applications from many areas of science. Topics include the concepts of force and energy, mechanics, waves and fluids.\nThree hours (lectures, web modules), one lab (two hours) every other week; one term \nPHYSICS 1V03 when offered is considered equivalent to PHYSICS 1A03 and 1C03",
                     "courseID": 27,
                     "courseName": "Introductory Physics"
                 },
@@ -322,6 +314,12 @@ const courseListings = {
                     "courseDesc": "A course presenting aspects of modern physics relevant to life sciences. Electromagnetic fields. Atomic, quantum, and nuclear physics. Applications to imaging and understanding biological systems.\nThree lectures, one lab (three hours) every other week; one term",
                     "courseID": 28,
                     "courseName": "Introduction To Modern Physics"
+                },
+                {
+                    "courseCode": "MEDPHYS 1A03",
+                    "courseDesc": "An exploration of how physics can be used to understand biological systems and in medicine to diagnose and treat disease. Topics will include x-ray, nuclear medicine and MRI imaging, the optics of vision and imaging of the eye, and sound, heat, heat flow and fluid dynamics in ultrasound imaging and therapy.\nThree lectures; one term",
+                    "courseID": 36,
+                    "courseName": "Physics in Medicine and Biology"
                 },
                 {
                     "courseCode": "PHYSICS 1CC3",

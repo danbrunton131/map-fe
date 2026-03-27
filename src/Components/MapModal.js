@@ -95,12 +95,13 @@ const genProgramResults = (programResults) => {
                         <Row>
                             <Col sm={12} md={8}>
                                 <div className="description">
-                                    <div class="h3">{program.programName}</div>
+                                    <div className="h3">{program.programName}</div>
                                     { program.programSlug && 
                                         <a 
                                             href={MAC_SITES_PROGRAMS_URL + program.programSlug}
                                             target="_blank"
                                             rel="noreferrer"
+                                            title={`Learn more about ${program.programName}`}
                                         >
                                         Learn More
                                         </a>
